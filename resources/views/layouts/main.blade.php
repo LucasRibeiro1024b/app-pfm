@@ -12,8 +12,57 @@
     {{-- Material Icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
+
+    <link rel="stylesheet" href="css/main/index.css">
+    <link rel="stylesheet" href="css/main/navbar.css">
+
 </head>
 <body>
+
+    <header>
+        <nav class="navbar navbar-expand navbar-light">
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+                <a href="/" class="navbar-brand">
+                    <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%">
+                </a>
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link">Dashboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Financeiro</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Projetos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Clientes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Usuários</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <form action="/logout" method="POST">
+                        @csrf
+                        <a href="/logout" 
+                            class="nav-link" 
+                            onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+                        </form>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
     
 
     @yield('content')
