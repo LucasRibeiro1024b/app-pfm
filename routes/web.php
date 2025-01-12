@@ -13,5 +13,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('site.dashboard');
-    })->name('dashboard');
-});
+    })->name('site.dashboard');
+}); //renomeei o name da rota pro padrão
