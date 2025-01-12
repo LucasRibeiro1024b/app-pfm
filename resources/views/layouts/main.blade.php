@@ -11,10 +11,16 @@
 
     {{-- Material Icons --}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {{-- Fonte Schibsted Grotesk--}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
 
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/navbar.css">
+    <link rel="stylesheet" href="css/user/show.css">
 
 </head>
 <body>
@@ -65,7 +71,13 @@
     </header>
     
 
-    @yield('content')
+    <main>
+        <div class="container-fluid col-md-10">
+  
+            @yield('content')
+            
+        </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

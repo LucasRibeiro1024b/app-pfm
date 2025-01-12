@@ -4,14 +4,16 @@
     
 @section('content')
 
+<h2>Lista de usuários</h2>
+
 <table class="table">
-    <thead>
+    <thead class="table">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Email</th>
-            <th scope="col">Projetos</th>
+            <th scope="col">NOME</th>
+            <th scope="col">TIPO</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PROJETOS</th>
         </tr>
     </thead>
     <tbody>
@@ -20,28 +22,30 @@
                 <th scope="row">#</th>
                 <td>{{ $user->name }}</td>
                 
+                <td class="user-td">
                 @switch($user->type)
                     @case(1)
-                        <td>Sócio</td>
+                        Sócio
                         @break
                     @case(2)
-                        <td>Consultor</td>
+                        Consultor
                         @break
                     @case(3)
-                        <td>Financeiro</td>
+                        Financeiro
                         @break
                     @case(4)
-                        <td>Estagiário</td>
+                        Estagiário
                         @break
                     @default
                         
                 @endswitch
+                </td>
 
-                <td>{{ $user->email }}</td>
-                <td>x</td>
+                <td class="user-td">{{ $user->email }}</td>
+                <td class="user-td">x</td>
             </tr>
         @endforeach
-        </tbody>
-      </table>
+    </tbody>
+</table>
     
 @endsection
