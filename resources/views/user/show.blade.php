@@ -49,3 +49,7 @@
 </table>
     
 @endsection
+
+@push('style')
+    <link rel="stylesheet" href="css/user/show.css">
+@endpush

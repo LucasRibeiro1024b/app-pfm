@@ -20,7 +20,10 @@
 
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/navbar.css">
-    <link rel="stylesheet" href="css/user/show.css">
+    
+    @stack('style')
+    @stack('script')
+    {{-- importa apenas os links do css e js indicados no 'content' pela diretiva 'push' --}}
 
 </head>
 <body>
