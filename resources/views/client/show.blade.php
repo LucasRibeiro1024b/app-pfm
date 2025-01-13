@@ -7,16 +7,17 @@
 <h2>Lista de clientes</h2>
 
 <table class="table">
-    <thead class="table">
+    <thead class="table text-center">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col text-center">#</th>
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
             <th scope="col">EMAIL</th>
             <th scope="col">PROJETOS</th>
+            <th scope="col">AÇÕES</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         @foreach ($clients as $index => $client)
             <tr>
                 <th scope="row">{{ $index + 1 }}</th>
@@ -28,7 +29,19 @@
                 </td>
 
                 <td class="td-gray">{{ $client->email }}</td>
+
                 <td class="td-gray">x</td>
+
+               
+                <td class="d-flex justify-content-center">
+                    <a href="" class="btn btn-info edit-btn text-light me-1"><i class="material-icons">edit</i></a>
+                    <form action="" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger delete-btn ms-1"><i class="material-icons">delete</i></button>
+                    </form>
+                </td>
+                
             </tr>
         @endforeach
     </tbody>

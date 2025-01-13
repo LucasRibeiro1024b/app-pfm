@@ -7,7 +7,7 @@
 <h2>Lista de usuários</h2>
 
 <table class="table">
-    <thead class="table">
+    <thead class="table text-center">
         <tr>
             <th scope="col">#</th>
             <th scope="col">NOME</th>
@@ -16,7 +16,7 @@
             <th scope="col">PROJETOS</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         @foreach ($users as $index => $user)
             <tr>
                 <th scope="row">{{ $index + 1 }}</th>
