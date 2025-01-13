@@ -4,7 +4,7 @@
     
 @section('content')
 
-<h2>Lista de usuários</h2>
+<h2>Lista de clientes</h2>
 
 <table class="table">
     <thead class="table">
