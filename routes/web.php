@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::middleware([
 // módulo "usuário"
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');

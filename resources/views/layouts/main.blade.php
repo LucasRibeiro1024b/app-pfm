@@ -20,6 +20,9 @@
 
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/navbar.css">
+
+    {{-- style table --}}
+    <link rel="stylesheet" href="css/components/table.css">
     
     @stack('style')
     @stack('script')
@@ -52,7 +55,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Clientes</a>
+                        <a href="{{ route('clients.index') }}" class="nav-link">Clientes</a>
                     </li>
 
                     <li class="nav-item">

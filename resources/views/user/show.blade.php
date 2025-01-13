@@ -17,12 +17,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($users as $user)
+        @foreach ($users as $index => $user)
             <tr>
-                <th scope="row">#</th>
+                <th scope="row">{{ $index + 1 }}</th>
                 <td>{{ $user->name }}</td>
                 
-                <td class="user-td">
+                <td class="td-gray">
                 @switch($user->type)
                     @case(1)
                         Sócio
@@ -41,8 +41,8 @@
                 @endswitch
                 </td>
 
-                <td class="user-td">{{ $user->email }}</td>
-                <td class="user-td">x</td>
+                <td class="td-gray">{{ $user->email }}</td>
+                <td class="td-gray">x</td>
             </tr>
         @endforeach
     </tbody>
