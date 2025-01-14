@@ -20,9 +20,6 @@
 
     <link rel="stylesheet" href="css/main/index.css">
     <link rel="stylesheet" href="css/main/navbar.css">
-
-    {{-- style table --}}
-    <link rel="stylesheet" href="css/components/table.css">
     
     @stack('style')
     @stack('script')

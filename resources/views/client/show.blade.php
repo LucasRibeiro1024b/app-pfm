@@ -34,11 +34,11 @@
 
                
                 <td class="d-flex justify-content-center">
-                    <a href="" class="btn btn-info edit-btn text-light me-1"><i class="material-icons">edit</i></a>
+                    <a href="" class="btn btn-outline-info me-1"><i class="material-icons">edit</i></a>
                     <form action="" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger delete-btn ms-1"><i class="material-icons">delete</i></button>
+                        <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
                     </form>
                 </td>
                 
@@ -50,5 +50,5 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/components/table.css">
 @endpush

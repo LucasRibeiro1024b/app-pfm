@@ -51,5 +51,5 @@
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="css/user/show.css">
+    <link rel="stylesheet" href="css/components/table.css">
 @endpush
