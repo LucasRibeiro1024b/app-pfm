@@ -1,0 +1,13 @@
+#client-create-container {
+    padding: 0 30px;
+}
+
+#client-create-container label {
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+#client-create-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}

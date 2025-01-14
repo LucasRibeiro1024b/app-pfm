@@ -24,3 +24,5 @@ Route::middleware([
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+
+Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');

@@ -6,7 +6,7 @@
 
 <div class="d-flex justify-content-between">
     <h2>Lista de clientes</h2>
-    <button class="btn btn-outline-success">adicionar novo cliente</button>
+    <a href="{{ route('client.create') }}" class="btn btn-outline-success">adicionar novo cliente</a>
 </div>
 
 <table class="table">
@@ -35,7 +35,6 @@
 
                 <td class="td-gray">x</td>
 
-               
                 <td class="d-flex justify-content-center">
                     <a href="" class="btn btn-outline-info me-1"><i class="material-icons">edit</i></a>
                     <form action="" method="POST">
@@ -44,7 +43,6 @@
                         <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
                     </form>
                 </td>
-                
             </tr>
         @endforeach
     </tbody>
