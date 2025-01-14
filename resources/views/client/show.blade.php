@@ -4,7 +4,10 @@
     
 @section('content')
 
-<h2>Lista de clientes</h2>
+<div class="d-flex justify-content-between">
+    <h2>Lista de clientes</h2>
+    <button class="btn btn-outline-success">adicionar novo cliente</button>
+</div>
 
 <table class="table">
     <thead class="table text-center">
