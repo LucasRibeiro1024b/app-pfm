@@ -23,8 +23,12 @@ Route::middleware([
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
+// módulo "client"
+
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 
 Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
 
 Route::post('/client/create', [ClientController::class, 'store'])->name('client.store');
+
+Route::delete('/client/delete/{id}', [ClientController::class, 'destroy'])->name('client.destroy');

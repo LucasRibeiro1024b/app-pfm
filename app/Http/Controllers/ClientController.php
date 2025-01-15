@@ -34,4 +34,11 @@ class ClientController extends Controller
 
         return redirect(route('clients.index'))->with('msg', 'Cliente adicionado com sucesso');
     }
+
+    public function destroy($id) {
+
+        Client::findOrFail($id)->delete();
+
+        return redirect(route('clients.index'))->with('msg', 'Cliente excluído com sucesso');
+    }
 }

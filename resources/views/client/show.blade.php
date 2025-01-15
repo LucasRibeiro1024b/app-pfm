@@ -37,7 +37,7 @@
 
                 <td class="d-flex justify-content-center">
                     <a href="" class="btn btn-outline-info me-1"><i class="material-icons">edit</i></a>
-                    <form action="" method="POST">
+                    <form action="{{route('client.destroy', $client->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
