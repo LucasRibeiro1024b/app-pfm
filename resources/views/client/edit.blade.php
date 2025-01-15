@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <input type="submit" id="create-btn" class="btn btn-outline-dark w-100 mt-4" value="Editar cliente">
+        <input type="submit" id="create-btn" class="btn btn-outline-dark w-100 mt-4" value="Salvar mudanças">
 
     </form>
 
