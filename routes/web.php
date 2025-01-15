@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,16 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 // module "projects"
 Route::get('/projects', [ProjectController::class, 'create'])->name('project.create');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+// módulo "client"
+
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+
+Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
+
+Route::post('/client/create', [ClientController::class, 'store'])->name('client.store');
+
+Route::delete('/client/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+
+Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+
+Route::put('/client/update/{id}', [ClientController::class, 'update'])->name('client.update');

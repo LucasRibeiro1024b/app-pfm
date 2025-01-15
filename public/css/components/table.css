@@ -1,8 +1,9 @@
-table .user-td {
+
+table .td-gray {
     color: #757575 !important;
     font-size: 14px;
 }
 
-table  {
+table   {
     line-height: 2.5;
 }
