@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     public function index() {
         $projects = Project::all();
-        return view('project.show', compact('projects'));
+        return view('project.index', compact('projects'));
     }
 
     public function create() {
-        return view('projects.create');
+        $clients = Client::all();
+        $users = User::all();
+
+        return view('project.create', ['clients' => $clients, 'consultants' => $users]);
     }
     
     public function store(Request $request) {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'client_id' => 'required|integer',
         ]);
     
         Project::create($validated);
@@ -28,13 +34,13 @@ class ProjectController extends Controller
 
     public function show($id) {
         $project = Project::findOrFail($id);
-        return view('projects.show', compact('project'));
+        return view('project.show', compact('project'));
     }
 
     public function edit($id)
     {
         $project = Project::findOrFail($id);
-        return view('projects.edit', compact('project'));
+        return view('project.edit', compact('project'));
     }
 
     public function update(Request $request, $id)
@@ -42,6 +48,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'client_id' => 'required|integer',
         ]);
 
         $project = Project::findOrFail($id);

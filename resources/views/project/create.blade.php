@@ -4,45 +4,55 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3">
+<div class="col-md-6 offset-md-3">
 
-    <h2>Adicionar novo cliente</h2>
+    <h2>Adicionar novo projeto</h2>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{route("project.store")}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="name">Nome:</label>
-            <input class="form-control" type="text" id="name" name="name" placeholder="Nome do cliente" required>
+            <label for="title">Titulo:</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="Titulo do Projeto" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input class="form-control" type="text" id="email" name="email" placeholder="Endereço de email" required>
+            <label for="description">Descrição:</label>
+            <input class="form-control" type="text" id="description" name="description" placeholder="Descrição" required>
         </div>
 
         <div class="form-group">
-            <label for="address">Endereço:</label>
-            <input class="form-control" type="text" id="address" name="address" placeholder="Endereço local" required>
+            <label for="">Data Término:</label>
+            <input class="form-control" type="text">
         </div>
 
         <div class="form-group">
-            <label for="phone">Telefone:</label>
-            <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato" required>
+            <label for="">Valor</label>
+            <input class="form-control" type="text">
         </div>
 
         <div class="form-group">
-            <label for="type">Tipo:</label>
-            <div class="row mx-auto">
-                <select name="type" id="type" class="form-select col me-1">
-                    <option value="0">Pessoa Física (CPF)</option>
-                    <option value="1">Pessoa Jurídica (CNPJ)</option>
-                </select>
-                
-                <input class="form-control col ms-1" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" required>
-            </div>
+            <label for="description">Cliente:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione uma opção</option>
+                @foreach ($clients as $client)
+                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                @endforeach
+            </select>
         </div>
 
-        <input type="submit" class="btn btn-outline-warning" value="Adicionar cliente">
+        <div class="form-group">
+            <label for="">Consultores:</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione um consultor</option>
+                @foreach ($consultants as $consultant)
+                    <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group mt-1">
+            <input type="submit" class="btn btn-primary" value="Adicionar projeto">
+        </div>
 
     </form>
 
