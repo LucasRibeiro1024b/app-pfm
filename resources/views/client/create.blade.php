@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label for="email">Email:</label>
-            <input class="form-control" type="text" id="email" name="email" placeholder="Endereço de email" required>
+            <input class="form-control" type="email" id="email" name="email" placeholder="Endereço de email" required>
         </div>
 
         <div class="form-group">
@@ -32,17 +32,17 @@
 
         <div class="form-group">
             <label for="type">Tipo:</label>
-            <div class="row mx-auto">
-                <select name="type" id="type" class="form-select col me-1">
-                    <option value="0">Pessoa Física (CPF)</option>
-                    <option value="1">Pessoa Jurídica (CNPJ)</option>
-                </select>
+            <div class="input-group">
+                    <select name="type" id="type" class="form-select">
+                        <option value="0">Pessoa Física (CPF)</option>
+                        <option value="1">Pessoa Jurídica (CNPJ)</option>
+                    </select>
                 
-                <input class="form-control col ms-1" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" required>
+                    <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" required>
             </div>
         </div>
 
-        <input type="submit" class="btn btn-outline-warning" value="Adicionar cliente">
+        <input type="submit" id="create-btn" class="btn btn-outline-dark w-100 mt-4" value="Adicionar cliente">
 
     </form>
 
