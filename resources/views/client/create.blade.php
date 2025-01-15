@@ -8,7 +8,7 @@
 
     <h2>Adicionar novo cliente</h2>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('client.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Nome:</label>

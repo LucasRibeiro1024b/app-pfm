@@ -33,7 +33,7 @@
 
             <div class="collapse navbar-collapse" id="navbar">
 
-                <a href="/" class="navbar-brand">
+                <a href="/dashboard" class="navbar-brand">
                     <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%">
                 </a>
 

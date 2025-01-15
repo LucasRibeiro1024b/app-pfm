@@ -26,3 +26,5 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 
 Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
+
+Route::post('/client/create', [ClientController::class, 'store'])->name('client.store');

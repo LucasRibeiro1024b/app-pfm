@@ -18,4 +18,20 @@ class ClientController extends Controller
     {
         return view('client.create');
     }
+
+    public function store(Request $request)
+    {
+        $client = new Client;
+
+        $client->name = $request->name;
+        $client->email = $request->email;
+        $client->address = $request->address;
+        $client->phone = $request->phone;
+        $client->type = $request->type;
+        $client->cpfCnpj = $request->cpfCnpj;
+
+        $client->save();
+
+        return redirect(route('clients.index'));
+    }
 }
