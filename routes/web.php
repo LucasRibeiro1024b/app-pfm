@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::middleware([
 // módulo "usuário"
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+// module "projects"
+Route::get('/projects', [ProjectController::class, 'create'])->name('project.create');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');

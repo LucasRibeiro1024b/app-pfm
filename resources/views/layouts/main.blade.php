@@ -48,7 +48,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Projetos</a>
+                        <a href="{{ route('projects.index') }}" class="nav-link">Projetos</a>
                     </li>
 
                     <li class="nav-item">

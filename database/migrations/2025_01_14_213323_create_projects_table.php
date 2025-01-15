@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('projects', function(Blueprint $table) {
             $table->id();
-            $table->foreign("client_id")->references('id')->on('clients');
             $table->string('title');
             $table->text('description');
             $table->timestamps();
+            $table->foreignId("client_id")->constrained();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('projects');
     }
 };
