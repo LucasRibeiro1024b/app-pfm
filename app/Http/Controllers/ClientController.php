@@ -32,14 +32,16 @@ class ClientController extends Controller
 
         $client->save();
 
-        return redirect(route('clients.index'))->with('msg', 'Cliente adicionado com sucesso');
+        return redirect(route('clients.index'))->with('msg', 'Cliente "' . $client->name . '" adicionado com sucesso');
     }
 
     public function destroy($id) {
 
-        Client::findOrFail($id)->delete();
+        $client = Client::findOrFail($id);
 
-        return redirect(route('clients.index'))->with('msg', 'Cliente excluído com sucesso');
+        $client->delete();
+
+        return redirect(route('clients.index'))->with('msg', 'Cliente "' . $client->name . '" excluído com sucesso');
     }
 
     public function edit($id) 
@@ -53,8 +55,10 @@ class ClientController extends Controller
     {
         $data = $request->all();
 
-        Client::findOrFail($request->id)->update($data);
+        $client = Client::findOrFail($request->id);
 
-        return redirect(route('clients.index'))->with('msg', 'Cliente atualizado com sucesso');
+        $client->update($data);
+
+        return redirect(route('clients.index'))->with('msg', 'Cliente "' . $client->name . '" atualizado com sucesso');
     }
 }
