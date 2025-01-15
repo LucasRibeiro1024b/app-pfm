@@ -71,8 +71,12 @@
                 </ul>
             </div>
         </nav>
+
     </header>
-    
+
+    @if(session('msg'))
+        <p class="msg"> {{ session('msg') }}</p>
+    @endif
 
     <main>
         <div class="container-fluid col-md-10">
