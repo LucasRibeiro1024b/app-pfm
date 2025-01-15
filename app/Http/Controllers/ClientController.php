@@ -41,4 +41,20 @@ class ClientController extends Controller
 
         return redirect(route('clients.index'))->with('msg', 'Cliente excluído com sucesso');
     }
+
+    public function edit($id) 
+    {
+        $client = Client::findOrFail($id);
+
+        return view('client.edit', ['client' => $client]);
+    }
+
+    public function update(Request $request) 
+    {
+        $data = $request->all();
+
+        Client::findOrFail($request->id)->update($data);
+
+        return redirect(route('clients.index'))->with('msg', 'Cliente atualizado com sucesso');
+    }
 }

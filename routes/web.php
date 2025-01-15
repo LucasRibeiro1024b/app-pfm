@@ -31,4 +31,8 @@ Route::get('/client/create', [ClientController::class, 'create'])->name('client.
 
 Route::post('/client/create', [ClientController::class, 'store'])->name('client.store');
 
-Route::delete('/client/delete/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+Route::delete('/client/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+
+Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+
+Route::put('/client/update/{id}', [ClientController::class, 'update'])->name('client.update');
