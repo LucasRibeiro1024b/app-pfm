@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
 
-    <link rel="stylesheet" href="css/main/index.css">
-    <link rel="stylesheet" href="css/main/navbar.css">
+    <link rel="stylesheet" href="/css/main/index.css">
+    <link rel="stylesheet" href="/css/main/navbar.css">
     
     @stack('style')
     @stack('script')
@@ -33,7 +33,7 @@
 
             <div class="collapse navbar-collapse" id="navbar">
 
-                <a href="/" class="navbar-brand">
+                <a href="/dashboard" class="navbar-brand">
                     <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%">
                 </a>
 
@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Clientes</a>
+                        <a href="{{ route('clients.index') }}" class="nav-link">Clientes</a>
                     </li>
 
                     <li class="nav-item">
@@ -71,8 +71,12 @@
                 </ul>
             </div>
         </nav>
+
     </header>
-    
+
+    @if(session('msg'))
+        <p class="msg"> {{ session('msg') }}</p>
+    @endif
 
     <main>
         <div class="container-fluid col-md-10">
