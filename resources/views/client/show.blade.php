@@ -1,55 +1,44 @@
 @extends('layouts.main')
 
-@section('title', 'Clientes')
+@section('title', 'Mostrar cliente')
     
 @section('content')
 
-<div class="d-flex justify-content-between">
-    <h2>Lista de clientes</h2>
-    <a href="{{ route('client.create') }}" class="btn btn-outline-success">adicionar novo cliente</a>
+<div id="client-create-container" class="col-md-6 offset-md-3">
+
+    <h2 class="mb-5">{{$client->name}}</h2>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text"><i class="material-icons">email</i></span>
+        <input class="form-control" type="email" id="email" name="email" placeholder="Endereço de email" value="{{$client->email}}" disabled>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text"><i class="material-icons">home</i></span>
+        <input class="form-control" type="text" id="address" name="address" placeholder="Endereço local" value="{{$client->address}}" disabled>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text"><i class="material-icons">phone</i></span>
+        <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato" value="{{$client->phone}}" disabled>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text"><i class="material-icons">badge</i></span>
+            <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value=" {{$client->cpfCnpj}} ({{ $client->type ? 'CPF' : 'CNPJ' }})" disabled>
+    </div>
+
+    <div class="input-group mb-4">
+        <span class="input-group-text"><i class="material-icons">work</i></span>
+        <input class="form-control" type="text" id="project" name="project" placeholder="Projetos" value="projetos..." disabled>
+    </div>
+
+    <a href="{{ route('clients.index') }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
+
 </div>
 
-<table class="table">
-    <thead class="table text-center">
-        <tr>
-            <th scope="col text-center">#</th>
-            <th scope="col">NOME</th>
-            <th scope="col">TIPO</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">PROJETOS</th>
-            <th scope="col">AÇÕES</th>
-        </tr>
-    </thead>
-    <tbody class="text-center">
-        @foreach ($clients as $index => $client)
-            <tr>
-                <th scope="row">{{ $index + 1 }}</th>
-
-                <td>{{ $client->name }}</td>
-                
-                <td class="td-gray">
-                    {{ $client->type ? 'PJ' : 'PF' }}
-                </td>
-
-                <td class="td-gray">{{ $client->email }}</td>
-
-                <td class="td-gray">x</td>
-
-                <td class="d-flex justify-content-center">
-                    <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-info me-1"><i class="material-icons">edit</i></a>
-                    <form action="{{route('client.destroy', $client->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-    
 @endsection
 
 @push('style')
-    <link rel="stylesheet" href="css/components/table.css">
+    <link rel="stylesheet" href="/css/client/create.css">
 @endpush

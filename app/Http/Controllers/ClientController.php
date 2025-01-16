@@ -11,7 +11,7 @@ class ClientController extends Controller
     {
         $clients = Client::all();
 
-        return view('client.show', ['clients' => $clients]);
+        return view('client.index', ['clients' => $clients]);
     }
 
     public function create()
@@ -60,5 +60,12 @@ class ClientController extends Controller
         $client->update($data);
 
         return redirect(route('clients.index'))->with('msg', 'Cliente "' . $client->name . '" atualizado com sucesso');
+    }
+
+    public function show($id) 
+    {
+        $client = Client::findOrFail($id);
+
+        return view('client.show', ['client' => $client]);
     }
 }
