@@ -26,8 +26,11 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'client_id' => 'required|integer',
+            'end_date' => 'required',
+            'statue' => 'required|integer',
+            'value' => 'required'
         ]);
-    
+        dd();
         Project::create($validated);
         return redirect()->route('projects.index')->with('success', 'Project created successfully!');
     }

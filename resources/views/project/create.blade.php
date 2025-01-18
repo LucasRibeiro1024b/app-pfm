@@ -21,13 +21,23 @@
         </div>
 
         <div class="form-group">
-            <label for="">Data Término:</label>
-            <input class="form-control" type="text">
+            <label for="end_date">Data Término:</label>
+            <input class="form-control" type="date" name="end_date" id="end_date" >
         </div>
 
         <div class="form-group">
-            <label for="">Valor</label>
-            <input class="form-control" type="text">
+            <label for="value">Valor</label>
+            <input class="form-control" type="text" name="value" id="value">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecione uma opção</option>
+                <option value="0">Criado</option>
+                <option value="1">Em Andamento</option>
+                <option value="2">Finalizado</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -53,9 +63,7 @@
         <div class="form-group mt-1">
             <input type="submit" class="btn btn-primary" value="Adicionar projeto">
         </div>
-
     </form>
-
 </div>
 
 @endsection
