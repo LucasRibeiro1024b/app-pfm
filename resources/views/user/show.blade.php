@@ -24,16 +24,16 @@
                 
                 <td class="td-gray">
                 @switch($user->type)
-                    @case(1)
+                    @case(0)
                         Sócio
                         @break
-                    @case(2)
+                    @case(1)
                         Consultor
                         @break
-                    @case(3)
+                    @case(2)
                         Financeiro
                         @break
-                    @case(4)
+                    @case(3)
                         Estagiário
                         @break
                     @default
