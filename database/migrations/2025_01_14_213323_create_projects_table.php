@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('end_date');
             $table->integer("status");
+            $table->float("value");
             $table->timestamps();
             $table->foreignId("client_id")->constrained();
         });

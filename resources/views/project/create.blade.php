@@ -32,7 +32,7 @@
 
         <div class="form-group">
             <label for="status">Status</label>
-            <select class="form-select" aria-label="Default select example">
+            <select name="status" class="form-select" aria-label="Default select example">
                 <option selected>Selecione uma opção</option>
                 <option value="0">Criado</option>
                 <option value="1">Em Andamento</option>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <label for="description">Cliente:</label>
-            <select class="form-select" aria-label="Default select example">
+            <select name="client_id" class="form-select" aria-label="Default select example">
                 <option selected>Selecione uma opção</option>
                 @foreach ($clients as $client)
                     <option value="{{ $client->id }}">{{ $client->name }}</option>
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             <label for="">Consultores:</label>
-            <select class="form-select" aria-label="Default select example">
+            <select name="user_id" class="form-select" aria-label="Default select example">
                 <option selected>Selecione um consultor</option>
                 @foreach ($consultants as $consultant)
                     <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>

@@ -22,17 +22,18 @@ class ProjectController extends Controller
     }
     
     public function store(Request $request) {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'client_id' => 'required|integer',
-            'end_date' => 'required',
-            'statue' => 'required|integer',
-            'value' => 'required'
-        ]);
-        dd();
-        Project::create($validated);
-        return redirect()->route('projects.index')->with('success', 'Project created successfully!');
+        $project = new Project();
+
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->client_id = $request->client_id;
+        $project->end_date = $request->end_date;
+        $project->status = $request->status;
+        $project->value = $request->value;
+        
+        $project->save();
+
+        return redirect()->route('projects.index')->with('msg', 'Projeto criado com sucesso!');
     }
 
     public function show($id) {
