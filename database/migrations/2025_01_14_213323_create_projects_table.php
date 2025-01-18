@@ -19,7 +19,9 @@ return new class extends Migration
             $table->integer("status");
             $table->float("value");
             $table->timestamps();
-            $table->foreignId("client_id")->constrained();
+
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign("client_id")->references('id')->on('clients')->onDelete('set null')->onUpdate('cascade');
         });
     }
 
