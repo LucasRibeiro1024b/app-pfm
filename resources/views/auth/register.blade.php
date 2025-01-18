@@ -28,10 +28,10 @@
             <div class="mt-4">
                 <x-label for="type" value="{{ __('Tipo') }}" />
                 <select id="type" name="type" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" :value="old('type')" required autocomplete="username" style="border-radius: 5px; border-color:#D1D5DB; box-shadow: 2x solid black">
-                    <option value="1">Sócio</option>
-                    <option value="2">Consultor</option>
-                    <option value="3">Financeiro</option>
-                    <option value="4">Estagiário</option>
+                    <option value="0">Sócio</option>
+                    <option value="1">Consultor</option>
+                    <option value="2">Financeiro</option>
+                    <option value="3">Estagiário</option>
                 </select>
             </div>
             
