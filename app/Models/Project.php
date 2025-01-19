@@ -10,4 +10,9 @@ class Project extends Model
     use HasFactory;
 
     protected $table = "projects";
+
+    public function client() 
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
 }

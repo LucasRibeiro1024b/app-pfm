@@ -24,11 +24,17 @@
             <span class="input-group-text"><i class="material-icons">badge</i></span>
                 <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value=" {{$client->cpfCnpj}} ({{ $client->type ? 'CNPJ' : 'CPF' }})" disabled>
         </div>
-        <div class="input-group mb-4">
-            <span class="input-group-text"><i class="material-icons">work</i></span>
-            <input class="form-control" type="text" id="project" name="project" placeholder="Projetos" value="projetos..." disabled>
+        <div class="form-group mb-4">
+            <h3 class="card-title pb-3 text-center">Seus projetos</h3>
+            <ol id="projects" class="list-group list-group-numbered w-100">
+                @foreach ($client->projects as $project)
+                    <a href="{{ route('project.show', $project->id) }}" class="list-group-item list-group-item-action">{{$project->title}}</a>
+                @endforeach
+            </ol>
         </div>
+
         <a href="{{ route('clients.index') }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
+        
     </div>
 
 </div>
