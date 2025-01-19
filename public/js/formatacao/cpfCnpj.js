@@ -26,8 +26,18 @@ function aplicarMascara() {
 function atualizarMascara() {
     aplicarMascara();
     const input = document.getElementById("cpfCnpj");
+    const tipo = document.getElementById("type").value;
+
+    // Ajusta o placeholder e o maxlength com base no tipo
+    if (tipo === "0") {
+      input.placeholder = "Digite o CPF";
+      input.maxlength = 14; // 11 dígitos + 3 separadores
+      input.minlength = 14; 
+    } else {
+      input.placeholder = "Digite o CNPJ";
+      input.maxlength = 18; // 14 dígitos + 4 separadores
+      input.minlength = 18;
+    }
+
     input.value = ''; // Limpa o campo ao trocar de tipo
-    input.placeholder = document.getElementById("type").value === "0"
-    ? "Digite o CPF"
-    : "Digite o CNPJ";
-}
+  }
