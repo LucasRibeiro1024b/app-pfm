@@ -35,7 +35,7 @@
                         <option value="1" {{ $client->type ? 'selected' : '' }}>Pessoa Jurídica (CNPJ)</option>
                     </select>
     
-                    <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value="{{$client->cpfCnpj}}" oninput="aplicarMascara()" maxlength="14" minlength="14" required>
+                    <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value="{{$client->cpfCnpj}}" oninput="aplicarMascara()" maxlength="14" required>
             </div>
         </div>
         <div class="d-flex justify-content-between mt-4">

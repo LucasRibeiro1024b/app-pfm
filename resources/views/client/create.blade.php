@@ -38,7 +38,7 @@
                 <option value="1">Pessoa Jurídica (CNPJ)</option>
               </select>
               
-              <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="Digite o CPF" oninput="aplicarMascara()" maxlength="14" minlength="14" required>
+              <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="Digite o CPF" oninput="aplicarMascara()" required>
             </div>
         </div>
 
