@@ -22,7 +22,7 @@
         </div>
         <div class="input-group mb-4">
             <span class="input-group-text"><i class="material-icons">badge</i></span>
-                <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value=" {{$client->cpfCnpj}} ({{ $client->type ? 'CPF' : 'CNPJ' }})" disabled>
+                <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value=" {{$client->cpfCnpj}} ({{ $client->type ? 'CNPJ' : 'CPF' }})" disabled>
         </div>
         <div class="input-group mb-4">
             <span class="input-group-text"><i class="material-icons">work</i></span>
