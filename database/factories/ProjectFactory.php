@@ -20,7 +20,7 @@ class ProjectFactory extends Factory
         return [
             'title' => fake()->sentence(3),
             'description' => fake()->paragraph(),
-            "client_id" => Client::factory(),
+            "client_id" => Client::pluck('id')->random(),
             "end_date" => fake()->date(),
             "status" => random_int(0, 2),
             "value" => random_int(10, 100),
