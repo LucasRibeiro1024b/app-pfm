@@ -44,9 +44,7 @@
         </div>
     </div>
 
-    <div id="tasks-list" class="col-md-7 offset-md-1">
-        <a href="" class="btn btn-success">adicionar atividade</a>
-    </div>
+    @include('task.index')
 
 </div>
 
