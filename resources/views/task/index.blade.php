@@ -8,7 +8,7 @@
 
     </div>
 
-    <div id="tasks-list" class="p-0 overflow-auto" style="height: 210px; border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+    <div id="tasks-list" class="p-0 overflow-auto border border-secondary-subtle rounded" style="height: 210px;">
         <table class="table text-center" >
             <thead>
                 <tr>
