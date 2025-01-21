@@ -8,8 +8,8 @@
 
     </div>
 
-    <div id="tasks-list" class="border">
-        <table class="table text-center">
+    <div id="tasks-list" class="p-0 overflow-auto" style="height: 210px; border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+        <table class="table text-center" >
             <thead>
                 <tr>
                     <th scope="col">título</th>
@@ -19,14 +19,14 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ($project->tasks as $task)
+                    @foreach ($project->tasks as $task)
                     <tr>
                         <td><a href="" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
                         <td>{{ $task->predicted_hour }}</td>
                         <td>#</td>
                     </tr>
-                @endforeach
+                    @endforeach
             </tbody>
           </table>
     </div>
