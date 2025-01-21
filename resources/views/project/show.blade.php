@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Projetos')
-    
+
 @section('content')
 
 <div id="project-details" class="row">
@@ -48,6 +48,4 @@
 
 </div>
 
-    
-    
 @endsection

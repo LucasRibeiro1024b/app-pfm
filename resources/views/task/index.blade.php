@@ -8,7 +8,7 @@
 
     </div>
 
-    <div id="tasks-list" class="p-0 overflow-auto border border-secondary-subtle rounded" style="height: 210px;">
+    <div id="tasks-list" class="overflow-auto border border-secondary-subtle rounded" style="height: 220px;">
         <table class="table text-center" >
             <thead>
                 <tr>
@@ -19,14 +19,24 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                    @foreach ($project->tasks as $task)
-                    <tr>
+                @foreach ($project->tasks as $task)
+                    <tr class="align-middle">
                         <td><a href="" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
                         <td>{{ $task->predicted_hour }}</td>
-                        <td>#</td>
+                        <td>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <a href="" class="btn btn-outline-success me-1"><i class="material-icons">check</i></a>
+                                <a href="" class="btn btn-outline-primary"><i class="material-icons">edit</i></a>
+                                <form action="" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
-                    @endforeach
+                @endforeach
             </tbody>
           </table>
     </div>
