@@ -4,7 +4,13 @@
 
         <h3 class="col-6 offset-3">Atividades</h3>
 
-        <a href="" class="btn btn-success col-3">adicionar atividade</a>
+        <div class="col-3">
+            <form action="{{ route('task.create') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                <button type="submit" class="btn btn-success col-12">nova atividade</button>
+            </form>
+        </div>
 
     </div>
 
