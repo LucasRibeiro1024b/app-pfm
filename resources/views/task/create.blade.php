@@ -8,7 +8,7 @@
 
     <h2>Adicionar tarefa</h2>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('task.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Título:</label>
@@ -22,8 +22,15 @@
 
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" type="number" name="value" id="value">
+            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade">
         </div>
+
+        <div class="form-group">
+            <label for="predicted_hour">Horas:</label>
+            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas">
+        </div>
+
+        <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $project->id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>

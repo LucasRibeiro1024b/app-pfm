@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float("value");
             $table->float("predicted_hour");
             $table->float("real_hour")->nullable();
-            $table->boolean("completed");
+            $table->boolean("completed")->default(0);
             $table->timestamps();
 
             $table->unsignedBigInteger('project_id');

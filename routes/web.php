@@ -53,3 +53,5 @@ Route::get('/client/show/{id}', [ClientController::class, 'show'])->name('client
 // módulo "task" (atividade)
 
 Route::post('/task/create', [TaskController::class, 'create'])->name('task.create');
+
+Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
