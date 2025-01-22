@@ -33,7 +33,11 @@
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
                                 <a href="" class="btn btn-outline-success me-1"><i class="material-icons">check</i></a>
-                                <a href="" class="btn btn-outline-primary"><i class="material-icons">edit</i></a>
+                                <form action="{{ route('task.edit') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$task->id}}">
+                                    <button type="submit" class="btn btn-outline-primary"><i class="material-icons">edit</i></button>
+                                </form>
                                 <form action="" method="POST">
                                     @csrf
                                     @method('DELETE')

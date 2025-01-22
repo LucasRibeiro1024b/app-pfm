@@ -28,4 +28,22 @@ class TaskController extends Controller
 
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" adicionada com sucesso');
     }
+
+    public function edit(Request $request) 
+    {
+        $task = Task::findOrFail($request->id);
+
+        return view('task.edit', compact('task'));
+    }
+
+    public function update(Request $request) 
+    {
+        $data = $request->all();
+
+        $task = Task::findOrFail($request->id);
+
+        $task->update($data);
+
+        return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" atualizada com sucesso');
+    }
 }

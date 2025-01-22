@@ -22,12 +22,12 @@
 
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade">
+            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" required>
         </div>
 
         <div class="form-group">
             <label for="predicted_hour">Horas:</label>
-            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas">
+            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" required>
         </div>
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
