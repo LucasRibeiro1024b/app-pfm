@@ -27,7 +27,7 @@
             <tbody class="table-group-divider">
                 @foreach ($project->tasks as $task)
                     <tr class="align-middle">
-                        <td><a href="" class="text-info-emphasis">{{ $task->title }}</a></td>
+                        <td><a href="{{ route('task.show', $task->id) }}" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
                         <td>{{ $task->predicted_hour }}</td>
                         <td>

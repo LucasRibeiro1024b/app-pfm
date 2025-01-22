@@ -18,7 +18,7 @@
 
         <div class="form-group">
             <label for="description">Descrição:</label>
-            <input class="form-control" type="text" id="description" name="description" placeholder="Descrição" value="{{ $task->description }}" required>
+            <textarea class="form-control" id="description" name="description" placeholder="Descrição" value="{{ $task->description }}" required></textarea>
         </div>
 
         <div class="form-group">

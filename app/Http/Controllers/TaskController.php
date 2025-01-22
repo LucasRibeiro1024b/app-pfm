@@ -47,12 +47,19 @@ class TaskController extends Controller
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" atualizada com sucesso');
     }
 
-    public function destroy($id) {
-
+    public function destroy($id)
+    {
         $task = Task::findOrFail($id);
 
         $task->delete();
 
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" excluída com sucesso');
+    }
+
+    public function show($id)
+    {
+        $task = Task::findOrFail($id);
+
+        return view('task.show', compact('task'));
     }
 }
