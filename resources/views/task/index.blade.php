@@ -38,7 +38,7 @@
                                     <input type="hidden" name="id" value="{{$task->id}}">
                                     <button type="submit" class="btn btn-outline-primary"><i class="material-icons">edit</i></button>
                                 </form>
-                                <form action="" method="POST">
+                                <form action="{{ route('task.destroy', $task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
