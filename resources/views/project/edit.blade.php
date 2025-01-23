@@ -4,8 +4,6 @@
     
 @section('content')
 
-{{$project}}
-
 <div class="col-md-6 offset-md-3">
 
     <h2>Atualizar Projeto: {{ $project->title }}</h2>
