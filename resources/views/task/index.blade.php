@@ -17,10 +17,11 @@
     <div id="tasks-list" class="overflow-auto border border-secondary-subtle rounded" style="height: 220px;">
         <table class="table text-center" >
             <thead>
-                <tr>
+                <tr class="align-middle lh-sm">
                     <th scope="col">título</th>
                     <th scope="col">valor</th>
-                    <th scope="col">horas</th>
+                    <th scope="col" class="col-1">horas previstas</th>
+                    <th scope="col" class="col-1">horas reais</th>
                     <th scope="col">ações</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                         <td><a href="{{ route('task.show', $task->id) }}" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
                         <td>{{ $task->predicted_hour }}</td>
+                        <td>{{ $task->real_hour }}</td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
                                 
