@@ -10,13 +10,13 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function index() {
-        $projects = Project::all();
+        $projects = Project::orderBy('id', "DESC")->get();
         return view('project.index', compact('projects'));
     }
 
     public function create() {
         $clients = Client::all();
-        $users = User::all();
+        $users = User::where("type", 1)->get();
 
         return view('project.create', ['clients' => $clients, 'consultants' => $users]);
     }
