@@ -30,12 +30,12 @@
         <div class="form-group">
             <label for="type">Tipo:</label>
             <div class="input-group">
-                    <select name="type" id="type" class="form-select">
+                    <select name="type" id="type" class="form-select" onchange="atualizarMascara()">
                         <option value="0" {{ $client->type ? '' : 'selected' }}>Pessoa Física (CPF)</option>
                         <option value="1" {{ $client->type ? 'selected' : '' }}>Pessoa Jurídica (CNPJ)</option>
                     </select>
     
-                    <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value="{{$client->cpfCnpj}}" required>
+                    <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" placeholder="CPF ou CNPJ do cliente" value="{{$client->cpfCnpj}}" oninput="aplicarMascara()" maxlength="14" required>
             </div>
         </div>
         <div class="d-flex justify-content-between mt-4">
@@ -50,4 +50,8 @@
 
 @push('style')
     <link rel="stylesheet" href="/css/client/create.css">
+@endpush
+
+@push('script')
+    <script src="/js/formatacao/cpfCnpj.js"></script>
 @endpush

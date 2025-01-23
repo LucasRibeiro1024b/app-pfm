@@ -12,4 +12,9 @@ class Client extends Model
     protected $table = 'clients';
 
     protected $guarded = [];  // tudo enviado pelo post pode ser editado
+
+    public function projects() 
+    {
+        return $this->hasMany('App\Models\Project');
+    }
 }

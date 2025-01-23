@@ -38,7 +38,8 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('msg', 'Projeto criado com sucesso!');
     }
 
-    public function show($id) {
+    public function show($id) 
+    {
         $project = Project::findOrFail($id);
         return view('project.show', compact('project'));
     }

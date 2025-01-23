@@ -16,5 +16,14 @@ class Project extends Model
     public function consultants()
     {
         return $this->belongsToMany(User::class); 
+
+    public function client() 
+    {
+        return $this->belongsTo('App\Models\Client');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Models\Task');
     }
 }
