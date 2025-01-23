@@ -49,10 +49,20 @@
                 @endforeach
             </select>
         </div>
-
+<!--
         <div class="form-group">
             <label for="">Consultores:</label>
             <select name="user_id" class="form-select" aria-label="Default select example">
+                <option selected>Selecione um consultor</option>
+                @foreach ($consultants as $consultant)
+                    <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>
+                @endforeach
+            </select>
+        </div>
+ -->
+        <div class="form-group">
+            <label for="">Consultores:</label>
+            <select name="consultants[]" class="form-select select2" aria-label="Default select example" multiple>
                 <option selected>Selecione um consultor</option>
                 @foreach ($consultants as $consultant)
                     <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>
