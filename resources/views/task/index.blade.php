@@ -39,13 +39,15 @@
 
                                 @else
 
-                                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#end-task-modal"><i class="material-icons">check</i></button>
+                                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#end-task-modal-{{$task->id}}"><i class="material-icons">check</i></button>
 
                                     <form action="{{ route('task.edit') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$task->id}}">
                                         <button type="submit" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></button>
                                     </form>
+
+                                    @include('task.components.modal')
 
                                 @endif
                                 
@@ -59,7 +61,7 @@
                         </td>
                     </tr>
 
-                    @include('task.components.modal')
+                    
 
                 @endforeach
             </tbody>

@@ -1,6 +1,6 @@
  
 <!-- Modal -->
-<div class="modal fade" id="end-task-modal" tabindex="-1" aria-labelledby="end-task-modalLabel" aria-hidden="true">
+<div class="modal fade" id="end-task-modal-{{$task->id}}" tabindex="-1" aria-labelledby="end-task-modalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
 
@@ -19,7 +19,7 @@
 
                 <div class="form-group row">
                     <label for="real_hour">Horas reais:</label>
-                    <input class="form-control" type="text" name="real_hour" id="real_hour" placeholder="Horas que a atividade demandou" value="{{ $task->real_hour }}" required>
+                    <input class="form-control" type="text" name="real_hour" id="real_hour" placeholder="Horas que a atividade demandou" value="{{ $task->predicted_hour }}" required>
                 </div>
 
                 <input type="hidden" name="completed" id="completed" value="1">
