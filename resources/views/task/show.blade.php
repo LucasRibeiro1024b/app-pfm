@@ -23,7 +23,7 @@
 
         <div class="input-group mb-4">
             <span class="input-group-text">Descrição:</span>
-            <textarea class="form-control" id="title" name="title" disabled>{{$task->description}}></textarea>
+            <textarea class="form-control" id="title" name="title" disabled>{{$task->description}}</textarea>
         </div>
 
         <div class="input-group mb-4">
