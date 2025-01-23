@@ -51,11 +51,14 @@
 
                                 @endif
                                 
-                                <form action="{{ route('task.destroy', $task->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger"><i class="material-icons">delete</i></button>
-                                </form>
+                                
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{$task->id}}"><i class="material-icons">delete</i></button>
+
+                                @include('components.modal.delete', [
+                                    'route' => 'task.destroy',
+                                    'name' => $task->title,
+                                    'id' => $task->id
+                                ])
 
                             </div>
                         </td>
