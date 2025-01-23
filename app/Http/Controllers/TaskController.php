@@ -44,7 +44,14 @@ class TaskController extends Controller
 
         $task->update($data);
 
-        return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" atualizada com sucesso');
+        if ($task->completed) {
+            $msg = 'Atividade "' . $task->title . '" finalizada com sucesso';
+        }
+        else {
+            $msg = 'Atividade "' . $task->title . '" atualizada com sucesso';
+        }
+
+        return redirect(route('project.show', $task->project_id))->with('msg', $msg);
     }
 
     public function destroy($id)

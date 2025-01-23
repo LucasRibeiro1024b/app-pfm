@@ -39,7 +39,7 @@
 
                                 @else
 
-                                    <a href="" class="btn btn-outline-success"><i class="material-icons">check</i></a>
+                                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#end-task-modal"><i class="material-icons">check</i></button>
 
                                     <form action="{{ route('task.edit') }}" method="POST">
                                         @csrf
@@ -58,6 +58,9 @@
                             </div>
                         </td>
                     </tr>
+
+                    @include('task.components.modal')
+
                 @endforeach
             </tbody>
           </table>
