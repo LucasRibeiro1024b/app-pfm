@@ -33,6 +33,8 @@ class ProjectController extends Controller
         
         $project->save();
 
+        $project->consultants()->sync($request->input('consultants'));
+
         return redirect()->route('projects.index')->with('msg', 'Projeto criado com sucesso!');
     }
 
@@ -43,8 +45,11 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
+        $clients = Client::all();
+        $users = User::where("type", 1)->get();
+
         $project = Project::findOrFail($id);
-        return view('project.edit', compact('project'));
+        return view('project.edit', ['project' => $project, 'clients' => $clients, 'consultants' => $users]);
     }
 
     public function update(Request $request, $id)
@@ -58,7 +63,10 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->update($validated);
 
-        return redirect()->route('projects.index')->with('success', 'Projeto atualizado com sucesso!');
+        $project->consultants()->sync($request->input('consultants'));
+
+        // return redirect()->route('project.show', $id)->with('success', 'Projeto atualizado com sucesso!');
+        return redirect()->route('project.show', $id);
     }
 
     public function destroy($id)
@@ -66,6 +74,6 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect()->route('projects.index')->with('success', 'Projeto deletado com sucesso!');
+        return redirect()->route('projects.index')->with('msg', 'Projeto deletado com sucesso!');
     }
 }

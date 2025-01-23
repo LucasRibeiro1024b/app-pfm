@@ -10,4 +10,11 @@ class Project extends Model
     use HasFactory;
 
     protected $table = "projects";
+
+    protected $guarded = [];
+    
+    public function consultants()
+    {
+        return $this->belongsToMany(User::class); 
+    }
 }
