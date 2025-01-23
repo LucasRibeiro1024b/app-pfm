@@ -44,13 +44,17 @@
 
                 <td class="td-gray align-middle">
                     <div class="d-flex justify-content-center align-items-center">
-                        <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info me-1"><i class="material-icons">info</i></a>
+                        <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info"><i class="material-icons">info</i></a>
                         <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
-                        <form action="{{route('client.destroy', $client->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
-                        </form>
+
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{$client->id}}"><i class="material-icons">delete</i></button>
+
+                        @include('components.modal.delete', [
+                            'route' => 'client.destroy',
+                            'name' => $client->name,
+                            'id' => $client->id
+                        ])
+
                     </div>
                 </td>
             </tr>

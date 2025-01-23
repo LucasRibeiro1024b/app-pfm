@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,16 @@ Route::put('/client/update/{id}', [ClientController::class, 'update'])->name('cl
 
 Route::get('/client/show/{id}', [ClientController::class, 'show'])->name('client.show');
 
+// módulo "task" (atividade)
+
+Route::post('/task/create', [TaskController::class, 'create'])->name('task.create');
+
+Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
+
+Route::post('/task/edit', [TaskController::class, 'edit'])->name('task.edit');
+
+Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('task.update');
+
+Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
+
+Route::get('/task/show/{id}', [TaskController::class, 'show'])->name('task.show');
