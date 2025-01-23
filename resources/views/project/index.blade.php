@@ -18,6 +18,11 @@
                     <p class="card-text">{{ $project->description }}</p>
                     <p class="card-text"><small class="text-body-secondary">{{ $project->created_at }}</small></p>
                     <a href="{{ route('project.show', ['id' => $project->id]) }}" class="btn btn-primary">Visualizar</a>
+                    <form action="{{route('project.destroy', $project->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
+                    </form>
                 </div>
             </div>
         </div>
