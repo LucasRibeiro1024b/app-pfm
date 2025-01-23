@@ -9,13 +9,17 @@
 
     <div class="card-body px-5 py-3">
 
-        <h2 class="card-title pb-3">{{$task->title}}</h2>
+        <h2 class="card-title">{{$task->title}}</h2>
 
         @if ($task->completed)
-            <span class="badge text-bg-success position-absolute top-0 end-0 m-2">finalizado</span>
+            <span class="badge text-bg-success position-absolute top-0 end-0 m-2">finalizada</span>
         @else
             <span class="badge text-bg-warning position-absolute top-0 end-0 m-2">em andamento</span>
         @endif
+
+        <div class="form-group mb-4 text-center">
+            <a href="{{ route('project.show', $task->project_id) }}" class="text-info-emphasis">{{$task->project->title}}</a>
+        </div>
 
         <div class="input-group mb-4">
             <span class="input-group-text">Descrição:</span>
@@ -39,9 +43,7 @@
         </div>
         @endif
 
-        <div class="form-group mb-4">
-            <a href="{{ route('project.show', $task->project_id) }}" class="form-control text-center">{{$task->project->title}}</a>
-        </div>
+        
 
         <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
         

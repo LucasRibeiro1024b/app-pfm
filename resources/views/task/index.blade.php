@@ -32,17 +32,29 @@
                         <td>{{ $task->predicted_hour }}</td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
-                                <a href="" class="btn btn-outline-success me-1"><i class="material-icons">check</i></a>
-                                <form action="{{ route('task.edit') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{$task->id}}">
-                                    <button type="submit" class="btn btn-outline-primary"><i class="material-icons">edit</i></button>
-                                </form>
+                                
+                                @if ($task->completed)
+
+                                    <span class="badge text-bg-success me-2">finalizada</span>
+
+                                @else
+
+                                    <a href="" class="btn btn-outline-success"><i class="material-icons">check</i></a>
+
+                                    <form action="{{ route('task.edit') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$task->id}}">
+                                        <button type="submit" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></button>
+                                    </form>
+
+                                @endif
+                                
                                 <form action="{{ route('task.destroy', $task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
+                                    <button type="submit" class="btn btn-outline-danger"><i class="material-icons">delete</i></button>
                                 </form>
+
                             </div>
                         </td>
                     </tr>
