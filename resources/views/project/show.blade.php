@@ -12,8 +12,11 @@
         
         <div class="card-body py-3">
 
-            <span class="card-text py-3">Cliente: @isset($project->client)
-                {{ $project->client->name }}
+            <span class="card-text py-3">Cliente: 
+            @isset($project->client)
+                {{ $project->client->name  }}
+            @else
+                {{'não disponível'}}
             @endisset</span>
 
             <p class="card-text text-justify py-3">{{$project->description}}</p>
