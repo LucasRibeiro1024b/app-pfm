@@ -6,6 +6,13 @@
 
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
+    @foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ $error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endforeach
+
     <h2>Adicionar novo cliente</h2>
 
     <form action="{{ route('client.store') }}" method="POST" enctype="multipart/form-data">

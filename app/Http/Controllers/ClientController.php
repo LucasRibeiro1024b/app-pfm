@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ClientController extends Controller
         return view('client.create');
     }
 
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         $client = new Client;
 
@@ -51,7 +52,7 @@ class ClientController extends Controller
         return view('client.edit', ['client' => $client]);
     }
 
-    public function update(Request $request) 
+    public function update(ClientRequest $request) 
     {
         $data = $request->all();
 
