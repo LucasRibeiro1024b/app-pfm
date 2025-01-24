@@ -52,9 +52,6 @@
                                     @include('task.components.modal')
 
                                 @endif
-                                
-                                
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{$task->id}}"><i class="material-icons">delete</i></button>
 
                                 @include('components.modal.delete', [
                                     'route' => 'task.destroy',

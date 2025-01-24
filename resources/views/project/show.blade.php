@@ -12,7 +12,9 @@
         
         <div class="card-body py-3">
 
-            <span class="card-text py-3">Cliente: {{ $project->client->name }}</span>
+            <span class="card-text py-3">Cliente: @isset($project->client)
+                {{ $project->client->name }}
+            @endisset</span>
 
             <p class="card-text text-justify py-3">{{$project->description}}</p>
 
@@ -33,12 +35,16 @@
             </p>
 
             <div class="d-flex justify-content-end align-items-center">
+
+
                 <a href="{{ route('project.edit', $project->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
-                <form action="{{route('project.destroy', $project->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-outline-danger ms-1"><i class="material-icons">delete</i></button>
-                </form>
+                
+                @include('components.modal.delete', [
+                            'route' => 'project.destroy',
+                            'name' => $project->title,
+                            'id' => $project->id
+                        ])
+
             </div>
 
         </div>

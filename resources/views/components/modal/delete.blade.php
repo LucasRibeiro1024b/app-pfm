@@ -1,3 +1,5 @@
+<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{$id}}"><i class="material-icons">delete</i></button>
+
 <div class="modal fade" id="delete-modal-{{$id}}" tabindex="-1" aria-labelledby="delete-modalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
