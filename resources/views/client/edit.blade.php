@@ -5,6 +5,8 @@
 @section('content')
 
 <div id="client-create-container" class="col-md-6 offset-md-3">
+
+    @include('components.alert.error')
         
     <h2>Editar cliente</h2>
 
