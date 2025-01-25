@@ -52,11 +52,11 @@ Route::get('/client/show/{id}', [ClientController::class, 'show'])->name('client
 
 // módulo "task" (atividade)
 
-Route::post('/task/create', [TaskController::class, 'create'])->name('task.create');
+Route::get('/task/create/{id}', [TaskController::class, 'create'])->name('task.create');
 
 Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 
-Route::post('/task/edit', [TaskController::class, 'edit'])->name('task.edit');
+Route::get('/task/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
 
 Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('task.update');
 

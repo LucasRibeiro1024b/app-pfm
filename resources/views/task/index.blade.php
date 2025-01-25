@@ -4,14 +4,8 @@
 
         <h3 class="col-6 offset-3">Atividades</h3>
 
-        <div class="col-3">
-            <form action="{{ route('task.create') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="project_id" value="{{ $project->id }}">
-                <button type="submit" class="btn btn-success col-12">nova atividade</button>
-            </form>
-        </div>
-
+        <a href="{{ route('task.create', $project->id) }}" class="btn btn-success col-3">nova atividade</a>
+      
     </div>
 
     <div id="tasks-list" class="overflow-auto border border-secondary-subtle rounded" style="height: 220px;">
@@ -43,21 +37,17 @@
 
                                     <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#end-task-modal-{{$task->id}}"><i class="material-icons">check</i></button>
 
-                                    <form action="{{ route('task.edit') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$task->id}}">
-                                        <button type="submit" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></button>
-                                    </form>
+                                        <a href="{{ route('task.edit', $task->id) }}" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></a>
+                                  
 
                                     @include('task.components.modal')
-
+                                    
+                                    @include('components.modal.delete', [
+                                        'route' => 'task.destroy',
+                                        'name' => $task->title,
+                                        'id' => $task->id
+                                        ])
                                 @endif
-
-                                @include('components.modal.delete', [
-                                    'route' => 'task.destroy',
-                                    'name' => $task->title,
-                                    'id' => $task->id
-                                ])
 
                             </div>
                         </td>
