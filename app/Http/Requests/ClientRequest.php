@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientRequest extends FormRequest
 {
@@ -21,16 +22,27 @@ class ClientRequest extends FormRequest
      */
     public function rules(): array
     {
+        $clientId = $this->route('id');
         return [
-            'name' => 'required|string|unique:clients,name|max:100',
-            'email' => 'required|email|unique:clients,email|max:100',
-            'address' => 'required|string|max:100',
-            'phone' => 'required|string',
+            'name' => [
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('clients', 'name')->ignore($clientId),
+            ], 
+            'email' => [
+                'required',
+                'email',
+                'max:100',
+                Rule::unique('clients', 'email')->ignore($clientId),
+            ],
+            'address' => 'required|string|max:255',
+            'phone' =>'required|string|max:20',
             'type' => 'required|in:0,1',
             'cpfCnpj' => [
                 'required',
                 'string',
-                'unique:clients,cpfCnpj',
+                Rule::unique('clients', 'cpfCnpj')->ignore($clientId),
                 'regex:/^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2})$/'
             ],
         ];

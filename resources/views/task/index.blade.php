@@ -44,12 +44,12 @@
 
                                     @include('task.components.modal')
                                     
+                                @endif
                                     @include('components.modal.delete', [
                                         'route' => 'task.destroy',
                                         'name' => $task->title,
                                         'id' => $task->id
                                         ])
-                                @endif
 
                             </div>
                         </td>

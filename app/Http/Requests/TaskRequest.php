@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -31,12 +32,18 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:tasks,title|string|max:100',
+            'title' => 'required|string|max:100',
             'description' => 'required|string|max:1000',
             'value' => 'required|regex:/^\d+(\.\d{1,2})?$/|min:0',
             'predicted_hour' => 'required|numeric',
             'completed' => 'in:0,1',
-            'real_hour' => 'nullable|numeric|min:0.1'
+            'real_hour' => [
+                'nullable',
+                'numeric',
+                'min:0.1',
+                // 'real_hour' é obrigatório apenas se 'completed' for 1
+                Rule::requiredIf($this->input('completed') == 1),
+            ],
         ];
     }
 }

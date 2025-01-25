@@ -38,6 +38,8 @@
             <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Salvar">
         </div>
 
+        <input type="hidden" name="id" value="{{ $task->id }}">
+
     </form>
 
 </div>
