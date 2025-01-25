@@ -6,6 +6,8 @@
 
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
+    @include('components.alert.error')
+
     <h2>Editar tarefa</h2>
 
     <form action="{{ route('task.update', $task->id) }}" method="POST" enctype="multipart/form-data">

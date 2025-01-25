@@ -22,6 +22,10 @@
                     <input class="form-control" type="text" name="real_hour" id="real_hour" placeholder="Horas que a atividade demandou" value="{{ $task->predicted_hour }}" required>
                 </div>
 
+                @foreach (old() as $key => $value)
+                    <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                @endforeach
+
                 <input type="hidden" name="completed" id="completed" value="1">
                 
             </div>

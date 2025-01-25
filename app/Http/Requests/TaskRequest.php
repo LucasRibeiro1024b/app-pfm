@@ -31,11 +31,12 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:100',
-            'description' => 'nullable|string|max:512',
-            'value' => 'required|regex:/^\d+(\.\d{2})$/|min:0',
+            'title' => 'required|unique:tasks,title|string|max:100',
+            'description' => 'required|string|max:1000',
+            'value' => 'required|regex:/^\d+(\.\d{1,2})?$/|min:0',
             'predicted_hour' => 'required|numeric',
-            'completed' => 'required|in:0,1',
+            'completed' => 'in:0,1',
+            'real_hour' => 'nullable|numeric|min:0.1'
         ];
     }
 }

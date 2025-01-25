@@ -6,28 +6,30 @@
 
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
+    @include('components.alert.error')
+
     <h2>Adicionar tarefa</h2>
 
     <form action="{{ route('task.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Título:</label>
-            <input class="form-control" type="text" id="title" name="title" placeholder="Título da atividade" required>
+            <input class="form-control" type="text" id="title" name="title" placeholder="Título da atividade" value="{{old('title')}}" required>
         </div>
 
         <div class="form-group">
             <label for="description">Descrição:</label>
-            <textarea class="form-control" id="description" name="description" placeholder="Descrição" required></textarea>
+            <textarea class="form-control" id="description" name="description" placeholder="Descrição" required>{{old('description')}}</textarea>
         </div>
 
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" required>
+            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{old('value')}}" required>
         </div>
 
         <div class="form-group">
             <label for="predicted_hour">Horas:</label>
-            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" required>
+            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" value="{{old('predicted_hour')}}" required>
         </div>
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">

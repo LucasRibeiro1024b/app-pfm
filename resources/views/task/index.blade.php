@@ -1,4 +1,6 @@
 <div id="tasks" class="col-md-8 ps-5">
+
+    @include('components.alert.error')
         
     <div id="tasks-header" class="row mb-4">
 
