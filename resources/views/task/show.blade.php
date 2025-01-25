@@ -32,11 +32,22 @@
         </div>
 
         <div class="input-group mb-4">
+            <span class="input-group-text">Criado em:</span>
+            <input class="form-control" type="date" id="created_at" name="created_at" value="{{date('Y-m-d', strtotime($task->created_at));}}" disabled>
+        </div>
+        
+        <div class="input-group mb-4">
             <span class="input-group-text">Horas previstas:</span>
             <input class="form-control" id="predicted_hour" name="predicted_hour" value="{{ $task->predicted_hour }}" disabled>
         </div>
-
+        
         @if ($task->completed)
+
+        <div class="input-group mb-4">
+            <span class="input-group-text">Concluído em:</span>
+            <input class="form-control" type="date" id="updated_at" name="updated_at" value="{{date('Y-m-d', strtotime($task->updated_at));}}" disabled>
+        </div>
+
         <div class="input-group mb-4">
             <span class="input-group-text">Horas reais:</span>
             <input class="form-control" id="real_hour" name="real_hour" value="{{ $task->real_hour }}" disabled>

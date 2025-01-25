@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+
+use function Laravel\Prompts\progress;
 
 class ProjectController extends Controller
 {
@@ -41,7 +44,22 @@ class ProjectController extends Controller
     public function show($id) 
     {
         $project = Project::findOrFail($id);
-        return view('project.show', compact('project'));
+
+        // calcular progresso
+
+        $tasks_all = Task::where('project_id', $project->id)->count();
+        $tasks_completed = Task::where('project_id', $project->id)->where('completed', 1)->count();
+
+        if ($tasks_all > 0) {
+            $progress = ($tasks_completed / $tasks_all) * 100;
+        }
+        else {
+            $progress = 100;
+        }
+
+        $progress = number_format($progress, 2);
+
+        return view('project.show', compact('project', 'progress'));
     }
 
     public function edit($id)
@@ -76,5 +94,12 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect()->route('projects.index')->with('msg', 'Projeto deletado com sucesso!');
+    }
+
+    public function progresso($id) 
+    {
+        
+
+        return $progress;
     }
 }
