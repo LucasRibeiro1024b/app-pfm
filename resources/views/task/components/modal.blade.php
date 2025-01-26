@@ -28,7 +28,7 @@
                 <input type="hidden" name="description" value="{{ $task->description }}">
                 <input type="hidden" name="value" value="{{ $task->value }}">
                 <input type="hidden" name="predicted_hour" value="{{ $task->predicted_hour }}">
-                <input type="text" name="real_hour" class="timeHours" value="{{ $task->predicted_hour }}">
+                <input type="hidden" name="real_hour" class="timeHours" value="{{ $task->predicted_hour }}">
                 <input type="hidden" name="completed" value="1">
                 
             </div>

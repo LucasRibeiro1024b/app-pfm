@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{old('value', number_format($task->value ?? 0, 2, ',', '.'))}}" required>
+            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{old('value')}}" required>
         </div>
 
         {{-- <div class="form-group">

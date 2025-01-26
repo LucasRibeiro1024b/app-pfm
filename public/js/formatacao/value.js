@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Substitui a vírgula por um ponto para preparar para salvar no BD
             const parts = value.split(',');
+
+            // **** Limita a duas casas decimais
+            if (parts.length > 1) {
+                parts[1] = parts[1].substring(0, 2);
+            }
+
             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Adiciona pontos para separar milhar
             e.target.value = parts.join(',');
         });
