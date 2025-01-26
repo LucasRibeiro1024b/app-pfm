@@ -27,10 +27,21 @@
             <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{old('value', number_format($task->value ?? 0, 2, ',', '.'))}}" required>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="predicted_hour">Horas:</label>
             <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" value="{{old('predicted_hour')}}" required>
+        </div> --}}
+
+        <div class="form-group">
+            <label for="predicted_hour">Horas Previstas:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="hours" name="hours" class="form-control" placeholder="Horas" min="0" max="999"  required>
+                <input  type="number"  id="minutes" name="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
+            </div>
         </div>
+
+        <input type="hidden" name="predicted_hour" id="predicted_hour" value="{{ old('predicted_hour') }}">
+        
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 
@@ -51,4 +62,5 @@
 
 @push('script')
     <script src="/js/formatacao/value.js"></script>
+    <script src="/js/formatacao/hour.js"></script>
 @endpush
