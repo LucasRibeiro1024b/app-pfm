@@ -4,6 +4,14 @@
     
 @section('content')
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8-beta.8/inputmask.min.js"></script>
+<script>
+$(document).ready(function() {
+    Inputmask({"mask": "(99) 99999-9999"}).mask("#phone");
+});
+</script>
+
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
     @include('components.alert.error')
@@ -27,7 +35,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Telefone:</label>
-            <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato" value="{{$client->phone}}" required>
+            <input class="form-control" type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" value="{{$client->phone}}" required>
         </div>
         <div class="form-group">
             <label for="type">Tipo:</label>
@@ -56,4 +64,5 @@
 
 @push('script')
     <script src="/js/formatacao/cpfCnpj.js"></script>
+    <script src="/js/formatacao/phone.js"></script>
 @endpush

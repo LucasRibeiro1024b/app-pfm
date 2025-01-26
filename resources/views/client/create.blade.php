@@ -4,6 +4,7 @@
     
 @section('content')
 
+
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
     @include('components.alert.error')
@@ -53,6 +54,7 @@
 
 </div>
 
+
 @endsection
 
 @push('style')
@@ -61,4 +63,6 @@
 
 @push('script')
     <script src="/js/formatacao/cpfCnpj.js"></script>
+    <script src="/js/formatacao/phone.js"></script>
 @endpush
+
