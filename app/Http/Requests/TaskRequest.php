@@ -35,12 +35,13 @@ class TaskRequest extends FormRequest
             'title' => 'required|string|max:100',
             'description' => 'required|string|max:1000',
             'value' => 'required|regex:/^\d+(\.\d{1,2})?$/|min:0',
-            'predicted_hour' => 'required|numeric|min:0',
+            'predicted_hour' => 'required|numeric|min:0|max:1000',
             'completed' => 'in:0,1',
             'real_hour' => [
                 'nullable',
                 'numeric',
                 'min:0',
+                'max:1000',
                 // 'real_hour' é obrigatório apenas se 'completed' for 1
                 Rule::requiredIf($this->input('completed') == 1),
             ],
@@ -69,13 +70,15 @@ class TaskRequest extends FormRequest
             'predicted_hour.required' => '"hora prevista" é obrigatório.',
             'predicted_hour.numeric' => '"hora prevista" deve ser um número.',
             'predicted_hour.min' => '"hora prevista" deve ser um número positivo.',
-
+            'predicted_hour.max' => '"hora prevista" deve ser um número válido.',
+            
             // Mensagens para o campo 'completed'
             'completed.in' => '"concluído" deve ser 0 (não concluído) ou 1 (concluído).',
-
+            
             // Mensagens para o campo 'real_hour'
             'real_hour.numeric' => '"hora real" deve ser um número.',
             'real_hour.min' => '"hora real" deve ser maior ou igual a 0.',
+            'real_hour.max' => '"hora real" deve ser um número válido.',
             'real_hour.required_if' => '"hora real" é obrigatório quando a tarefa está marcada como concluída.',
             ];
     }
