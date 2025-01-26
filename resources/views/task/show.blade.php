@@ -38,7 +38,7 @@
         
         <div class="input-group mb-4">
             <span class="input-group-text">Horas previstas:</span>
-            <input class="form-control" id="predicted_hour" name="predicted_hour" value="{{ $task->predicted_hour }}" disabled>
+            <input class="form-control" id="predicted_hour" name="predicted_hour" value="{{ $task->formattedTime($task->predicted_hour) }}" disabled>
         </div>
         
         @if ($task->completed)
@@ -50,7 +50,7 @@
 
         <div class="input-group mb-4">
             <span class="input-group-text">Horas reais:</span>
-            <input class="form-control" id="real_hour" name="real_hour" value="{{ $task->real_hour }}" disabled>
+            <input class="form-control" id="real_hour" name="real_hour" value="{{ $task->formattedTime($task->real_hour) }}" disabled>
         </div>
         @endif
 

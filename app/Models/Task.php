@@ -34,7 +34,7 @@ class Task extends Model
         if (!$time) 
             return $time;
 
-        $formattedHour = sprintf('%2d:%02d', $this->hours($time), $this->minutes($time));
+        $formattedHour = sprintf('%02d:%02d', $this->hours($time), $this->minutes($time));
         return $formattedHour;
     }
 }

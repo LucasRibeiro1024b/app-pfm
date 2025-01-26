@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <input type="hidden" name="predicted_hour" id="predicted_hour">
+        <input type="hidden" name="predicted_hour" id="timeHours">
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 
