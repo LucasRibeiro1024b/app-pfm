@@ -37,7 +37,13 @@ class ClientRequest extends FormRequest
                 Rule::unique('clients', 'email')->ignore($clientId),
             ],
             'address' => 'required|string|max:255',
-            'phone' =>'required|string|max:20',
+            'phone' =>[
+                'required',
+                'string',
+                'max:15',
+                'min:15',
+                'regex:/^\(\d{2}\) \d{5}-\d{4}$/', // Validação do formato (XX) XXXXX-XXXX
+            ],
             'type' => 'required|in:0,1',
             'cpfCnpj' => [
                 'required',
@@ -65,14 +71,16 @@ class ClientRequest extends FormRequest
             'email.unique' => 'Já existe um cliente cadastrado com este email.',
     
             // Mensagens para o campo 'address'
-            'address.required' => 'O campo "endereço" é obrigatório.',
-            'address.string' => 'O campo "endereço" deve ser um texto.',
+            'address.required' => '"endereço" é obrigatório.',
+            'address.string' => '"endereço" deve ser um texto.',
             'address.max' => 'Insira um endereço menor.',
     
             // Mensagens para o campo 'phone'
-            'phone.required' => 'O campo "telefone" é obrigatório.',
-            'phone.string' => 'O campo "telefone" deve ser um texto.',
-            'phone.max' => 'Insira um telefone menor.',
+            'phone.required' => '"telefone" é obrigatório.',
+            'phone.string' => 'Insira um telefone no formato (xx) xxxxx-xxxx.',
+            'phone.max' => 'Insira um telefone no formato (xx) xxxxx-xxxx.',
+            'phone.min' => 'Insira um telefone no formato (xx) xxxxx-xxxx.',
+            'phone.regex' => 'Insira um telefone no formato (xx) xxxxx-xxxx.',
     
             // Mensagens para o campo 'type'
             'type.required' => 'O campo "tipo" é obrigatório.',
