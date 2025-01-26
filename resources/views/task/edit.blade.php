@@ -29,8 +29,11 @@
         </div>
 
         <div class="form-group">
-            <label for="predicted_hour">Horas:</label>
-            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" value="{{ $task->predicted_hour }}" required>
+            <label for="predicted_hour">Horas Previstas:</label>
+            <div class="d-flex" style="gap: 10px;">
+                <input type="number" id="hours" name="hours" class="form-control" placeholder="Horas" min="0" max="999" required>
+                <input  type="number"  id="minutes" name="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
+            </div>
         </div>
 
         <div class="d-flex justify-content-between mt-4">
@@ -52,4 +55,5 @@
 
 @push('script')
     <script src="/js/formatacao/value.js"></script>
+    <script src="/js/formatacao/hour.js"></script>
 @endpush

@@ -15,19 +15,26 @@ class Task extends Model
         return $this->belongsTo('App\Models\Project');
     }
 
-    public function formattedHour($time) 
+    public function hours($time) 
     {
-        if (!$time) {
-            return $time;
-        }
         $hours = floor($time);
 
-        // Calcula os minutos a partir da parte decimal
-        $minutes = round(($time - $hours) * 60);
+        return $hours; 
+    }
 
-        // Formata para garantir que as horas e minutos tenham dois dígitos
-        $formattedHour = sprintf('%2d:%02d', $hours, $minutes);
+    public function minutes($time) 
+    {
+        $minutes = round(($time - $this->hours($time)) * 60);
 
-        return $formattedHour; 
+        return $minutes;
+    }
+
+    public function formattedTime($time)
+    {
+        if (!$time) 
+            return $time;
+
+        $formattedHour = sprintf('%2d:%02d', $this->hours($time), $this->minutes($time));
+        return $formattedHour;
     }
 }

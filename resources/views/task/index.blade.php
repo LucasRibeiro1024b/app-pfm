@@ -26,8 +26,8 @@
                     <tr class="align-middle">
                         <td><a href="{{ route('task.show', $task->id) }}" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
-                        <td>{{ $task->formattedHour($task->predicted_hour) }}</td>
-                        <td>{{ $task->formattedHour($task->real_hour) }}</td>
+                        <td>{{ $task->formattedTime($task->predicted_hour) }}</td>
+                        <td>{{ $task->formattedTime($task->real_hour) }}</td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
                                 

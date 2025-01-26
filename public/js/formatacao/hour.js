@@ -36,6 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    
-
 });
+
+
+function hoursMinutes(time) {
+    // Separa a parte inteira (horas) e a parte decimal (minutos)
+    const hours = Math.floor(time);  // Parte inteira
+    const minutes = Math.round((time - hours) * 60);  // Parte decimal multiplicada por 60 (minutos)
+
+    // Formata para garantir que minutos e horas tenham dois dígitos (ex: 09:05)
+    const formattedHours = hours < 10 ? '0' + hours : hours;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+    document.getElementById('hours').value = formattedHours;
+    document.getElementById('minutes').value = formattedMinutes;
+
+    console.log('teste');
+}
