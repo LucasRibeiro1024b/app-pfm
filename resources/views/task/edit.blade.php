@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3">
+<div id="client-create-container" class="col-md-6 offset-md-3 dados">
 
     @include('components.alert.error')
 
@@ -31,12 +31,12 @@
         <div class="form-group">
             <label for="predicted_hour">Horas Previstas:</label>
             <div class="d-flex" style="gap: 10px;">
-                <input type="number" id="hours" class="form-control" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
-                <input  type="number"  id="minutes" class="form-control" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
+                <input type="number" class="form-control hours" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
+                <input  type="number" class="form-control minutes" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
             </div>
         </div>
 
-        <input type="hidden" name="predicted_hour" id="timeHours">
+        <input type="hidden" name="predicted_hour" class="timeHours">
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>

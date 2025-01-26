@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3">
+<div id="client-create-container" class="col-md-6 offset-md-3 dados">
 
     @include('components.alert.error')
 
@@ -35,12 +35,12 @@
         <div class="form-group">
             <label for="predicted_hour">Horas Previstas:</label>
             <div style="display: flex; gap: 10px;">
-                <input type="number" id="hours" class="form-control" placeholder="Horas" min="0" max="999"  required>
-                <input  type="number"  id="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
+                <input type="number" class="form-control hours" placeholder="Horas" min="0" max="999"  required>
+                <input  type="number" class="form-control minutes" placeholder="Minutos" min="0" max="59" required>
             </div>
         </div>
 
-        <input type="hidden" name="predicted_hour" id="timeHours">
+        <input type="hidden" name="predicted_hour" class="timeHours">
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 

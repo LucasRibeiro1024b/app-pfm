@@ -14,13 +14,13 @@
         <form action="{{ route('task.update', $task->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="modal-body">
+            <div class="modal-body dados">
 
                 <div class="form-group">
                     <label for="real_hour">Horas Reais:</label>
                     <div class="d-flex" style="gap: 10px;">
-                        <input type="number" id="hours" class="form-control" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
-                        <input  type="number"  id="minutes" class="form-control" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
+                        <input type="number" class="form-control hours" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
+                        <input  type="number" class="form-control minutes" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                 <input type="hidden" name="description" value="{{ $task->description }}">
                 <input type="hidden" name="value" value="{{ $task->value }}">
                 <input type="hidden" name="predicted_hour" value="{{ $task->predicted_hour }}">
-                <input type="text" name="real_hour" id="timeHours" value="{{ $task->predicted_hour }}">
+                <input type="text" name="real_hour" class="timeHours" value="{{ $task->predicted_hour }}">
                 <input type="hidden" name="completed" value="1">
                 
             </div>
