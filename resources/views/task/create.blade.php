@@ -35,12 +35,12 @@
         <div class="form-group">
             <label for="predicted_hour">Horas Previstas:</label>
             <div style="display: flex; gap: 10px;">
-                <input type="number" id="hours" name="hours" class="form-control" placeholder="Horas" min="0" max="999"  required>
-                <input  type="number"  id="minutes" name="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
+                <input type="number" id="hours" class="form-control" placeholder="Horas" min="0" max="999"  required>
+                <input  type="number"  id="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
             </div>
         </div>
 
-        <input type="hidden" name="predicted_hour" id="predicted_hour" value="{{ old('predicted_hour') }}">
+        <input type="hidden" name="predicted_hour" id="predicted_hour">
 
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 

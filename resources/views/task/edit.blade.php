@@ -31,10 +31,12 @@
         <div class="form-group">
             <label for="predicted_hour">Horas Previstas:</label>
             <div class="d-flex" style="gap: 10px;">
-                <input type="number" id="hours" name="hours" class="form-control" placeholder="Horas" min="0" max="999" required>
-                <input  type="number"  id="minutes" name="minutes" class="form-control" placeholder="Minutos" min="0" max="59" required>
+                <input type="number" id="hours" class="form-control" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
+                <input  type="number"  id="minutes" class="form-control" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
             </div>
         </div>
+
+        <input type="hidden" name="predicted_hour" id="predicted_hour">
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
