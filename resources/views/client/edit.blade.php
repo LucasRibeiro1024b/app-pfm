@@ -4,14 +4,6 @@
     
 @section('content')
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8-beta.8/inputmask.min.js"></script>
-<script>
-$(document).ready(function() {
-    Inputmask({"mask": "(99) 99999-9999"}).mask("#phone");
-});
-</script>
-
 <div id="client-create-container" class="col-md-6 offset-md-3">
 
     @include('components.alert.error')
