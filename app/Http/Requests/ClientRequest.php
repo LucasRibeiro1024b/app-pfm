@@ -47,4 +47,42 @@ class ClientRequest extends FormRequest
             ],
         ];
     }
+
+    public function messages()
+    {
+        $cpfCnpjType = $this->all()['type'] ? 'CNPJ' : 'CPF';
+        return  [
+            // Mensagens para o campo 'name'
+            'name.required' => 'O campo "nome" é obrigatório.',
+            'name.string' => 'O campo "nome" deve ser um texto.',
+            'name.max' => 'Insira um nome menor.',
+            'name.unique' => 'Já existe um cliente cadastrado com este nome.',
+    
+            // Mensagens para o campo 'email'
+            'email.required' => 'O campo "email" é obrigatório.',
+            'email.email' => 'Insira um endereço de email válido.',
+            'email.max' => 'O campo "email" deve ter no máximo 100 caracteres.',
+            'email.unique' => 'Já existe um cliente cadastrado com este email.',
+    
+            // Mensagens para o campo 'address'
+            'address.required' => 'O campo "endereço" é obrigatório.',
+            'address.string' => 'O campo "endereço" deve ser um texto.',
+            'address.max' => 'Insira um endereço menor.',
+    
+            // Mensagens para o campo 'phone'
+            'phone.required' => 'O campo "telefone" é obrigatório.',
+            'phone.string' => 'O campo "telefone" deve ser um texto.',
+            'phone.max' => 'Insira um telefone menor.',
+    
+            // Mensagens para o campo 'type'
+            'type.required' => 'O campo "tipo" é obrigatório.',
+            'type.in' => 'O campo "tipo" deve ser CPF ou CNPJ.',
+    
+            // Mensagens para o campo 'cpfCnpj'
+            'cpfCnpj.required' => 'O campo "CPF/CNPJ" é obrigatório.',
+            'cpfCnpj.string' => 'Insira um ' . $cpfCnpjType . ' no formato correto.',
+            'cpfCnpj.unique' => 'Já existe um cliente cadastrado com este ' . $cpfCnpjType,
+            'cpfCnpj.regex' => 'Insira um ' . $cpfCnpjType . ' no formato correto.',
+        ];
+    }
 }

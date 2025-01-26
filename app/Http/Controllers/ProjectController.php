@@ -96,10 +96,4 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('msg', 'Projeto deletado com sucesso!');
     }
 
-    public function progresso($id) 
-    {
-        
-
-        return $progress;
-    }
 }
