@@ -13,8 +13,8 @@ class ClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // apenas se for sócio
-        if (auth()->user()->type == 0) 
+        // apenas se for sócio ou consultor
+        if (auth()->user()->type == 0 || auth()->user()->type == 1) 
             return true;
         else
             return false;
