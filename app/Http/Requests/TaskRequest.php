@@ -21,7 +21,11 @@ class TaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // apenas se for sócio ou consultor
+        if (auth()->user()->type == 0 || auth()->user()->type == 1) 
+            return true;
+        else
+            return false;
     }
 
     /**

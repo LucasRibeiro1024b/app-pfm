@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -12,7 +13,11 @@ class ClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // apenas se for sócio
+        if (auth()->user()->type == 0) 
+            return true;
+        else
+            return false;
     }
 
     /**
