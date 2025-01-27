@@ -27,45 +27,80 @@ Route::middleware([
 }); //renomeei o name da rota pro padrão
 
 
-// módulo "usuário"
+///////////////////////*** módulo "user" ***///////////////////////
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-// module "projects"
-Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
-Route::post('/project/create', [ProjectController::class, 'store'])->name('project.store');
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('project.show');
-Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
-Route::put('/project/update/{id}', [ProjectController::class, 'update'])->name('project.update');
-Route::delete('/project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
+//aceita todos os usuários logados
 
-// módulo "client"
 
-Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+///////////////////////*** módulo "client" ***///////////////////////
 
-Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
 
-Route::post('/client/create', [ClientController::class, 'store'])->name('client.store');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index')->middleware('auth');
+//aceita todos os usuários logados
 
-Route::delete('/client/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
+Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('project.show')->middleware('auth');
+//aceita todos os usuários logados
 
-Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->name('client.edit');
+Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create')->middleware('auth', 'accept:0,1');
+//sócio e consultor
 
-Route::put('/client/update/{id}', [ClientController::class, 'update'])->name('client.update');
+Route::post('/project/create', [ProjectController::class, 'store'])->name('project.store')->middleware('auth', 'accept:0,1');
+//sócio e consultor
 
-Route::get('/client/show/{id}', [ClientController::class, 'show'])->name('client.show');
+Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth', 'accept:0,1,3');
+//sócio, consultor e estagiário
 
-// módulo "task" (atividade)
+Route::put('/project/update/{id}', [ProjectController::class, 'update'])->name('project.update')->middleware('auth', 'accept:0,1,3');
+//sócio, consultor e estagiário
 
-Route::get('/task/create/{id}', [TaskController::class, 'create'])->name('task.create');
+Route::delete('/project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy')->middleware('auth', 'accept:0,1');
+//sócio e consultor
 
-Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 
-Route::get('/task/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
+///////////////////////*** módulo "client" ***///////////////////////
 
-Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('task.update');
 
-Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index')->middleware('auth'); 
+//aceita todos os usuários logados
 
-Route::get('/task/show/{id}', [TaskController::class, 'show'])->name('task.show');
+Route::get('/client/show/{id}', [ClientController::class, 'show'])->name('client.show')->middleware('auth', 'accept:0,1,2');
+//sócio, consultor e financeiro
+
+Route::get('/client/create', [ClientController::class, 'create'])->name('client.create')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::post('/client/create', [ClientController::class, 'store'])->name('client.store')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->name('client.edit')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::put('/client/update/{id}', [ClientController::class, 'update'])->name('client.update')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::delete('/client/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+
+///////////////////////*** módulo "task" (atividade) ***///////////////////////
+
+
+Route::get('/task/show/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::get('/task/create/{id}', [TaskController::class, 'create'])->name('task.create')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::post('/task/store', [TaskController::class, 'store'])->name('task.store')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::get('/task/edit/{id}', [TaskController::class, 'edit'])->name('task.edit')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('task.update')->middleware('auth', 'accept:0,1');
+//sócio e consultor
+
+Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy')->middleware('auth', 'accept:0,1');
+//sócio e consultor
