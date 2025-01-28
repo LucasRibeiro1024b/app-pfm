@@ -13,14 +13,13 @@ class AcceptMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $roles): Response
+    public function handle(Request $request, Closure $next, ...$types) //...faz o $types receber todos os parâmetros passados
     {
-        $roles = is_array($roles) ? $roles : explode(',', $roles);
-        
-        foreach ($roles as $role) 
-            if (auth()->user()->type == $role) 
-                return $next($request);
-            
-        abort(401);
+        // Verifica se o tipo é permitido
+        if (!in_array(auth()->user()->type, $types)) {
+            abort(403, 'Acesso negado.');
+        }
+
+        return $next($request);
     }
 }
