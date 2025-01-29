@@ -6,6 +6,8 @@
 
 <div class="col-md-6 offset-md-3">
 
+    @include('components.alert.error')
+
     <h2>Atualizar Projeto: {{ $project->title }}</h2>
 
     <form action="{{route("project.update", $project->id)}}" method="POST" enctype="multipart/form-data">
@@ -28,7 +30,8 @@
 
         <div class="form-group">
             <label for="value">Valor</label>
-            <input class="form-control" type="text" name="value" id="value" value="{{ $project->value }}">
+            {{old('value')}}
+            <input class="form-control" type="text" name="value" id="value" value="{{ number_format(((old('value') ? old('value') : $project->value)) ?? 0, 2, ',', '.') }}">
         </div>
 
         <div class="form-group">
@@ -68,3 +71,7 @@
 </div>
 
 @endsection
+
+@push('script')
+    <script src="/js/formatacao/value.js"></script>
+@endpush

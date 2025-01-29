@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\Task;
@@ -24,7 +25,7 @@ class ProjectController extends Controller
         return view('project.create', ['clients' => $clients, 'consultants' => $users]);
     }
     
-    public function store(Request $request) {
+    public function store(ProjectRequest $request) {
         $project = new Project();
 
         $project->title = $request->title;
@@ -44,8 +45,6 @@ class ProjectController extends Controller
     public function show($id) 
     {
         $project = Project::findOrFail($id);
-
-        // calcular progresso
 
         $tasks_all = Task::where('project_id', $project->id)->count();
         $tasks_completed = Task::where('project_id', $project->id)->where('completed', 1)->count();
@@ -71,21 +70,20 @@ class ProjectController extends Controller
         return view('project.edit', ['project' => $project, 'clients' => $clients, 'consultants' => $users]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'client_id' => 'required|integer',
-        ]);
+
+        $new_data = $request->all();
+        // Remove the 'consultants' field from the data array
+        unset($new_data['consultants']);
 
         $project = Project::findOrFail($id);
-        $project->update($validated);
+        $project->update($new_data);
 
         $project->consultants()->sync($request->input('consultants'));
 
-        // return redirect()->route('project.show', $id)->with('success', 'Projeto atualizado com sucesso!');
-        return redirect()->route('project.show', $id);
+        return redirect()->route('project.show', $id)->with('msg', 'Projeto atualizado com sucesso!');
+        // return redirect()->route('project.show', $id);
     }
 
     public function destroy($id)
