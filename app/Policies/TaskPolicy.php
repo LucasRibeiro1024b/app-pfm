@@ -2,26 +2,28 @@
 
 namespace App\Policies;
 
-use App\Models\Client;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ClientPolicy
+class TaskPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Client $client): bool
+    public function view(User $user): bool
     {
-        return false;
+        return ($user->type == 0 || 
+                $user->type == 1 || 
+                $user->type == 3);
     }
 
     /**
@@ -37,7 +39,8 @@ class ClientPolicy
     public function update(User $user): bool
     {
         return ($user->type == 0 || 
-                $user->type == 1);
+                $user->type == 1 || 
+                $user->type == 3);
     }
 
     public function delete(User $user): bool
@@ -46,10 +49,23 @@ class ClientPolicy
                 $user->type == 1);
     }
 
+    // finalizar tarefa
+    public function end(User $user): bool
+    {
+        return ($user->type == 0 || 
+                $user->type == 1);
+    }
+
+    //financeiro não vê a coluna "ações"
+    public function action(User $user): bool
+    {
+        return !($user->type == 2);
+    }
+
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Client $client): bool
+    public function restore(User $user, Task $task): bool
     {
         return false;
     }
@@ -57,7 +73,7 @@ class ClientPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Client $client): bool
+    public function forceDelete(User $user, Task $task): bool
     {
         return false;
     }

@@ -51,11 +51,11 @@ Route::prefix('project')->group(function()
     Route::post('/create', [ProjectController::class, 'store'])->name('project.store')->middleware('auth', 'accept:0,1');
     //sócio e consultor
 
-    Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth', 'accept:0,1,3');
-    //sócio, consultor e estagiário
+    Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth', 'accept:0,1');
+    //sócio e consultor
 
-    Route::put('/update/{id}', [ProjectController::class, 'update'])->name('project.update')->middleware('auth', 'accept:0,1,3');
-    //sócio, consultor e estagiário
+    Route::put('/update/{id}', [ProjectController::class, 'update'])->name('project.update')->middleware('auth', 'accept:0,1');
+    //sócio e consultor
 
     Route::delete('/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy')->middleware('auth', 'accept:0,1');
     //sócio e consultor
@@ -95,8 +95,8 @@ Route::prefix('client')->group(function()
 
 Route::prefix('task')->group(function()
 {
-    Route::get('/show/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth', 'accept:0,1');
-    //sócio e consultor
+    Route::get('/show/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth', 'accept:0,1,3');
+    //sócio, consultor e estagiário
     
     Route::get('/create/{id}', [TaskController::class, 'create'])->name('task.create')->middleware('auth', 'accept:0,1');
     //sócio e consultor
@@ -104,11 +104,11 @@ Route::prefix('task')->group(function()
     Route::post('/store', [TaskController::class, 'store'])->name('task.store')->middleware('auth', 'accept:0,1');
     //sócio e consultor
     
-    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit')->middleware('auth', 'accept:0,1');
-    //sócio e consultor
+    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit')->middleware('auth', 'accept:0,1,3');
+    //sócio, consultor e estagiário
     
-    Route::put('/update/{id}', [TaskController::class, 'update'])->name('task.update')->middleware('auth', 'accept:0,1');
-    //sócio e consultor
+    Route::put('/update/{id}', [TaskController::class, 'update'])->name('task.update')->middleware('auth', 'accept:0,1,3');
+    //sócio, consultor e estagiário
     
     Route::delete('/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy')->middleware('auth', 'accept:0,1');
     //sócio e consultor

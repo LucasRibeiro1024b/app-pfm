@@ -2,14 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Client;
-use App\Policies\ClientPolicy;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
 
-   
     /**
      * Register any application services.
      */

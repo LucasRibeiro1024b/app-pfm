@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
-use Illuminate\Http\Request;
+// use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ClientController extends Controller
 {
+    //use AuthorizesRequests;
+
     public function index()
     {
         $clients = Client::all();
