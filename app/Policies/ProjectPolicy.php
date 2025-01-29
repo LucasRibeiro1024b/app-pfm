@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Client;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ClientPolicy
+class ProjectPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class ClientPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Client $client): bool
+    public function view(User $user): bool
     {
         return true;
     }
@@ -33,29 +33,22 @@ class ClientPolicy
                 $user->type == 1);
     }
 
-    // editar clientes (sócio e consultor)
+    /**
+     * Determine whether the user can update the model.
+     */
     public function update(User $user): bool
     {
         return ($user->type == 0 || 
                 $user->type == 1);
     }
 
+    /**
+     * Determine whether the user can delete the model.
+     */
     public function delete(User $user): bool
     {
         return ($user->type == 0 || 
                 $user->type == 1);
-    }
-
-    //quem vê a coluna "ações" (talvez seja mudado)
-    public function action(User $user): bool
-    {
-        return ($user->type == 0 || 
-                $user->type == 1);
-    }
-
-    public function censored(User $user): bool
-    {
-        return true;
     }
 
 }

@@ -44,13 +44,18 @@
             </div>
 
             <div class="d-flex">
-                <a href="{{ route('project.edit', $project->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
                 
-                @include('components.modal.delete', [
-                            'route' => 'project.destroy',
-                            'name' => $project->title,
-                            'id' => $project->id
-                        ])
+                @can('update', $project)
+                    <a href="{{ route('project.edit', $project->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
+                @endcan
+                
+                @can('delete', $project)
+                    @include('components.modal.delete', [
+                        'route' => 'project.destroy',
+                        'name' => $project->title,
+                        'id' => $project->id
+                    ])
+                @endcan
             </div>
 
             </div>
