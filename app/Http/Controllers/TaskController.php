@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function create(Request $request) 
+    public function create($id) 
     {
-        $project = Project::findOrFail($request->project_id);
+        $project = Project::findOrFail($id);
         return view('task.create', compact('project'));
     }
 
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         $task = new Task();
 
@@ -29,14 +30,14 @@ class TaskController extends Controller
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" adicionada com sucesso');
     }
 
-    public function edit(Request $request) 
+    public function edit($id) 
     {
-        $task = Task::findOrFail($request->id);
+        $task = Task::findOrFail($id);
 
         return view('task.edit', compact('task'));
     }
 
-    public function update(Request $request) 
+    public function update(TaskRequest $request) 
     {
         $data = $request->all();
 

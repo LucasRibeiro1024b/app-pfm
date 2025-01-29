@@ -4,7 +4,9 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3">
+<div id="client-create-container" class="col-md-6 offset-md-3 dados">
+
+    @include('components.alert.error')
 
     <h2>Editar tarefa</h2>
 
@@ -23,18 +25,25 @@
 
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{ $task->value }}" required>
+            <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{ number_format($task->value ?? 0, 2, ',', '.') }}" required>
         </div>
 
         <div class="form-group">
-            <label for="predicted_hour">Horas:</label>
-            <input class="form-control" type="text" name="predicted_hour" id="predicted_hour" placeholder="Horas previstas" value="{{ $task->predicted_hour }}" required>
+            <label for="predicted_hour">Horas Previstas:</label>
+            <div class="d-flex" style="gap: 10px;">
+                <input type="number" class="form-control hours" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>
+                <input  type="number" class="form-control minutes" placeholder="Minutos" min="0" max="59" value="{{$task->minutes($task->predicted_hour)}}" required>
+            </div>
         </div>
+
+        <input type="hidden" name="predicted_hour" class="timeHours">
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
             <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Salvar">
         </div>
+
+        <input type="hidden" name="id" value="{{ $task->id }}">
 
     </form>
 
@@ -44,4 +53,9 @@
 
 @push('style')
     <link rel="stylesheet" href="/css/client/create.css">
+@endpush
+
+@push('script')
+    <script src="/js/formatacao/value.js"></script>
+    <script src="/js/formatacao/hour.js"></script>
 @endpush

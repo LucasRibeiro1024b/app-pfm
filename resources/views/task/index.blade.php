@@ -1,17 +1,13 @@
 <div id="tasks" class="col-md-8 ps-5">
+
+    @include('components.alert.error')
         
     <div id="tasks-header" class="row mb-4">
 
         <h3 class="col-6 offset-3">Atividades</h3>
 
-        <div class="col-3">
-            <form action="{{ route('task.create') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="project_id" value="{{ $project->id }}">
-                <button type="submit" class="btn btn-success col-12">nova atividade</button>
-            </form>
-        </div>
-
+        <a href="{{ route('task.create', $project->id) }}" class="btn btn-success col-3">nova atividade</a>
+      
     </div>
 
     <div id="tasks-list" class="overflow-auto border border-secondary-subtle rounded" style="height: 220px;">
@@ -30,8 +26,8 @@
                     <tr class="align-middle">
                         <td><a href="{{ route('task.show', $task->id) }}" class="text-info-emphasis">{{ $task->title }}</a></td>
                         <td>R${{ number_format($task->value, 2, ',', '.') }}</td>
-                        <td>{{ $task->predicted_hour }}</td>
-                        <td>{{ $task->real_hour }}</td>
+                        <td>{{ $task->formattedTime($task->predicted_hour) }}</td>
+                        <td>{{ $task->formattedTime($task->real_hour) }}</td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
                                 
@@ -43,21 +39,17 @@
 
                                     <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#end-task-modal-{{$task->id}}"><i class="material-icons">check</i></button>
 
-                                    <form action="{{ route('task.edit') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$task->id}}">
-                                        <button type="submit" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></button>
-                                    </form>
+                                        <a href="{{ route('task.edit', $task->id) }}" class="btn btn-outline-primary mx-1"><i class="material-icons">edit</i></a>
+                                  
 
                                     @include('task.components.modal')
-
+                                    
                                 @endif
-
-                                @include('components.modal.delete', [
-                                    'route' => 'task.destroy',
-                                    'name' => $task->title,
-                                    'id' => $task->id
-                                ])
+                                    @include('components.modal.delete', [
+                                        'route' => 'task.destroy',
+                                        'name' => $task->title,
+                                        'id' => $task->id
+                                        ])
 
                             </div>
                         </td>
