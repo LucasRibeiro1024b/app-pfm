@@ -70,8 +70,8 @@ Route::get('/clients', [ClientController::class, 'index'])->name('clients.index'
 
 Route::prefix('client')->group(function()
 {
-    Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show')->middleware('auth', 'accept:0,1,2');
-    //sócio, consultor e financeiro
+    Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show')->middleware('auth');
+    //aceita todos os usuários logados
 
     Route::get('/create', [ClientController::class, 'create'])->name('client.create')->middleware('auth', 'accept:0,1');
     //sócio e consultor

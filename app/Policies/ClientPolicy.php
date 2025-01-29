@@ -46,6 +46,12 @@ class ClientPolicy
                 $user->type == 1);
     }
 
+    //quem vê a coluna "ações" (talvez eu mude)
+    public function action(User $user): bool
+    {
+        return true;
+    }
+
     /**
      * Determine whether the user can restore the model.
      */

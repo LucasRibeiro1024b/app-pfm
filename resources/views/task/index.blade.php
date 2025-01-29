@@ -18,7 +18,7 @@
                 <tr class="align-middle lh-sm">
                     <th scope="col">título</th>
                     <th scope="col">valor</th>
-                    <th scope="col" class="col-2">horas previstas</th>
+                    <th scope="col" class="col-1">horas previstas</th>
                     <th scope="col" class="col-2">horas reais</th>
                     {{-- {{formatação acima para as horas de "horas" ocuparem mais espaço se não tiver a coluna de "ações"}} --}}
                     @can('action', 'App\Models\Task')

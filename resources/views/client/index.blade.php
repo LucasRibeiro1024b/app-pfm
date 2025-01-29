@@ -19,7 +19,9 @@
             <th scope="col">TIPO</th>
             <th scope="col">EMAIL</th>
             <th scope="col">PROJETOS</th>
-            <th scope="col">AÇÕES</th>
+            @can('action', 'App\Models\Client')
+                <th scope="col">AÇÕES</th>
+            @endcan
         </tr>
     </thead>
     <tbody class="text-center">
@@ -44,7 +46,8 @@
                     @endforeach
                 </td>
 
-                <td class="td-gray align-middle">
+                @can('action', $client)
+                    <td class="td-gray align-middle">
                     <div class="d-flex justify-content-center align-items-center">
                         <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info me-1"><i class="material-icons">info</i></a>
 
@@ -61,6 +64,7 @@
                         @endcan
                     </div>
                 </td>
+                @endcan
             </tr>
         @endforeach
     </tbody>
