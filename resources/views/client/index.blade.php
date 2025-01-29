@@ -6,7 +6,9 @@
 
 <div class="d-flex justify-content-between">
     <h2>Lista de clientes</h2>
-    <a href="{{ route('client.create') }}" class="btn btn-outline-success">adicionar novo cliente</a>
+    @can('create', 'App\Models\Client')
+        <a href="{{ route('client.create') }}" class="btn btn-success">adicionar novo cliente</a>
+    @endcan
 </div>
 
 <table class="table">
@@ -44,15 +46,19 @@
 
                 <td class="td-gray align-middle">
                     <div class="d-flex justify-content-center align-items-center">
-                        <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info"><i class="material-icons">info</i></a>
-                        <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
+                        <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info me-1"><i class="material-icons">info</i></a>
 
-                        @include('components.modal.delete', [
-                            'route' => 'client.destroy',
-                            'name' => $client->name,
-                            'id' => $client->id
-                        ])
-
+                        @can('update', $client)
+                            <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                        @endcan
+                        
+                        @can('delete', $client)
+                            @include('components.modal.delete', [
+                                'route' => 'client.destroy',
+                                'name' => $client->name,
+                                'id' => $client->id
+                                ])
+                        @endcan
                     </div>
                 </td>
             </tr>

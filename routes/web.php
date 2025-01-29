@@ -24,7 +24,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('site.dashboard');
     })->name('site.dashboard');
-}); //renomeei o name da rota pro padrão
+}); 
 
 
 ///////////////////////*** módulo "user" ***///////////////////////
@@ -91,6 +91,7 @@ Route::prefix('client')->group(function()
 
 
 ///////////////////////*** módulo "task" (atividade) ***///////////////////////
+
 
 Route::prefix('task')->group(function()
 {

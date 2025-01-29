@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Client;
+use App\Policies\ClientPolicy;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+   
     /**
      * Register any application services.
      */
@@ -19,6 +23,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
     }
 }

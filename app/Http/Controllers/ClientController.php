@@ -47,6 +47,8 @@ class ClientController extends Controller
 
     public function edit($id) 
     {
+        // $this->authorize('update');
+
         $client = Client::findOrFail($id);
 
         return view('client.edit', ['client' => $client]);
