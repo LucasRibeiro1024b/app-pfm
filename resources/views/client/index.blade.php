@@ -18,7 +18,7 @@
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
             <th scope="col">EMAIL</th>
-            <th scope="col">PROJETOS</th>
+            <th scope="col" class="col-4">PROJETOS</th>
             @can('action', 'App\Models\Client')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -29,7 +29,7 @@
             <tr>
                 <th scope="row">{{ $index + 1 }}</th>
 
-                <td>{{ $client->name }}</td>
+                <td><a href="{{ route('client.show', $client->id) }}" class="text-info-emphasis">{{ $client->name }}</a></td>
                 
                 <td class="td-gray">
                     {{ $client->type ? 'PJ' : 'PF' }}
@@ -48,22 +48,22 @@
 
                 @can('action', $client)
                     <td class="td-gray align-middle">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <a href="{{ route('client.show', $client->id) }}" class="btn btn-outline-info me-1"><i class="material-icons">info</i></a>
+                        <div class="d-flex justify-content-center align-items-center">
 
-                        @can('update', $client)
-                            <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
-                        @endcan
-                        
-                        @can('delete', $client)
-                            @include('components.modal.delete', [
-                                'route' => 'client.destroy',
-                                'name' => $client->name,
-                                'id' => $client->id
-                                ])
-                        @endcan
-                    </div>
-                </td>
+                            @can('update', $client)
+                                <a href="{{ route('client.edit', $client->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                            @endcan
+                            
+                            @can('delete', $client)
+                                @include('components.modal.delete', [
+                                    'route' => 'client.destroy',
+                                    'name' => $client->name,
+                                    'id' => $client->id
+                                    ])
+                            @endcan
+
+                        </div>
+                    </td>
                 @endcan
             </tr>
         @endforeach
