@@ -33,6 +33,12 @@ Route::middleware([
 Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 //aceita todos os usuários logados
 
+Route::prefix('user')->group(function()
+{
+    Route::get('/create', [UserController::class, 'create'])->name('user.create')->middleware('auth', 'accept:0');
+    //sócio
+});
+
 
 ///////////////////////*** módulo "client" ***///////////////////////
 

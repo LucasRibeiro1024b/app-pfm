@@ -4,7 +4,11 @@
     
 @section('content')
 
-<h2>Lista de usuários</h2>
+<div class="d-flex justify-content-between">
+    <h2>Lista de usuários</h2>
+
+    <a href="{{ route('user.create') }}" class="btn btn-success">novo usuário</a>
+</div>
 
 <table class="table">
     <thead class="table text-center">
