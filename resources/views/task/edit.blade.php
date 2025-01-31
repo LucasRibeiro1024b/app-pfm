@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <input type="hidden" name="predicted_hour" class="timeHours">
+        <input type="hidden" name="predicted_hour" class="timeHours" value="{{$task->predicted_hour}}">
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>

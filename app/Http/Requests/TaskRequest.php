@@ -4,12 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-
-
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 
 class TaskRequest extends FormRequest
 {
@@ -21,7 +15,11 @@ class TaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // apenas se for sócio ou consultor
+        if (auth()->user()->type == 0 || auth()->user()->type == 1) 
+            return true;
+        else
+            return false;
     }
 
     /**
