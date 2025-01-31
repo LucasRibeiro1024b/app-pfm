@@ -46,10 +46,22 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index')->mid
 
 Route::prefix('user')->group(function()
 {
+    Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show')->middleware('auth', 'accept:0');
+    //sócio
+
     Route::get('/create', [UserController::class, 'create'])->name('user.create')->middleware('auth', 'accept:0');
     //sócio
 
     Route::post('/create', [UserController::class, 'store'])->name('user.store')->middleware('auth', 'accept:0');
+    //sócio
+
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth', 'accept:0');
+    //sócio
+
+    Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update')->middleware('auth', 'accept:0');
+    //sócio
+
+    Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth', 'accept:0');
     //sócio
 });
 
