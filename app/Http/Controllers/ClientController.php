@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
-use Illuminate\Http\Request;
+// use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ClientController extends Controller
 {
+    //use AuthorizesRequests;
+
     public function index()
     {
         $clients = Client::all();
@@ -47,6 +49,8 @@ class ClientController extends Controller
 
     public function edit($id) 
     {
+        // $this->authorize('update');
+
         $client = Client::findOrFail($id);
 
         return view('client.edit', ['client' => $client]);
