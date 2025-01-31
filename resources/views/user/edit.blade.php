@@ -1,0 +1,72 @@
+@extends('layouts.main')
+
+@section('title', 'Usuários')
+
+@section('content')
+
+    <div id="client-create-container" class="col-md-6 offset-md-3">
+
+        @include('components.alert.error')
+
+        <h2>Atualizar usuário</h2>
+
+        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Nome do usuário"
+                    value="{{$user->name}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Endereço de email"
+                    value="{{$user->email}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="value">Valor</label>
+                <input class="form-control" type="text" name="value_hour" id="value"
+                    placeholder="Valor por hora trabalhada" value="{{$user->value_hour}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato"
+                value="{{$user->phone}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Cargo</label>
+                <select id="type" name="type" class="form-select" required>
+                    @foreach(['Sócio', 'Consultor', 'Financeiro', 'Estagiário'] as $key => $type)
+                        <option value="{{$key}}" {{ old('type', $user->type) == $key ? 'selected' : '' }}>{{ $type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{-- <div class="form-group">
+                <label for="password">Nova senha</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="Senha" required>
+            </div> --}}
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
+                <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Atualizar usuário">
+            </div>
+
+        </form>
+
+    </div>
+
+@endsection
+
+@push('style')
+    <link rel="stylesheet" href="/css/client/create.css">
+@endpush
+
+@push('script')
+    <script src="/js/formatacao/phone.js"></script>
+    <script src="/js/formatacao/value.js"></script>
+@endpush
