@@ -33,7 +33,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         } else {
             Log::warning('Credenciais inválidas', ['credentials' => $credentials]);
-            return redirect()->back()->with("erro", "Usuário ou senha inválida!!!");
+            return redirect()->back()->with("erro", "Usuário ou senha inválida!");
         }
     }
 
@@ -46,8 +46,4 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    public function create()
-    {
-        return view('auth.register');
-    }
 }
