@@ -47,9 +47,9 @@
         <div class="form-group">
             <label for="description">Cliente:</label>
             <select name="client_id" class="form-select" aria-label="Default select example">
-                <option selected>Selecione uma opção</option>
+                <option disabled selected>Selecione um cliente</option>
                 @foreach ($clients as $client)
-                    <option value="{{ $client->id }}" {{ old('client_id', $project->client_id) == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+                    <option value="{{ $client->id }}" {{old('client_id', $project->client_id) == $client->id ? 'selected' : ''}}>{{ $client->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -57,7 +57,7 @@
         <div class="form-group">
             <label for="">Consultores:</label>
             <select name="consultants[]" class="form-select select2" aria-label="Default select example" multiple>
-                <option>Selecione um consultor</option>
+                <option disabled selected>Selecione um consultor</option>
                 @foreach ($consultants as $consultant)
                     <option value="{{ $consultant->id }}" {{ $project->consultants->contains($consultant->id) ? 'selected' : '' }}>{{ $consultant->name }}</option>
                 @endforeach

@@ -12,7 +12,11 @@ class ProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // apenas se for sócio ou consultor
+        if (auth()->user()->type == 0 || auth()->user()->type == 1) 
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -84,10 +88,10 @@ class ProjectRequest extends FormRequest
 
             // Consultants field messages
             'consultants.required' => 'O campo consultores é obrigatório.',
-            'consultants.array' => 'O campo consultores deve ser um array.',
+            'consultants.array' => 'Nenhum consultor selecionado.',
 
             // Consultants.* field messages (for each item in the array)
-            'consultants.*.integer' => 'Cada consultor deve ser um número inteiro.',
+            'consultants.*.integer' => 'Erro ao selecionar consultor.',
             'consultants.*.exists' => 'Um ou mais consultores selecionados não existem.',
         ];
     }
