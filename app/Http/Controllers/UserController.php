@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,7 +27,7 @@ class UserController extends Controller
         
         $user->save();
 
-        return redirect(route('clients.index'))->with('msg', 'Usuário "' . $user->name . '" criado com sucesso');
+        return redirect(route('users.index'))->with('msg', 'Usuário "' . $user->name . '" criado com sucesso');
     }
 
     public function edit($id) 
@@ -46,7 +45,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect(route('clients.index'))->with('msg', 'Usuário ' . $user->name . ' atualizado.');
+        return redirect(route('users.index'))->with('msg', 'Usuário "' . $user->name . '" atualizado.');
     }
 
     public function show($id) 

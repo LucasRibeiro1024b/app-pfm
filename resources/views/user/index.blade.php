@@ -18,13 +18,14 @@
             <th scope="col">TIPO</th>
             <th scope="col">EMAIL</th>
             <th scope="col">PROJETOS</th>
+            <th scope="col">AÇÕES</th>
         </tr>
     </thead>
     <tbody class="text-center">
         @foreach ($users as $index => $user)
             <tr>
                 <th scope="row">{{ $index + 1 }}</th>
-                <td>{{ $user->name }}</td>
+                <td><a href="{{ route('user.show', $user->id) }}" class="text-info-emphasis">{{ $user->name }}</a></td>
                 
                 <td class="td-gray">
                 @switch($user->type)
@@ -47,6 +48,23 @@
 
                 <td class="td-gray">{{ $user->email }}</td>
                 <td class="td-gray">x</td>
+                <td class="td-gray align-middle">
+                    <div class="d-flex justify-content-center align-items-center">
+
+                        
+                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                        
+                        
+                        
+                            @include('components.modal.delete', [
+                                'route' => 'user.destroy',
+                                'name' => $user->name,
+                                'id' => $user->id
+                                ])
+                        
+
+                    </div>
+                </td>
             </tr>
         @endforeach
     </tbody>

@@ -23,12 +23,6 @@
             </div>
 
             <div class="form-group">
-                <label for="phone">Telefone</label>
-                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato"
-                value="{{$user->phone}}" disabled>
-            </div>
-
-            <div class="form-group">
                 <label for="type">Cargo</label>
                 <select id="type" name="type" class="form-select" disabled>
                     @foreach(['Sócio', 'Consultor', 'Financeiro', 'Estagiário'] as $key => $type)

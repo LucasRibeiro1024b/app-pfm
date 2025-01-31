@@ -10,7 +10,7 @@
 
         <h2>Atualizar usuário</h2>
 
-        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -29,12 +29,6 @@
                 <label for="value">Valor</label>
                 <input class="form-control" type="text" name="value_hour" id="value"
                     placeholder="Valor por hora trabalhada" value="{{$user->value_hour}}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Telefone</label>
-                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telefone para contato"
-                value="{{$user->phone}}" required>
             </div>
 
             <div class="form-group">
