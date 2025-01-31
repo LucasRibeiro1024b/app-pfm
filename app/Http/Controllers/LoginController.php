@@ -27,9 +27,6 @@ class LoginController extends Controller
     
             $request->session()->regenerate();
     
-            /**
-             * Direciona o usuario para pagina atual antes de ser solicitado o login
-             */
             return redirect()->intended('/dashboard');
         } else {
             Log::warning('Credenciais inválidas', ['credentials' => $credentials]);
