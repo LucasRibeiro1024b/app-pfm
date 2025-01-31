@@ -49,7 +49,7 @@ Route::prefix('user')->group(function()
     Route::get('/create', [UserController::class, 'create'])->name('user.create')->middleware('auth', 'accept:0');
     //sócio
 
-    Route::post('/create', [CreateNewUser::class, 'create'])->name('user.store')->middleware('auth', 'accept:0');
+    Route::post('/create', [UserController::class, 'store'])->name('user.store')->middleware('auth', 'accept:0');
     //sócio
 });
 

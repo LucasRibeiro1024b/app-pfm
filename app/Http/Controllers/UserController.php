@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class UserController extends Controller
 {
@@ -21,18 +24,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = new User;
+        $newUser = new CreateNewUser;
+        $newUser = $newUser->create($request->all());
+        
+        $newUser->save();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->phone = $request->phone;
-        $user->type = $request->type;
-        $user->cpfCnpj = $request->cpfCnpj;
-
-        $user->save();
-
-        return redirect(route('clients.index'))->with('msg', 'Usuário "' . $user->name . '" criado com sucesso');
+        return redirect(route('clients.index'))->with('msg', 'Usuário "' . $newUser->name . '" criado com sucesso');
     }
 
 }
