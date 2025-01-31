@@ -36,6 +36,19 @@
                 <input id="password" class="form-control" type="password" name="password" placeholder="Senha" disabled>
             </div> --}}
 
+            <div class="form-group my-4">
+
+                @isset($user->projects[0])
+                    <h3 class="card-title pb-3 text-center">Seus projetos</h3>
+                    
+                    <ol id="projects" class="list-group list-group-numbered w-100">
+                        @foreach ($user->projects as $project)
+                        <a href="{{ route('project.show', $project->id) }}" class="list-group-item list-group-item-action">{{$project->title}}</a>
+                        @endforeach
+                    </ol>
+                @endisset
+            </div>
+
             <div class="d-flex justify-content-between mt-4">
                 <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark w-100">Voltar</a>
             </div>
