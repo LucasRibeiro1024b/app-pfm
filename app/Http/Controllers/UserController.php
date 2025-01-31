@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Laravel\Fortify\Http\Controllers\RegisteredUserController;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class UserController extends Controller
 {
@@ -24,12 +23,46 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $newUser = new CreateNewUser;
-        $newUser = $newUser->create($request->all());
+        $user = new CreateNewUser;
+        $user = $user->create($request->all());
         
-        $newUser->save();
+        $user->save();
 
-        return redirect(route('clients.index'))->with('msg', 'Usuário "' . $newUser->name . '" criado com sucesso');
+        return redirect(route('clients.index'))->with('msg', 'Usuário "' . $user->name . '" criado com sucesso');
+    }
+
+    public function edit($id) 
+    {
+
+        $user = User::findOrFail($id);
+
+        return view('user.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request) 
+    {
+        $user = User::findOrFail($request->id);
+        $data = $request->all();
+
+        $user->update($data);
+
+        return redirect(route('clients.index'))->with('msg', 'Usuário ' . $user->name . ' atualizado.');
+    }
+
+    public function show($id) 
+    {
+        $user = User::findOrFail($id);
+
+        return view('user.show', ['user' => $user]);
+    }
+
+    public function destroy($id) {
+
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return redirect(route('users.index'))->with('msg', 'Usuário "' . $user->name . '" excluído.');
     }
 
 }
