@@ -10,7 +10,7 @@
 
         <h2>Adicionar usuário</h2>
 
-        <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Nome</label>
@@ -57,8 +57,8 @@
             </div>
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="{{ route('clients.index') }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
-                <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar cliente">
+                <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
+                <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar usuário">
             </div>
 
         </form>
