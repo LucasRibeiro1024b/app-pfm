@@ -53,14 +53,15 @@
             <input class="form-control" id="real_hour" name="real_hour" value="{{ $task->formattedTime($task->real_hour) }}" disabled>
         </div>
         @endif
-
-        
-
-        <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
         
     </div>
 
 </div>
+
+@include('components.button.back', [
+    'route' => 'project.show',
+    'id' => $task->project_id
+])
 
 @endsection
 

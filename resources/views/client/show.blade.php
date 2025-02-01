@@ -36,12 +36,15 @@
                 </ol>
             @endisset
         </div>
-
-        <a href="{{ route('clients.index') }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
         
     </div>
-
+    
 </div>
+
+@include('components.button.back', [
+    'route' => 'clients.index',
+    'id' => ''
+])
 
 @endsection
 

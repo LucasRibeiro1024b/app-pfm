@@ -45,8 +45,8 @@
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 
         <div class="d-flex justify-content-between mt-4">
-            <a href="{{ route('project.show', $project->id) }}" class="btn btn-dark" style="width: 45%">Cancelar</a>
-            <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar tarefa">
+            <a href="{{ route('project.show', $project->id) }}" class="btn btn-secondary" style="width: 45%">Cancelar</a>
+            <input type="submit" id="create-btn" class="btn btn-primary" style="width: 45%" value="Adicionar tarefa">
         </div>
 
     </form>

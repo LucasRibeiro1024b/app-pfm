@@ -51,13 +51,14 @@
                 @endisset
             </div>
 
-            <div class="d-flex justify-content-between mt-4">
-                <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark w-100">Voltar</a>
-            </div>
-
         </div>
 
     </div>
+
+    @include('components.button.back', [
+    'route' => 'users.index',
+    'id' => ''
+    ])
 
 @endsection
 
