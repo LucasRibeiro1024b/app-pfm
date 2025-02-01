@@ -4,11 +4,13 @@
 
 @section('content')
 
-    <div id="client-create-container" class="col-md-6 offset-md-3">
+    <div id="layout-form-container" class="card col-md-6 offset-md-3">
 
         @include('components.alert.error')
 
-        <h2>{{$user->name}}</h2>
+        <div class="card-body px-5 py-3">
+        
+            <h2>{{$user->name}}</h2>
 
             <div class="form-group">
                 <label for="email">Email</label>
@@ -17,9 +19,9 @@
             </div>
 
             <div class="form-group">
-                <label for="value">Valor</label>
+                <label for="value">Valor por hora trabalhada</label>
                 <input class="form-control" type="text" name="value_hour" id="value"
-                    placeholder="Valor por hora trabalhada" value="{{$user->value_hour}}" disabled>
+                    placeholder="Valor por hora trabalhada" value="R${{ number_format($user->value_hour, 2, ',', '.') }}" disabled>
             </div>
 
             <div class="form-group">
@@ -52,6 +54,8 @@
             <div class="d-flex justify-content-between mt-4">
                 <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark w-100">Voltar</a>
             </div>
+
+        </div>
 
     </div>
 

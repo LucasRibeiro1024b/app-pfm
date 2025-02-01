@@ -5,7 +5,7 @@
 @section('content')
 
     
-<div id="client-create-container" class="card py-2 col-md-6 offset-md-3">
+<div id="layout-form-container" class="card py-2 col-md-6 offset-md-3">
 
     <div class="card-body px-5 py-3">
 

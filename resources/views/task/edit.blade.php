@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3 dados">
+<div id="layout-form-container" class="col-md-6 offset-md-3 dados">
 
     @include('components.alert.error')
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div id="client-create-container" class="col-md-6 offset-md-3">
+    <div id="layout-form-container" class="col-md-6 offset-md-3">
 
         @include('components.alert.error')
 
@@ -51,7 +51,7 @@
             </div>
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="{{ route('users.index') }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
+                <a href="{{ route('users.index') }}" class="btn btn-dark" style="width: 45%">Cancelar</a>
                 <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar usuário">
             </div>
 

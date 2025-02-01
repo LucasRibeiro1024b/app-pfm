@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div id="client-create-container" class="col-md-6 offset-md-3">
+    <div id="layout-form-container" class="col-md-6 offset-md-3">
 
         @include('components.alert.error')
 
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="value">Valor</label>
                 <input class="form-control" type="text" name="value_hour" id="value"
-                    placeholder="Valor por hora trabalhada" value="{{$user->value_hour}}" required>
+                    placeholder="Valor por hora trabalhada" value="{{ number_format($user->value_hour ?? 0, 2, ',', '.') }}" required>
             </div>
 
             <div class="form-group">

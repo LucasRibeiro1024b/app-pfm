@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div id="client-create-container" class="col-md-6 offset-md-3 dados">
+<div id="layout-form-container" class="col-md-6 offset-md-3 dados">
 
     @include('components.alert.error')
 
@@ -45,7 +45,7 @@
         <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
 
         <div class="d-flex justify-content-between mt-4">
-            <a href="{{ route('project.show', $project->id) }}" id="create-btn" class="btn btn-dark" style="width: 45%">Cancelar</a>
+            <a href="{{ route('project.show', $project->id) }}" class="btn btn-dark" style="width: 45%">Cancelar</a>
             <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar tarefa">
         </div>
 
