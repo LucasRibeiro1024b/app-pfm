@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div id="client-create-container" class="card py-2 col-md-6 offset-md-3">
+<div id="layout-form-container" class="card py-2 col-md-6 offset-md-3">
 
     <div class="card-body px-5 py-3">
         <h2 class="card-title pb-3">{{$client->name}}</h2>
@@ -36,12 +36,15 @@
                 </ol>
             @endisset
         </div>
-
-        <a href="{{ route('clients.index') }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
         
     </div>
-
+    
 </div>
+
+@include('components.button.back', [
+    'route' => 'clients.index',
+    'id' => ''
+])
 
 @endsection
 

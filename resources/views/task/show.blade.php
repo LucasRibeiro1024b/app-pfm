@@ -5,7 +5,7 @@
 @section('content')
 
     
-<div id="client-create-container" class="card py-2 col-md-6 offset-md-3">
+<div id="layout-form-container" class="card py-2 col-md-6 offset-md-3">
 
     <div class="card-body px-5 py-3">
 
@@ -53,14 +53,15 @@
             <input class="form-control" id="real_hour" name="real_hour" value="{{ $task->formattedTime($task->real_hour) }}" disabled>
         </div>
         @endif
-
-        
-
-        <a href="{{ route('project.show', $task->project_id) }}" id="create-btn" class="btn btn-dark w-100 mt-1" value="Voltar">Voltar</a>
         
     </div>
 
 </div>
+
+@include('components.button.back', [
+    'route' => 'project.show',
+    'id' => $task->project_id
+])
 
 @endsection
 
