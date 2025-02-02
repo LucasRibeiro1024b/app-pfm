@@ -46,11 +46,20 @@
             </div> --}}
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="{{ route('users.index') }}" class="btn btn-secondary" style="width: 45%">Cancelar</a>
-                <input type="submit" id="create-btn" class="btn btn-primary" style="width: 45%" value="Atualizar usuário">
+                <a href="{{ route('users.index') }}" class="btn btn-secondary" style="width: 30%">Cancelar</a>
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#redefinirSenha" style="width: 30%">
+                    Redefinir senha
+                </button>
+
+                <input type="submit" id="create-btn" class="btn btn-success" style="width: 30%" value="Atualizar usuário">
             </div>
 
         </form>
+
+        
+
+        @include('user.components.modal-senha')
 
     </div>
 
