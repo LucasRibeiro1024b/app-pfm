@@ -52,7 +52,7 @@
 
             <div class="d-flex justify-content-between mt-4">
                 <a href="{{ route('users.index') }}" class="btn btn-secondary" style="width: 45%">Cancelar</a>
-                <input type="submit" id="create-btn" class="btn btn-primary" style="width: 45%" value="Adicionar usuário">
+                @include('components.button.add', ['entity' => 'usuário'])
             </div>
 
         </form>

@@ -47,7 +47,7 @@
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('clients.index') }}" class="btn btn-secondary" style="width: 45%">Cancelar</a>
-            <input type="submit" id="create-btn" class="btn btn-dark" style="width: 45%" value="Adicionar cliente">
+            @include('components.button.add', ['entity' => 'cliente'])
         </div>
 
     </form>
