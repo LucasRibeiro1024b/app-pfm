@@ -26,6 +26,17 @@
             <label for="value">Valor:</label>
             <input class="form-control" type="text" name="value" id="value" placeholder="Valor da atividade" value="{{old('value')}}" required>
         </div>
+        
+        <div class="form-group">
+            <label for="value">Consultor:</label>
+            <select class="form-select" name="user_id" required>
+                <option selected>Selecione um consultor</option>
+                @foreach ($consultants as $consultant)
+                    <option value="{{$consultant->id}}">{{$consultant->name}}</option>
+                    @endforeach
+                    <option value="3">teste</option>
+            </select>
+        </div>
 
         {{-- <div class="form-group">
             <label for="predicted_hour">Horas:</label>

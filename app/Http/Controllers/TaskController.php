@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,7 +13,8 @@ class TaskController extends Controller
     public function create($id) 
     {
         $project = Project::findOrFail($id);
-        return view('task.create', compact('project'));
+        $consultants = User::where("type", 1)->get();
+        return view('task.create', compact('project'), compact('consultants'));
     }
 
     public function store(TaskRequest $request)
@@ -24,6 +26,15 @@ class TaskController extends Controller
         $task->value = $request->value;
         $task->predicted_hour = $request->predicted_hour;
         $task->project_id = $request->project_id;
+        
+        $user = User::findOrFail($request->user_id);
+
+        if ($user->type == 1) {
+            $task->user_id = $request->user_id;
+        }
+        else {
+            return redirect()->back()->withErrors(['error' => 'Selecione um consultor válido']);
+        }
 
         $task->save();
 
