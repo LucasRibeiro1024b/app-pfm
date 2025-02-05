@@ -25,8 +25,8 @@ return new class extends Migration
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
             // se deletar o projeto, suas atividades também serão apagadas
 
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign("user_id")->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
