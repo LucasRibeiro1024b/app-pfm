@@ -26,6 +26,8 @@ class TaskController extends Controller
         $task->value = $request->value;
         $task->predicted_hour = $request->predicted_hour;
         $task->project_id = $request->project_id;
+
+        //validando consultor
         
         $user = User::findOrFail($request->user_id);
 
@@ -36,6 +38,8 @@ class TaskController extends Controller
             return redirect()->back()->withErrors(['error' => 'Selecione um consultor válido']);
         }
 
+        //****
+
         $task->save();
 
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" adicionada com sucesso');
@@ -45,12 +49,23 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
 
-        return view('task.edit', compact('task'));
+        $consultants = User::where("type", 1)->get();
+
+        return view('task.edit', compact('task'), compact('consultants'));
     }
 
     public function update(TaskRequest $request) 
     {
         $data = $request->all();
+
+        //validando consultor
+
+        $user = User::findOrFail($request->user_id);
+
+        if ($user->type != 1)
+            return redirect()->back()->withErrors(['error' => 'Selecione um consultor válido']);
+
+        //****
 
         $task = Task::findOrFail($request->id);
 

@@ -33,8 +33,7 @@
                 <option selected>Selecione um consultor</option>
                 @foreach ($consultants as $consultant)
                     <option value="{{$consultant->id}}">{{$consultant->name}}</option>
-                    @endforeach
-                    <option value="3">teste</option>
+                @endforeach
             </select>
         </div>
 
