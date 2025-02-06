@@ -67,11 +67,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function projects()
-    {
-        return $this->belongsToMany(Project::class); 
-    }
-
     public function tasks()
     {
         return $this->hasMany('App\Models\Task', 'user_id'); 

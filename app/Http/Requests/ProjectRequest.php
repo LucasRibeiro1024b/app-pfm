@@ -48,8 +48,6 @@ class ProjectRequest extends FormRequest
                 'min:0',
                 'regex:/^\d+(\.\d{1,2})?$/'
             ],
-            'consultants' => 'required|array', // Consultants is optional, but if provided, must be an array
-            'consultants.*' => 'integer|exists:users,id', // Each item in the consultants array must be an integer and exist in the users table
         ];
     }
 
@@ -86,13 +84,6 @@ class ProjectRequest extends FormRequest
             'value.min' => 'O campo valor deve ser pelo menos 0.',
             'value.regex' => 'O campo valor deve estar no formato correto (ex: 100,00).',
 
-            // Consultants field messages
-            'consultants.required' => 'O campo consultores é obrigatório.',
-            'consultants.array' => 'Nenhum consultor selecionado.',
-
-            // Consultants.* field messages (for each item in the array)
-            'consultants.*.integer' => 'Erro ao selecionar consultor.',
-            'consultants.*.exists' => 'Um ou mais consultores selecionados não existem.',
         ];
     }
 }
