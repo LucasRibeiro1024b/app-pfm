@@ -40,6 +40,11 @@
             <span class="input-group-text">Horas previstas:</span>
             <input class="form-control" id="predicted_hour" name="predicted_hour" value="{{ $task->formattedTime($task->predicted_hour) }}" disabled>
         </div>
+
+        <div class="input-group mb-4">
+            <span class="input-group-text">Consultor:</span>
+            <input class="form-control" id="consultant" name="consultant" value="{{$task->consultant->name}}" disabled>
+        </div>
         
         @if ($task->completed)
 
