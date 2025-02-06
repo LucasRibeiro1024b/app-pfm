@@ -36,8 +36,6 @@ class ProjectController extends Controller
         
         $project->save();
 
-        $project->consultants()->sync($request->input('consultants'));
-
         return redirect()->route('projects.index')->with('msg', 'Projeto criado com sucesso!');
     }
 
