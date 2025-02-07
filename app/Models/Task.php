@@ -15,6 +15,10 @@ class Task extends Model
         return $this->belongsTo('App\Models\Project');
     }
 
+    public function consultant() {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
     public function hours($time) 
     {
         $hours = floor($time);

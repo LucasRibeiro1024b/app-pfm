@@ -52,16 +52,6 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="">Consultores:</label>
-            <select name="consultants[]" class="form-select select2" aria-label="Default select example" multiple>
-                <option disabled selected>Selecione um consultor</option>
-                @foreach ($consultants as $consultant)
-                    <option value="{{ $consultant->id }}" {{ in_array($consultant->id, old('consultants', [])) ? 'selected' : '' }}>{{ $consultant->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
         <div class="form-group mt-1">
             <input type="submit" class="btn btn-primary" value="Adicionar projeto">
         </div>

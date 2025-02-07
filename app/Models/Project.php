@@ -13,11 +13,6 @@ class Project extends Model
 
     protected $guarded = [];
     
-    public function consultants()
-    {
-        return $this->belongsToMany(User::class); 
-    }
-    
     public function client() 
     {
         return $this->belongsTo('App\Models\Client');

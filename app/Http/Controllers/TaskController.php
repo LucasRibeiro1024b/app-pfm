@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,7 +13,8 @@ class TaskController extends Controller
     public function create($id) 
     {
         $project = Project::findOrFail($id);
-        return view('task.create', compact('project'));
+        $consultants = User::where("type", 1)->get();
+        return view('task.create', compact('project'), compact('consultants'));
     }
 
     public function store(TaskRequest $request)
@@ -25,6 +27,19 @@ class TaskController extends Controller
         $task->predicted_hour = $request->predicted_hour;
         $task->project_id = $request->project_id;
 
+        //validando consultor
+        
+        $user = User::findOrFail($request->user_id);
+
+        if ($user->type == 1) {
+            $task->user_id = $request->user_id;
+        }
+        else {
+            return redirect()->back()->withErrors(['error' => 'Selecione um consultor válido']);
+        }
+
+        //****
+
         $task->save();
 
         return redirect(route('project.show', $task->project_id))->with('msg', 'Atividade "' . $task->title . '" adicionada com sucesso');
@@ -34,12 +49,23 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
 
-        return view('task.edit', compact('task'));
+        $consultants = User::where("type", 1)->get();
+
+        return view('task.edit', compact('task'), compact('consultants'));
     }
 
     public function update(TaskRequest $request) 
     {
         $data = $request->all();
+
+        //validando consultor
+
+        $user = User::findOrFail($request->user_id);
+
+        if ($user->type != 1)
+            return redirect()->back()->withErrors(['error' => 'Selecione um consultor válido']);
+
+        //****
 
         $task = Task::findOrFail($request->id);
 

@@ -29,6 +29,16 @@
         </div>
 
         <div class="form-group">
+            <label for="value">Consultor:</label>
+            <select class="form-select" name="user_id" required>
+                <option>Selecione um consultor</option>
+                @foreach ($consultants as $consultant)
+                    <option value="{{ $consultant->id }}" {{ $task->user_id == $consultant->id ? 'selected' : '' }}>{{ $consultant->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="predicted_hour">Horas Previstas:</label>
             <div class="d-flex" style="gap: 10px;">
                 <input type="number" class="form-control hours" placeholder="Horas" min="0" max="999" value="{{$task->hours($task->predicted_hour)}}" required>

@@ -20,9 +20,8 @@ class ProjectController extends Controller
 
     public function create() {
         $clients = Client::all();
-        $users = User::where("type", 1)->get();
 
-        return view('project.create', ['clients' => $clients, 'consultants' => $users]);
+        return view('project.create', ['clients' => $clients]);
     }
     
     public function store(ProjectRequest $request) {
@@ -36,8 +35,6 @@ class ProjectController extends Controller
         $project->value = $request->value;
         
         $project->save();
-
-        $project->consultants()->sync($request->input('consultants'));
 
         return redirect()->route('projects.index')->with('msg', 'Projeto criado com sucesso!');
     }
@@ -64,23 +61,18 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $clients = Client::all();
-        $users = User::where("type", 1)->get();
 
         $project = Project::findOrFail($id);
-        return view('project.edit', ['project' => $project, 'clients' => $clients, 'consultants' => $users]);
+        return view('project.edit', ['project' => $project, 'clients' => $clients]);
     }
 
     public function update(ProjectRequest $request, $id)
     {
 
         $new_data = $request->all();
-        // Remove the 'consultants' field from the data array
-        unset($new_data['consultants']);
 
         $project = Project::findOrFail($id);
         $project->update($new_data);
-
-        $project->consultants()->sync($request->input('consultants'));
 
         return redirect()->route('project.show', $id)->with('msg', 'Projeto atualizado com sucesso!');
         // return redirect()->route('project.show', $id);
