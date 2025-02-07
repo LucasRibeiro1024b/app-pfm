@@ -36,6 +36,9 @@ Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
+Route::put('/reset-password', [LoginController::class, 'resetPassword'])->name('login.resetPassword');
+
+
 
 ///////////////////////*** módulo "user" ***///////////////////////
 

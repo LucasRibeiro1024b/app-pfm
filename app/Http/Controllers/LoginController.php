@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\ResetUserPassword;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -41,6 +43,15 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+        $reset = new ResetUserPassword;
+        $reset->reset($user, $request->all());
+
+        return redirect(route('users.index'))->with("msg", "Senha alterada com sucesso!");
     }
 
 }

@@ -58,14 +58,20 @@
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="nav-link">Usuários</a>
                     </li>
-                    
-                    <li class="nav-item">
-                        <form action="/logout" method="POST">
-                        @csrf
-                        <a href="/logout" 
-                            class="nav-link" 
-                            onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
-                        </form>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="nav-link" href="#">Perfil</a></li>
+                          <li><form action="/logout" method="POST">
+                            @csrf
+                            <a href="/logout" 
+                                class="nav-link" 
+                                onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+                            </form></li>
+                        </ul>
                     </li>
                     
                 </ul>

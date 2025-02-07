@@ -46,7 +46,7 @@
 
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ route('project.show', $project->id) }}" class="btn btn-secondary" style="width: 45%">Cancelar</a>
-            <input type="submit" id="create-btn" class="btn btn-primary" style="width: 45%" value="Adicionar tarefa">
+            @include('components.button.add', ['entity' => 'tarefa'])
         </div>
 
     </form>
