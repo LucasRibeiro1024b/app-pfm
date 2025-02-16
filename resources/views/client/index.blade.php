@@ -17,8 +17,8 @@
             <th scope="col text-center">#</th>
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col" class="col-4">PROJETOS</th>
+            <th scope="col" class="d-none d-md-table-cell">EMAIL</th>
+            <th scope="col" class="col-4 d-none d-md-table-cell">PROJETOS</th>
             @can('action', 'App\Models\Client')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -35,9 +35,9 @@
                     {{ $client->type ? 'PJ' : 'PF' }}
                 </td>
 
-                <td class="td-gray">{{ $client->email }}</td>
+                <td class="td-gray d-none d-md-table-cell">{{ $client->email }}</td>
 
-                <td class="td-gray">
+                <td class="td-gray d-none d-md-table-cell">
                     @foreach ($client->projects as $index => $project)
                         <span>{{$project->title}}</span>
                         @if (count($client->projects) > ($index+1))
