@@ -43,6 +43,12 @@ header {
 }
 
 main {
-    margin-left: 280px !important;
     min-height: 100vh;
+}
+
+/* Aplica margem apenas em telas médias (md) ou maiores */
+@media (min-width: 768px) { 
+    .container {
+        margin-left: 280px;
+    }
 }

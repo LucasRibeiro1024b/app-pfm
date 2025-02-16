@@ -46,7 +46,12 @@
 <body>
 
     <div class="d-flex">
-        <header class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+
+        <button class="btn btn-dark d-md-none position-fixed top-0 start-0 m-3" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+            <i class="material-symbols-outlined">menu</i>
+        </button>
+
+        <header id="sidebar" class="offcanvas-md offcanvas-start d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
 
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
@@ -144,9 +149,6 @@
             </div>
     
         </header>
-
-
-        
 
         <main class="container p-0">
 
