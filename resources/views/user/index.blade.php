@@ -57,9 +57,9 @@
 
                 <td class="td-gray">{{ $user->email }}</td>
                 <td class="td-gray">
-                    @foreach ($user->projects as $index => $project)
+                    @foreach ($user->tasks->pluck('project')->unique('id') as $index => $project)
                         <span>{{$project->title}}</span>
-                        @if (count($user->projects) > ($index+1))
+                        @if (count($user->tasks->pluck('project')->unique('id')) > ($index+1))
                             ; 
                         @endif
                     @endforeach

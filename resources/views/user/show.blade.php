@@ -40,11 +40,11 @@
 
             <div class="form-group my-4">
 
-                @isset($user->projects[0])
+                @isset($user->tasks[0])
                     <h3 class="card-title pb-3 text-center">Seus projetos</h3>
                     
                     <ol id="projects" class="list-group list-group-numbered w-100">
-                        @foreach ($user->projects as $project)
+                        @foreach ($user->tasks->pluck('project')->unique('id') as $project)
                         <a href="{{ route('project.show', $project->id) }}" class="list-group-item list-group-item-action">{{$project->title}}</a>
                         @endforeach
                     </ol>
