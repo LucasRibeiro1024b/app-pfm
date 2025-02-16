@@ -2,7 +2,6 @@
 
 #navbar {
     justify-content: space-between;
-    background-color: #FFF;
     padding: 5px 10px;
 }
 
@@ -13,7 +12,7 @@
 #navbar li {
     padding: 0 15px;
 }
-
+/* 
 #navbar a {
     font-size: 14px;
     color: #757575;
@@ -21,4 +20,15 @@
 
 #navbar a:hover {
     color: #000000;
+} */
+
+.nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: .25rem;
+}
+
+.nav-link.active {
+    color: #fff;
+    background-color: #0d6efd;
 }

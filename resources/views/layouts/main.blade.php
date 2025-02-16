@@ -29,7 +29,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand navbar-light">
+        <nav class="navbar navbar-expand bg-dark" style="color: #212529;" data-bs-theme="dark">
 
             <div class="collapse navbar-collapse" id="navbar">
 
@@ -40,7 +40,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">Dashboard</a>
+                        <a href="{{ route('site.dashboard') }}" class="nav-link {{ request()->routeIs('site.dashboard') ? 'active' : '' }}">Dashboard</a>
                     </li>
 
                     <li class="nav-item">
@@ -48,15 +48,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('projects.index') }}" class="nav-link">Projetos</a>
+                        <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">Projetos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('clients.index') }}" class="nav-link">Clientes</a>
+                        <a href="{{ route('clients.index') }}" class="nav-link {{ request()->routeIs('clients.index') ? 'active' : '' }}">Clientes</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">Usuários</a>
+                        <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}">Usuários</a>
                     </li>
 
                     <li class="nav-item dropdown">
