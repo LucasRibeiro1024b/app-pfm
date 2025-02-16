@@ -22,6 +22,21 @@
     <link rel="stylesheet" href="/css/main/navbar.css">
     <link rel="stylesheet" href="/css/components/sidebars.css">
     <script src="/js/components/sidebars.js"></script>
+
+
+    {{-- ícones da sidebar --}}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 200,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
     
     @stack('style')
     @stack('script')
@@ -45,23 +60,39 @@
             <ul class="nav nav-pills flex-column mb-auto">
 
                 <li class="nav-item">
-                    <a href="{{ route('site.dashboard') }}" class="nav-link {{ request()->routeIs('site.dashboard') ? 'active' : 'text-light' }}">Dashboard</a>
+                    <a href="{{ route('site.dashboard') }}" class="nav-link d-flex {{ request()->routeIs('site.dashboard') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            bar_chart_4_bars
+                        </span>Dashboard</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link text-light">Financeiro</a>
+                    <a href="" class="nav-link text-light d-flex">
+                        <span class="material-symbols-outlined me-2">
+                            paid
+                        </span>Financeiro</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('projects.index') }}" class="nav-link {{ request()->routeIs('projects.index') ? 'active' : 'text-light' }}">Projetos</a>
+                    <a href="{{ route('projects.index') }}" class="nav-link d-flex {{ request()->routeIs('projects.index') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            work
+                        </span>Projetos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('clients.index') }}" class="nav-link {{ request()->routeIs('clients.index') ? 'active' : 'text-light' }}">Clientes</a>
+                    <a href="{{ route('clients.index') }}" class="nav-link d-flex {{ request()->routeIs('clients.index') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            groups
+                        </span>Clientes</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : 'text-light' }}">Usuários</a>
+                    <a href="{{ route('users.index') }}" class="nav-link d-flex {{ request()->routeIs('users.index') ? 'active' : '' }} text-light">
+                    <span class="material-symbols-outlined me-2">
+                        account_circle
+                    </span>
+                    Usuários</a>
                 </li>
             </ul>
 
@@ -91,7 +122,9 @@
 
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 
-                    <li><a class="dropdown-item" href="#">Novo projeto...</a></li>
+                    <li><a class="dropdown-item" href="#">Novo projeto</a></li>
+                    
+                    <li><a class="dropdown-item" href="#">Novo cliente</a></li>
 
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
 
