@@ -6,14 +6,11 @@
     padding: 0;
 }
 
-body {
-    position: relative;
-}
 
-header {
+/* header {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
-}
+} */
 
 .msg {
     background-color: #D4EDDA;
@@ -25,6 +22,21 @@ header {
     padding: 10px;
 }
 
-main {
-    padding-top: 40px;
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+  
+html {
+    height: -webkit-fill-available;
+}
+  
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh !important;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
