@@ -9,26 +9,28 @@
         @include('components.alert.error')
 
         <div class="card-body px-5 py-3">
-        
-            <h2>{{$user->name}}</h2>
+
+            <h2>{{ $user->name }}</h2>
 
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" id="email" name="email" placeholder="Endereço de email"
-                    value="{{$user->email}}" disabled>
+                    value="{{ $user->email }}" disabled>
             </div>
 
             <div class="form-group">
                 <label for="value">Valor por hora trabalhada</label>
                 <input class="form-control" type="text" name="value_hour" id="value"
-                    placeholder="Valor por hora trabalhada" value="R${{ number_format($user->value_hour, 2, ',', '.') }}" disabled>
+                    placeholder="Valor por hora trabalhada" value="R${{ number_format($user->value_hour, 2, ',', '.') }}"
+                    disabled>
             </div>
 
             <div class="form-group">
                 <label for="type">Cargo</label>
                 <select id="type" name="type" class="form-select" disabled>
-                    @foreach(['Sócio', 'Consultor', 'Financeiro', 'Estagiário'] as $key => $type)
-                        <option value="{{$key}}" {{ old('type', $user->type) == $key ? 'selected' : '' }}>{{ $type }}</option>
+                    @foreach (['Sócio', 'Consultor', 'Financeiro', 'Estagiário'] as $key => $type)
+                        <option value="{{ $key }}" {{ old('type', $user->type) == $key ? 'selected' : '' }}>
+                            {{ $type }}</option>
                     @endforeach
                 </select>
             </div>
@@ -40,25 +42,14 @@
 
             <div class="form-group my-4">
 
-                @isset($user->tasks[0])
-                    <h3 class="card-title pb-3 text-center">Seus projetos</h3>
-                    
-                    <ol id="projects" class="list-group list-group-numbered w-100">
-                        @foreach ($user->tasks->pluck('project')->unique('id') as $project)
-                        <a href="{{ route('project.show', $project->id) }}" class="list-group-item list-group-item-action">{{$project->title}}</a>
-                        @endforeach
-                    </ol>
-                @endisset
+                @include('user.components.accordion-tasks')
             </div>
 
         </div>
 
     </div>
 
-    @include('components.button.back', [
-    'route' => 'users.index',
-    'id' => ''
-    ])
+    @include('components.button.back')
 
 @endsection
 

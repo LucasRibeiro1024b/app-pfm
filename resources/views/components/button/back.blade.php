@@ -1,1 +1,1 @@
-<a href="{{ route($route, $id) }}" id="create-btn" class="btn btn-secondary col-1 offset-3" value="Voltar"><i class="material-icons">arrow_back</i></a>
+<a href="{{ url()->previous() }}" id="create-btn" class="btn btn-secondary col-1 offset-3" value="Voltar"><i class="material-icons">arrow_back</i></a>
