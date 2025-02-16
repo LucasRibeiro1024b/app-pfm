@@ -18,8 +18,8 @@
             <th scope="col">#</th>
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">PROJETOS</th>
+            <th scope="col" class="d-none d-md-table-cell">EMAIL</th>
+            <th scope="col" class="d-none d-md-table-cell">PROJETOS</th>
             @can('action', 'App\Models\User')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -55,8 +55,8 @@
                 @endswitch
                 </td>
 
-                <td class="td-gray">{{ $user->email }}</td>
-                <td class="td-gray">
+                <td class="td-gray d-none d-md-table-cell">{{ $user->email }}</td>
+                <td class="td-gray d-none d-md-table-cell">
                     @foreach ($user->tasks->pluck('project')->unique('id') as $index => $project)
                         <span>{{$project->title}}</span>
                         @if (count($user->tasks->pluck('project')->unique('id')) > ($index+1))
