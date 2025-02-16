@@ -79,21 +79,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('projects.index') }}" class="nav-link d-flex {{ request()->routeIs('projects.index') ? 'active' : '' }} text-light">
+                    <a href="{{ route('projects.index') }}" class="nav-link d-flex {{ request()->routeIs('project*', 'task*') ? 'active' : '' }} text-light">
                         <span class="material-symbols-outlined me-2">
                             work
                         </span>Projetos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('clients.index') }}" class="nav-link d-flex {{ request()->routeIs('clients.index') ? 'active' : '' }} text-light">
+                    <a href="{{ route('clients.index') }}" class="nav-link d-flex {{ request()->routeIs('client*') ? 'active' : '' }} text-light">
                         <span class="material-symbols-outlined me-2">
                             groups
                         </span>Clientes</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link d-flex {{ request()->routeIs('users.index') ? 'active' : '' }} text-light">
+                    <a href="{{ route('users.index') }}" class="nav-link d-flex {{ request()->routeIs('user*') ? 'active' : '' }} text-light">
                     <span class="material-symbols-outlined me-2">
                         account_circle
                     </span>
