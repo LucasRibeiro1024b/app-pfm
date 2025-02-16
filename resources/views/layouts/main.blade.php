@@ -144,17 +144,19 @@
             </div>
     
         </header>
+
+
         
 
-        <main class="container mt-5">
+        <main class="container p-0">
 
-            <div>
+            <div class="m-0">
                 @if(session('msg'))
                     <p class="msg"> {{ session('msg') }}</p>
                 @endif
             </div>
 
-            <div class="content">
+            <div class="content mt-5 mx-5">
                 @yield('content')
             </div>
 
