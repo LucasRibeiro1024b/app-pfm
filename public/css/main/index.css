@@ -39,4 +39,10 @@ header {
     max-height: 100vh;
     overflow-x: auto;
     overflow-y: hidden;
+    position: fixed;
+}
+
+main {
+    margin-left: 280px !important;
+    min-height: 100vh;
 }
