@@ -27,7 +27,7 @@
     <tbody class="text-center">
         @foreach ($clients as $index => $client)
             <tr>
-                <th scope="row">{{ $index + 1 }}</th>
+                <th scope="row">{{ ($clients->currentPage() - 1) * $clients->perPage() + $index + 1 }}</th>
 
                 <td><a href="{{ route('client.show', $client->id) }}" class="text-info-emphasis">{{ $client->name }}</a></td>
                 
@@ -69,6 +69,11 @@
         @endforeach
     </tbody>
 </table>
+
+<!-- Paginação -->
+<div class="d-flex justify-content-center mt-3 pb-3">
+    {{ $clients->links('pagination::pagination') }}
+</div>
     
 @endsection
 
