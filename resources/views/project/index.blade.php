@@ -25,7 +25,7 @@
 </div>
 
 <!-- Paginação -->
-<div class="d-flex justify-content-center mt-3">
+<div class="d-flex justify-content-center mt-3 pb-3">
     {{ $projects->links('pagination::pagination') }}
 </div>
 

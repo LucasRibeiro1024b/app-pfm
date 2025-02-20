@@ -28,7 +28,7 @@
     <tbody class="text-center">
         @foreach ($users as $index => $user)
             <tr>
-                <th scope="row">{{ $index + 1 }}</th>
+                <th scope="row">{{ ($users->currentPage() - 1) * $users->perPage() + $index + 1 }}</th>
                 
                 @can('view', $user)
                     <td><a href="{{ route('user.show', $user->id) }}" class="text-info-emphasis">{{ $user->name }}</a></td>
@@ -87,6 +87,11 @@
         @endforeach
     </tbody>
 </table>
+
+<!-- Paginação -->
+<div class="d-flex justify-content-center mt-3 pb-3">
+    {{ $users->links('pagination::pagination') }}
+</div>
     
 @endsection
 
