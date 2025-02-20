@@ -14,7 +14,7 @@ use function Laravel\Prompts\progress;
 class ProjectController extends Controller
 {
     public function index() {
-        $projects = Project::orderBy('id', "DESC")->get();
+        $projects = Project::paginate(6);
         return view('project.index', compact('projects'));
     }
 

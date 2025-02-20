@@ -24,6 +24,11 @@
     @endforeach
 </div>
 
+<!-- Paginação -->
+<div class="d-flex justify-content-center mt-3">
+    {{ $projects->links('pagination::pagination') }}
+</div>
+
 @endsection
 
 
