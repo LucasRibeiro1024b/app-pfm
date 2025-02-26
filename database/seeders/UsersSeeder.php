@@ -23,6 +23,13 @@ class UsersSeeder extends Seeder
             'value_hour' => 100
         ]);
 
+        $types = [1, 2, 3];
+        foreach ($types as $type) {
+            User::factory()->create([
+                'type' => $type, // Explicitly set the type
+            ]);
+        }
+
         User::factory(10)->create();
     }
 }

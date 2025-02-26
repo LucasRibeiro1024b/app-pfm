@@ -30,7 +30,7 @@ class TaskFactory extends Factory
         return [
             'title' => fake()->unique()->sentence(3),
             'description' => fake()->paragraph(10),
-            'value' => fake()->randomNumber(2),
+            'value' => fake()->randomNumber(3),
             'predicted_hour' => fake()->randomNumber(1),
             'completed' => $completed,
             'real_hour' => $real_hour,

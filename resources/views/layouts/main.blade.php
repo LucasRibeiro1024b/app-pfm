@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Financeiro</a>
+                        <a href="{{ route('finance.index')}}" class="nav-link">Financeiro</a>
                     </li>
 
                     <li class="nav-item">

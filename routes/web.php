@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\FinancesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -146,4 +150,33 @@ Route::prefix('task')->group(function()
     
     Route::delete('/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy')->middleware('auth', 'accept:0,1');
     //sócio e consultor
+});
+
+
+
+/////////////////*** módulo financeiro ***///////////////
+
+Route::get("/finances", [FinanceController::class, 'index'])->name('finance.index');
+
+
+////////////////*** módulo Receita (receipt) ***/////////////////////////
+
+Route::prefix('receipt')->group(function()
+{
+    Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create');
+    Route::post('/store', [ReceiptController::class, 'store'])->name('receipt.store');
+    Route::get('/edit/{id}', [ReceiptController::class, 'edit'])->name('receipt.edit');
+    Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('receipt.update');
+    Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('receipt.destroy');
+});
+
+////////////////*** módulo Despesa (expense) ***/////////////////////////
+
+Route::prefix('expense')->group(function()
+{
+    Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create');
+    Route::post('/store', [ExpenseController::class, 'store'])->name('expense.store');
+    Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
+    Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update');
+    Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 });
