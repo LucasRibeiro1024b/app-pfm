@@ -44,11 +44,17 @@ header {
 
 main {
     min-height: 100vh;
+    min-width: 100%;
+}
+
+.content {
+    min-height: 100%;
 }
 
 /* Aplica margem apenas em telas médias (md) ou maiores */
 @media (min-width: 768px) { 
     .container {
         margin-left: 280px;
+        margin-right: 0px;
     }
 }

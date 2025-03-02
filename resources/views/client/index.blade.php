@@ -71,7 +71,7 @@
 </table>
 
 <!-- Paginação -->
-<div class="d-flex justify-content-center mt-3 pb-3">
+<div class="d-flex justify-content-center pb-3 mt-auto">
     {{ $clients->links('pagination::pagination') }}
 </div>
     
