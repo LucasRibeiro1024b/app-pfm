@@ -45,7 +45,7 @@
 </head>
 <body>
 
-    <div id="layout-body" class="d-flex">
+    <div id="layout-body" class="d-flex justify-content-between">
 
         <button class="btn btn-dark d-md-none position-fixed top-0 start-0 m-3" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
             <i class="material-symbols-outlined">menu</i>
@@ -150,7 +150,7 @@
     
         </header>
 
-        <main class="container p-0 me-0" style="border: 1px solid red">
+        <main class="container p-0 me-0">
 
             <div class="m-0">
                 @if(session('msg'))
