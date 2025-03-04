@@ -22,4 +22,14 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\Task');
     }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class, 'project_id');
+    }
+    
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class, 'project_id');
+    }
 }
