@@ -30,7 +30,7 @@
         
         <div class="form-group">
             <label for="payment_date">Data de Pagamento:</label>
-            <input class="form-control" type="date" id="payment_date" name="payment_date" placeholder="" value="{{ $receipt->payment_date }}" required>
+            <input class="form-control" type="date" id="payment_date" name="payment_date" placeholder="" value="{{ $receipt->payment_date }}">
         </div>
 
         <div class="form-group">

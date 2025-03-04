@@ -77,7 +77,7 @@ class ReceiptController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'value' => 'required|numeric',
-            'payment_date' => 'optional|date',
+            'payment_date' => 'nullable|date',
             'end_date' => 'required|date',
             'project_id' => 'required|exists:projects,id',
             'client_id' => 'required|exists:clients,id',

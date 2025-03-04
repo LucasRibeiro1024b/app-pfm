@@ -13,8 +13,8 @@
 <table class="table">
     <thead class="table text-center">
         <tr>
+            <th scope="col">#</th>
             <th scope="col">TÍTULO</th>
-            <th scope="col">TIPO</th>
             <th scope="col">VALOR</th>
             <th scope="col">PROJETO</th>
             <th scope="col">DATA PAGAMENTO</th>
@@ -25,8 +25,8 @@
     <tbody class="text-center">
         @foreach ($finances as $finance)
         <tr>
-            <td>{{ $finance->title }}</td>
             <td>{{ $finance->type }}</td>
+            <td>{{ $finance->title }}</td>
             <td>{{ $finance->value }}</td>
             <td>{{ $finance->project->title }}</td>
             <td>{{ $finance->payment_date }}</td>
