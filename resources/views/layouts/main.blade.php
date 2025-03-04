@@ -58,8 +58,6 @@
                 <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%; width: 50px;">
                 <span class="fs-4 ms-3">SystemForge</span>
 
-            </a>
-
             <hr>
 
             <ul class="nav nav-pills flex-column mb-auto">
@@ -72,7 +70,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link text-light d-flex">
+                    <a href="{{ route('finance.index')}}" class="nav-link text-light d-flex {{ request()->routeIs('finance*') ? 'active' : '' }}">
                         <span class="material-symbols-outlined me-2">
                             paid
                         </span>Financeiro</a>
