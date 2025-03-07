@@ -41,10 +41,7 @@
     
 </div>
 
-@include('components.button.back', [
-    'route' => 'clients.index',
-    'id' => ''
-])
+@include('components.button.back')
 
 @endsection
 

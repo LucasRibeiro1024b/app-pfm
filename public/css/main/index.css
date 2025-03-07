@@ -6,25 +6,54 @@
     padding: 0;
 }
 
-body {
-    position: relative;
-}
 
-header {
+/* header {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
-}
+} */
 
 .msg {
     background-color: #D4EDDA;
     color: #155724;
     border: 1px solid #c3e6cb;
     width: 100%;
-    margin-bottom: 0;
+    margin: 0;
     text-align: center;
     padding: 10px;
 }
 
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+  
+html {
+    height: -webkit-fill-available;
+}
+  
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh !important;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: fixed;
+}
+
 main {
-    padding-top: 40px;
+    min-height: 100vh;
+}
+
+.content {
+    min-height: 100%;
+}
+
+/* Aplica margem apenas em telas médias (md) ou maiores */
+@media (min-width: 768px) { 
+    .container {
+        margin-left: 280px;
+        margin-right: 0px;
+    }
 }

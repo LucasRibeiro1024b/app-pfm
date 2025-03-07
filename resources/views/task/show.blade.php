@@ -63,10 +63,7 @@
 
 </div>
 
-@include('components.button.back', [
-    'route' => 'project.show',
-    'id' => $task->project_id
-])
+@include('components.button.back')
 
 @endsection
 

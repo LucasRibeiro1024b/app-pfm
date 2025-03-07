@@ -20,6 +20,23 @@
 
     <link rel="stylesheet" href="/css/main/index.css">
     <link rel="stylesheet" href="/css/main/navbar.css">
+    <link rel="stylesheet" href="/css/components/sidebars.css">
+    <script src="/js/components/sidebars.js"></script>
+
+
+    {{-- ícones da sidebar --}}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 200,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
     
     @stack('style')
     @stack('script')
@@ -28,70 +45,126 @@
 </head>
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand navbar-light">
+    <div id="layout-body" class="d-flex justify-content-between">
 
-            <div class="collapse navbar-collapse" id="navbar">
+        <button class="btn btn-dark d-md-none position-fixed top-0 start-0 m-3" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+            <i class="material-symbols-outlined">menu</i>
+        </button>
 
-                <a href="/dashboard" class="navbar-brand">
-                    <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%">
+        <header id="sidebar" class="offcanvas-md offcanvas-start d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
+
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+                <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%; width: 50px;">
+                <span class="fs-4 ms-3">SystemForge</span>
+
+            <hr>
+
+            <ul class="nav nav-pills flex-column mb-auto">
+
+                <li class="nav-item">
+                    <a href="{{ route('site.dashboard') }}" class="nav-link d-flex {{ request()->routeIs('site.dashboard') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            bar_chart_4_bars
+                        </span>Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('finance.index')}}" class="nav-link text-light d-flex {{ request()->routeIs('finance*') ? 'active' : '' }}">
+                        <span class="material-symbols-outlined me-2">
+                            paid
+                        </span>Financeiro</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('projects.index') }}" class="nav-link d-flex {{ request()->routeIs('project*', 'task*') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            work
+                        </span>Projetos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('clients.index') }}" class="nav-link d-flex {{ request()->routeIs('client*') ? 'active' : '' }} text-light">
+                        <span class="material-symbols-outlined me-2">
+                            groups
+                        </span>Clientes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link d-flex {{ request()->routeIs('user*') ? 'active' : '' }} text-light">
+                    <span class="material-symbols-outlined me-2">
+                        account_circle
+                    </span>
+                    Usuários</a>
+                </li>
+            </ul>
+
+            <hr>
+
+            @php
+                $user = auth()->user();
+                $nameParts = explode(' ', trim($user->name)); // Divide o nome em partes
+                $initials = strtoupper(substr($nameParts[0], 0, 1)); // Primeira inicial
+            
+                if (count($nameParts) > 1) {
+                    $initials .= strtoupper(substr($nameParts[1], 0, 1)); // Segunda inicial (se houver nome composto)
+                }
+            @endphp
+        
+            <div class="dropdown">
+
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" 
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
+                        style="width: 32px; height: 32px; font-weight: bold;">
+                        {{ $initials }}
+                    </div>
+                    {{-- talvez mudar a cor de acordo com o cargo da pessoa --}}
+                    <strong>{{ $user->name }}</strong>
                 </a>
 
-                <ul class="navbar-nav">
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 
-                    <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">Dashboard</a>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Novo projeto</a></li>
+                    
+                    <li><a class="dropdown-item" href="#">Novo cliente</a></li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('finance.index')}}" class="nav-link">Financeiro</a>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('projects.index') }}" class="nav-link">Projetos</a>
-                    </li>
+                    <li><hr class="dropdown-divider"></li>
 
-                    <li class="nav-item">
-                        <a href="{{ route('clients.index') }}" class="nav-link">Clientes</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">Usuários</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth()->user()->name }}
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="nav-link" href="#">Perfil</a></li>
-                          <li><form action="/logout" method="POST">
+                    <li>
+                        <form action="/logout" method="POST">
                             @csrf
                             <a href="/logout" 
-                                class="nav-link" 
+                                class="dropdown-item" 
                                 onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
-                            </form></li>
-                        </ul>
+                        </form>
                     </li>
-                    
+
                 </ul>
+
             </div>
-        </nav>
+    
+        </header>
 
-    </header>
+        <main class="container p-0 me-0">
 
-    @if(session('msg'))
-        <p class="msg"> {{ session('msg') }}</p>
-    @endif
+            <div class="m-0">
+                @if(session('msg'))
+                    <p class="msg"> {{ session('msg') }}</p>
+                @endif
+            </div>
 
-    <main>
-        <div class="container-fluid col-md-10">
-  
-            @yield('content')
-            
-        </div>
-    </main>
+            <div class="content pt-5 px-5 d-flex flex-column justify-content-center">
+                @yield('content')
+            </div>
+
+        </main>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/js/components/sidebars.js"></script>
 </body>
 </html>

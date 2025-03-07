@@ -24,6 +24,11 @@
     @endforeach
 </div>
 
+<!-- Paginação -->
+<div class="d-flex justify-content-center pb-3 mt-auto">
+    {{ $projects->links('pagination::pagination') }}
+</div>
+
 @endsection
 
 

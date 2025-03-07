@@ -18,8 +18,8 @@
             <th scope="col">#</th>
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">PROJETOS</th>
+            <th scope="col" class="d-none d-md-table-cell">EMAIL</th>
+            <th scope="col" class="d-none d-md-table-cell">PROJETOS</th>
             @can('action', 'App\Models\User')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -28,7 +28,7 @@
     <tbody class="text-center">
         @foreach ($users as $index => $user)
             <tr>
-                <th scope="row">{{ $index + 1 }}</th>
+                <th scope="row">{{ ($users->currentPage() - 1) * $users->perPage() + $index + 1 }}</th>
                 
                 @can('view', $user)
                     <td><a href="{{ route('user.show', $user->id) }}" class="text-info-emphasis">{{ $user->name }}</a></td>
@@ -55,11 +55,11 @@
                 @endswitch
                 </td>
 
-                <td class="td-gray">{{ $user->email }}</td>
-                <td class="td-gray">
-                    @foreach ($user->projects as $index => $project)
+                <td class="td-gray d-none d-md-table-cell">{{ $user->email }}</td>
+                <td class="td-gray d-none d-md-table-cell">
+                    @foreach ($user->tasks->pluck('project')->unique('id') as $index => $project)
                         <span>{{$project->title}}</span>
-                        @if (count($user->projects) > ($index+1))
+                        @if (count($user->tasks->pluck('project')->unique('id')) > ($index+1))
                             ; 
                         @endif
                     @endforeach
@@ -87,6 +87,11 @@
         @endforeach
     </tbody>
 </table>
+
+<!-- Paginação -->
+<div class="d-flex justify-content-center pb-3 mt-auto">
+    {{ $users->links('pagination::pagination') }}
+</div>
     
 @endsection
 

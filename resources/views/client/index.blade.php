@@ -17,8 +17,8 @@
             <th scope="col text-center">#</th>
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col" class="col-4">PROJETOS</th>
+            <th scope="col" class="d-none d-md-table-cell">EMAIL</th>
+            <th scope="col" class="col-4 d-none d-md-table-cell">PROJETOS</th>
             @can('action', 'App\Models\Client')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -27,7 +27,7 @@
     <tbody class="text-center">
         @foreach ($clients as $index => $client)
             <tr>
-                <th scope="row">{{ $index + 1 }}</th>
+                <th scope="row">{{ ($clients->currentPage() - 1) * $clients->perPage() + $index + 1 }}</th>
 
                 <td><a href="{{ route('client.show', $client->id) }}" class="text-info-emphasis">{{ $client->name }}</a></td>
                 
@@ -35,9 +35,9 @@
                     {{ $client->type ? 'PJ' : 'PF' }}
                 </td>
 
-                <td class="td-gray">{{ $client->email }}</td>
+                <td class="td-gray d-none d-md-table-cell">{{ $client->email }}</td>
 
-                <td class="td-gray">
+                <td class="td-gray d-none d-md-table-cell">
                     @foreach ($client->projects as $index => $project)
                         <span>{{$project->title}}</span>
                         @if (count($client->projects) > ($index+1))
@@ -69,6 +69,11 @@
         @endforeach
     </tbody>
 </table>
+
+<!-- Paginação -->
+<div class="d-flex justify-content-center pb-3 mt-auto">
+    {{ $clients->links('pagination::pagination') }}
+</div>
     
 @endsection
 
