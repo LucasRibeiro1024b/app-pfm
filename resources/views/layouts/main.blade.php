@@ -57,6 +57,7 @@
 
                 <img src="/img/logo.jpeg" alt="SF" style="border-radius: 50%; width: 50px;">
                 <span class="fs-4 ms-3">SystemForge</span>
+            </a>
 
             <hr>
 
