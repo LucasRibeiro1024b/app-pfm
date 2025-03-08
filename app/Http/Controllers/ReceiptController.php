@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReceiptRequest;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\Receipt;
@@ -31,19 +32,9 @@ class ReceiptController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReceiptRequest $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'value' => 'required|numeric',
-            'payment_date' => 'nullable|date',
-            'end_date' => 'required|date',
-            'project_id' => 'required|exists:projects,id',
-            'client_id' => 'required|exists:clients,id',
-        ]);
-
-        Receipt::create($validatedData);
+        Receipt::create($request->validated());
 
         return redirect()->route('finance.index')->with('msg', 'Receita criada com sucesso!');
     }
@@ -71,22 +62,10 @@ class ReceiptController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ReceiptRequest $request, string $id)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'value' => 'required|numeric',
-            'payment_date' => 'nullable|date',
-            'end_date' => 'required|date',
-            'project_id' => 'required|exists:projects,id',
-            'client_id' => 'required|exists:clients,id',
-        ]);
-        
-        $new_data = $request->all();
-
         $receipt = Receipt::findOrFail($id);
-        $receipt->update($new_data);
+        $receipt->update($request->validated());
 
         return redirect()->route('finance.index', $id)->with('msg', 'Receita atualizada com sucesso!');
     }

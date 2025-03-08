@@ -29,11 +29,11 @@
             <td>{{ $finance->title }}</td>
             <td>{{ $finance->value }}</td>
             <td>{{ $finance->project->title }}</td>
-            <td>{{ $finance->payment_date }}</td>
+            <td>{{ $finance->payment_date ? $finance->payment_date : 'Aguardando Pagamento' }}</td>
             <td>{{ $finance->end_date }}</td>
             <td>
                 @if ( $finance->type == 'Receita' )
-                    <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1">Editar Receita<i class="material-icons">edit</i></a>
+                    <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
                     
                     @include('components.modal.delete', [
                         'route' => 'receipt.destroy',
@@ -41,7 +41,7 @@
                         'id' => $finance->id
                     ])
                 @else
-                    <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1">Editar Despesa<i class="material-icons">edit</i></a>
+                    <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
                         
                     @include('components.modal.delete', [
                         'route' => 'expense.destroy',
