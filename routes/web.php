@@ -184,7 +184,7 @@ Route::prefix('expense')->group(function()
 
 ///////////////////////*** módulo "category" (atividade) ***///////////////////////
 
-Route::get("/categories", [CategoryController::class, 'index'])->name('category.index');
+Route::get("/categories", [CategoryController::class, 'index'])->name('categories.index');
 
 Route::prefix('category')->group(function()
 {
