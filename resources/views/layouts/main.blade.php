@@ -71,7 +71,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('finance.index')}}" class="nav-link text-light d-flex {{ request()->routeIs('finance*') ? 'active' : '' }}">
+                    <a href="{{ route('finance.index')}}" class="nav-link text-light d-flex {{ (request()->routeIs('finance*') || request()->routeIs('categor*')) ? 'active' : '' }}">
                         <span class="material-symbols-outlined me-2">
                             paid
                         </span>Financeiro</a>
