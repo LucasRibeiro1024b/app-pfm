@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExpenseController;
@@ -179,4 +180,25 @@ Route::prefix('expense')->group(function()
     Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
     Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update');
     Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
+});
+
+///////////////////////*** módulo "category" (atividade) ***///////////////////////
+
+
+Route::prefix('category')->group(function()
+{
+    Route::get('/create/{id}', [CategoryController::class, 'create'])->name('category.create')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+    
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+    
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+    
+    Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+    
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
 });
