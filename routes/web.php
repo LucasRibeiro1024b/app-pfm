@@ -184,10 +184,11 @@ Route::prefix('expense')->group(function()
 
 ///////////////////////*** módulo "category" (atividade) ***///////////////////////
 
+Route::get("/categories", [CategoryController::class, 'index'])->name('category.index');
 
 Route::prefix('category')->group(function()
 {
-    Route::get('/create/{id}', [CategoryController::class, 'create'])->name('category.create')->middleware('auth', 'accept:0,2');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
     //sócio e financeiro
     
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store')->middleware('auth', 'accept:0,2');
