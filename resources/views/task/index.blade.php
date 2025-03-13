@@ -1,4 +1,4 @@
-<div id="tasks" class="col-md-8 ps-5">
+<div id="tasks" class="ps-5 mb-4">
 
     @include('components.alert.error')
         

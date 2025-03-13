@@ -63,7 +63,10 @@
         </div>
     </div>
 
-    @include('task.index')
+    <div class="col-md-8">
+        @include('task.index')
+        @include('finance.index-project')
+    </div>
 
 </div>
    

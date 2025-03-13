@@ -157,7 +157,7 @@
                 @endif
             </div>
 
-            <div class="content pt-5 px-5 d-flex flex-column justify-content-center">
+            <div class="content pt-4 px-5 d-flex flex-column justify-content-center">
                 @yield('content')
             </div>
 
