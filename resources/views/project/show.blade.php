@@ -10,7 +10,7 @@
 
         <h5 class="card-header text-center">{{ $project->title }}</h5>
         
-        <div class="card-body py-3">
+        <div class="card-body py-3 d-flex row align-items-between">
 
             <span class="card-text py-3">Cliente: 
             @isset($project->client)
