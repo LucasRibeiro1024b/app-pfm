@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\UserRoles;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClientController;
