@@ -40,6 +40,9 @@
             <div class="d-flex justify-content-between align-items-center">
 
             <div class="d-flex">
+                <p>despesa prevista: {{$project->expeted($project->id)}}%</p>
+            </div>
+            <div class="d-flex">
                 <p>andamento: {{$project->progress($project->id)}}%</p>
             </div>
 

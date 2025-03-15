@@ -35,10 +35,22 @@ class Project extends Model
 
     // métodos dos cálculos
 
-    public function progress($project_id)
+    // progresso
+
+    private function tasksAll()
     {
-        $tasks_all = Task::where('project_id', $project_id)->count();
-        $tasks_completed = Task::where('project_id', $project_id)->where('completed', 1)->count();
+        return Task::where('project_id', $this->id)->count();
+    }
+
+    private function tasksCompleted()
+    {
+        return Task::where('project_id', $this->id)->where('completed', 1)->count();
+    }
+
+    public function progress()
+    {
+        $tasks_all = $this->tasksAll();
+        $tasks_completed = $this->tasksCompleted();
 
         if ($tasks_all > 0) {
             $progress = ($tasks_completed / $tasks_all) * 100;
@@ -50,5 +62,16 @@ class Project extends Model
         $progress = number_format($progress, 2);
 
         return $progress;
+    }
+
+    // despesas previstas
+
+    public function expectedExpenses() {
+        $value_expenses = 0;
+        foreach ($this->expenses as $key => $expense) {
+            $value_expenses += $expense->value;
+        }
+
+        return $value_expenses;
     }
 }
