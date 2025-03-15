@@ -54,22 +54,22 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index')->mid
 
 Route::prefix('user')->group(function()
 {
-    Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show')->middleware('auth', 'accept:0');
+    Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 
-    Route::get('/create', [UserController::class, 'create'])->name('user.create')->middleware('auth', 'accept:0');
+    Route::get('/create', [UserController::class, 'create'])->name('user.create')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 
-    Route::post('/create', [UserController::class, 'store'])->name('user.store')->middleware('auth', 'accept:0');
+    Route::post('/create', [UserController::class, 'store'])->name('user.store')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth', 'accept:0');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 
-    Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update')->middleware('auth', 'accept:0');
+    Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 
-    Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth', 'accept:0');
+    Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER);
     //sócio
 });
 
@@ -85,19 +85,19 @@ Route::prefix('project')->group(function()
     Route::get('/show/{id}', [ProjectController::class, 'show'])->name('project.show')->middleware('auth');
     //aceita todos os usuários logados
 
-    Route::get('/create', [ProjectController::class, 'create'])->name('project.create')->middleware('auth', 'accept:0,1');
+    Route::get('/create', [ProjectController::class, 'create'])->name('project.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::post('/create', [ProjectController::class, 'store'])->name('project.store')->middleware('auth', 'accept:0,1');
+    Route::post('/create', [ProjectController::class, 'store'])->name('project.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth', 'accept:0,1');
+    Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::put('/update/{id}', [ProjectController::class, 'update'])->name('project.update')->middleware('auth', 'accept:0,1');
+    Route::put('/update/{id}', [ProjectController::class, 'update'])->name('project.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::delete('/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy')->middleware('auth', 'accept:0,1');
+    Route::delete('/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 });
 
@@ -113,19 +113,19 @@ Route::prefix('client')->group(function()
     Route::get('/show/{id}', [ClientController::class, 'show'])->name('client.show')->middleware('auth');
     //aceita todos os usuários logados
 
-    Route::get('/create', [ClientController::class, 'create'])->name('client.create')->middleware('auth', 'accept:0,1');
+    Route::get('/create', [ClientController::class, 'create'])->name('client.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::post('/create', [ClientController::class, 'store'])->name('client.store')->middleware('auth', 'accept:0,1');
+    Route::post('/create', [ClientController::class, 'store'])->name('client.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('client.edit')->middleware('auth', 'accept:0,1');
+    Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('client.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update')->middleware('auth', 'accept:0,1');
+    Route::put('/update/{id}', [ClientController::class, 'update'])->name('client.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 
-    Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy')->middleware('auth', 'accept:0,1');
+    Route::delete('/destroy/{id}', [ClientController::class, 'destroy'])->name('client.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 });
 
@@ -135,22 +135,22 @@ Route::prefix('client')->group(function()
 
 Route::prefix('task')->group(function()
 {
-    Route::get('/show/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth', 'accept:0,1,3');
+    Route::get('/show/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT.','.UserRoles::FINANCIER);
     //sócio, consultor e estagiário
     
-    Route::get('/create/{id}', [TaskController::class, 'create'])->name('task.create')->middleware('auth', 'accept:0,1');
+    Route::get('/create/{id}', [TaskController::class, 'create'])->name('task.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
     
-    Route::post('/store', [TaskController::class, 'store'])->name('task.store')->middleware('auth', 'accept:0,1');
+    Route::post('/store', [TaskController::class, 'store'])->name('task.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
     
-    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit')->middleware('auth', 'accept:0,1,3');
+    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT.','.UserRoles::FINANCIER);
     //sócio, consultor e estagiário
     
-    Route::put('/update/{id}', [TaskController::class, 'update'])->name('task.update')->middleware('auth', 'accept:0,1,3');
+    Route::put('/update/{id}', [TaskController::class, 'update'])->name('task.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT.','.UserRoles::FINANCIER);
     //sócio, consultor e estagiário
     
-    Route::delete('/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy')->middleware('auth', 'accept:0,1');
+    Route::delete('/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::CONSULTANT);
     //sócio e consultor
 });
 

@@ -19,14 +19,14 @@ class UsersSeeder extends Seeder
             'email' => 'admin@mail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'type' => 0,
+            'type' => 'partner',
             'value_hour' => 100
         ]);
 
-        $types = [1, 2, 3];
+        $types = ['partner', 'consultant', 'financier', 'intern'];
         foreach ($types as $type) {
             User::factory()->create([
-                'type' => $type, // Explicitly set the type
+                'type' => $type,
             ]);
         }
 
