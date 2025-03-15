@@ -29,10 +29,10 @@
                 <label for="type">Cargo</label>
                 <select id="type" name="type" class="form-select" disabled>
                     @foreach([
-                            UserRoles::PARTNER => 'Sócio',
-                            UserRoles::CONSULTANT => 'Consultor',
-                            UserRoles::FINANCIER => 'Financeiro',
-                            UserRoles::INTERN => 'Estagiário'
+                            $roles::PARTNER => 'Sócio',
+                            $roles::CONSULTANT => 'Consultor',
+                            $roles::FINANCIER => 'Financeiro',
+                            $roles::INTERN => 'Estagiário'
                         ] as $key => $type)
                         <option value="{{ $key }}" {{ old('type', $user->type) == $key ? 'selected' : '' }}>
                             {{ $type }}</option>

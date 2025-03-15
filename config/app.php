@@ -123,9 +123,4 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-
-    'aliases' => [
-        'UserRoles' => App\Constants\UserRoles::class,
-    ],
-
 ];
