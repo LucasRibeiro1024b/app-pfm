@@ -29,8 +29,8 @@ class ProjectPolicy
      */
     public function create(User $user): bool
     {
-        return ($user->type == 0 || 
-                $user->type == 1);
+        return ($user->type == UserRoles::PARTNER || 
+                $user->type == UserRoles::CONSULTANT);
     }
 
     /**
@@ -38,8 +38,8 @@ class ProjectPolicy
      */
     public function update(User $user): bool
     {
-        return ($user->type == 0 || 
-                $user->type == 1);
+        return ($user->type == UserRoles::PARTNER || 
+                $user->type == UserRoles::CONSULTANT);
     }
 
     /**
@@ -47,8 +47,8 @@ class ProjectPolicy
      */
     public function delete(User $user): bool
     {
-        return ($user->type == 0 || 
-                $user->type == 1);
+        return ($user->type == UserRoles::PARTNER || 
+                $user->type == UserRoles::CONSULTANT);
     }
 
 }

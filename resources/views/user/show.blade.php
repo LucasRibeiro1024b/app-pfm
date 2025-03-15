@@ -28,7 +28,12 @@
             <div class="form-group">
                 <label for="type">Cargo</label>
                 <select id="type" name="type" class="form-select" disabled>
-                    @foreach (['Sócio', 'Consultor', 'Financeiro', 'Estagiário'] as $key => $type)
+                    @foreach([
+                            UserRoles::PARTNER => 'Sócio',
+                            UserRoles::CONSULTANT => 'Consultor',
+                            UserRoles::FINANCIER => 'Financeiro',
+                            UserRoles::INTERN => 'Estagiário'
+                        ] as $key => $type)
                         <option value="{{ $key }}" {{ old('type', $user->type) == $key ? 'selected' : '' }}>
                             {{ $type }}</option>
                     @endforeach

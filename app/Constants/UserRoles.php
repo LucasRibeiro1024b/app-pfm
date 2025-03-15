@@ -3,8 +3,8 @@
 namespace App\Constants;
 
 class UserRoles {
-    const PARTNER = 0;
-    const CONSULTANT = 1;
-    const FINANCIER = 2;
-    const INTERN = 3;
+    const PARTNER = 'partner';
+    const CONSULTANT = 'consultant';
+    const FINANCIER = 'financier';
+    const INTERN = 'intern';
 }
