@@ -43,19 +43,7 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
-        $tasks_all = Task::where('project_id', $project->id)->count();
-        $tasks_completed = Task::where('project_id', $project->id)->where('completed', 1)->count();
-
-        if ($tasks_all > 0) {
-            $progress = ($tasks_completed / $tasks_all) * 100;
-        }
-        else {
-            $progress = 100;
-        }
-
-        $progress = number_format($progress, 2);
-
-        return view('project.show', compact('project', 'progress'));
+        return view('project.show', compact('project'));
     }
 
     public function edit($id)

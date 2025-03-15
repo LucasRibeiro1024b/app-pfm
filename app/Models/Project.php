@@ -32,4 +32,23 @@ class Project extends Model
     {
         return $this->hasMany(Expense::class, 'project_id');
     }
+
+    // métodos dos cálculos
+
+    public function progress($project_id)
+    {
+        $tasks_all = Task::where('project_id', $project_id)->count();
+        $tasks_completed = Task::where('project_id', $project_id)->where('completed', 1)->count();
+
+        if ($tasks_all > 0) {
+            $progress = ($tasks_completed / $tasks_all) * 100;
+        }
+        else {
+            $progress = 100;
+        }
+
+        $progress = number_format($progress, 2);
+
+        return $progress;
+    }
 }
