@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Constants\UserRoles;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +20,11 @@ class UsersSeeder extends Seeder
             'email' => 'admin@mail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'type' => 'partner',
+            'type' => UserRoles::PARTNER,
             'value_hour' => 100
         ]);
 
-        $types = ['partner', 'consultant', 'financier', 'intern'];
+        $types = [UserRoles::PARTNER, UserRoles::CONSULTANT, UserRoles::FINANCIER, UserRoles::INTERN];
         foreach ($types as $type) {
             User::factory()->create([
                 'type' => $type,
