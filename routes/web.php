@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -164,19 +165,19 @@ Route::get("/finances", [FinanceController::class, 'index'])->name('finance.inde
 
 Route::prefix('receipt')->group(function()
 {
-    Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create')->middleware('auth', 'accept:0,2');
+    Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::post('/store', [ReceiptController::class, 'store'])->name('receipt.store')->middleware('auth', 'accept:0,2');
+    Route::post('/store', [ReceiptController::class, 'store'])->name('receipt.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::get('/edit/{id}', [ReceiptController::class, 'edit'])->name('receipt.edit')->middleware('auth', 'accept:0,2');
+    Route::get('/edit/{id}', [ReceiptController::class, 'edit'])->name('receipt.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('receipt.update')->middleware('auth', 'accept:0,2');
+    Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('receipt.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('receipt.destroy')->middleware('auth', 'accept:0,2');
+    Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('receipt.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 });
 
@@ -184,42 +185,42 @@ Route::prefix('receipt')->group(function()
 
 Route::prefix('expense')->group(function()
 {
-    Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create')->middleware('auth', 'accept:0,2');
+    Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::post('/store', [ExpenseController::class, 'store'])->name('expense.store')->middleware('auth', 'accept:0,2');
+    Route::post('/store', [ExpenseController::class, 'store'])->name('expense.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit')->middleware('auth', 'accept:0,2');
+    Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update')->middleware('auth', 'accept:0,2');
+    Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
-    Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy')->middleware('auth', 'accept:0,2');
+    Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
 });
 
 ///////////////////////*** módulo "category" (atividade) ***///////////////////////
 
-Route::get("/categories", [CategoryController::class, 'index'])->name('categories.index')->middleware('auth', 'accept:0,2');
+Route::get("/categories", [CategoryController::class, 'index'])->name('categories.index')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
 //sócio e financeiro
 
 Route::prefix('category')->group(function()
 {
-    Route::get('/create', [CategoryController::class, 'create'])->name('category.create')->middleware('auth', 'accept:0,2');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
     
-    Route::post('/store', [CategoryController::class, 'store'])->name('category.store')->middleware('auth', 'accept:0,2');
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
     
-    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('auth', 'accept:0,2');
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
     
-    Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('auth', 'accept:0,2');
+    Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
     
-    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('auth', 'accept:0,2');
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 });

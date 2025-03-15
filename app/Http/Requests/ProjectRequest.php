@@ -13,7 +13,7 @@ class ProjectRequest extends FormRequest
     public function authorize(): bool
     {
         // apenas se for sócio ou consultor
-        if (auth()->user()->type == 0 || auth()->user()->type == 1) 
+        if (auth()->user()->type == UserRoles::PARTNER || auth()->user()->type == UserRoles::CONSULTANT) 
             return true;
         else
             return false;
