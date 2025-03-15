@@ -5,7 +5,6 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FinanceController;
-use App\Http\Controllers\FinancesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\TaskController;
@@ -157,38 +156,58 @@ Route::prefix('task')->group(function()
 
 /////////////////*** módulo financeiro ***///////////////
 
-Route::get("/finances", [FinanceController::class, 'index'])->name('finance.index');
+Route::get("/finances", [FinanceController::class, 'index'])->name('finance.index')->middleware('auth');
 
 
 ////////////////*** módulo Receita (receipt) ***/////////////////////////
 
 Route::prefix('receipt')->group(function()
 {
-    Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create');
-    Route::post('/store', [ReceiptController::class, 'store'])->name('receipt.store');
-    Route::get('/edit/{id}', [ReceiptController::class, 'edit'])->name('receipt.edit');
-    Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('receipt.update');
-    Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('receipt.destroy');
+    Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::post('/store', [ReceiptController::class, 'store'])->name('receipt.store')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::get('/edit/{id}', [ReceiptController::class, 'edit'])->name('receipt.edit')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::put('/update/{id}', [ReceiptController::class, 'update'])->name('receipt.update')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::delete('/destroy/{id}', [ReceiptController::class, 'destroy'])->name('receipt.destroy')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
 });
 
 ////////////////*** módulo Despesa (expense) ***/////////////////////////
 
 Route::prefix('expense')->group(function()
 {
-    Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create');
-    Route::post('/store', [ExpenseController::class, 'store'])->name('expense.store');
-    Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
-    Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update');
-    Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
+    Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::post('/store', [ExpenseController::class, 'store'])->name('expense.store')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::get('/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::put('/update/{id}', [ExpenseController::class, 'update'])->name('expense.update')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
+    Route::delete('/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy')->middleware('auth', 'accept:0,2');
+    //sócio e financeiro
+
 });
 
 ///////////////////////*** módulo "category" (atividade) ***///////////////////////
 
-Route::get("/categories", [CategoryController::class, 'index'])->name('categories.index');
+Route::get("/categories", [CategoryController::class, 'index'])->name('categories.index')->middleware('auth', 'accept:0,2');
+//sócio e financeiro
 
 Route::prefix('category')->group(function()
 {
-    Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::get('/create', [CategoryController::class, 'create'])->name('category.create')->middleware('auth', 'accept:0,2');
     //sócio e financeiro
     
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store')->middleware('auth', 'accept:0,2');
