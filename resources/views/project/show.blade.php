@@ -39,27 +39,30 @@
 
             <div class="d-flex justify-content-between align-items-center">
 
-            <div class="d-flex">
-                <p>despesa prevista: {{$project->expeted($project->id)}}%</p>
-            </div>
-            <div class="d-flex">
-                <p>andamento: {{$project->progress($project->id)}}%</p>
-            </div>
+                <div class="row">
+                    <p>despesa prevista: R${{ number_format($project->expectedExpenses(), 2, ',', '.') }}</p>
+                
+                    <p>despesa real: R${{ number_format($project->realExpenses(), 2, ',', '.') }}</p>
 
-            <div class="d-flex">
+                    <p>receita real: R${{ number_format($project->realReceipts(), 2, ',', '.') }}</p>
                 
-                @can('update', $project)
-                    <a href="{{ route('project.edit', $project->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
-                @endcan
-                
-                @can('delete', $project)
-                    @include('components.modal.delete', [
-                        'route' => 'project.destroy',
-                        'name' => $project->title,
-                        'id' => $project->id
-                    ])
-                @endcan
-            </div>
+                    <p>andamento: {{ number_format($project->progress(), 2, ',', '.') }}%</p>
+                </div>
+
+                <div class="d-flex">
+                    
+                    @can('update', $project)
+                        <a href="{{ route('project.edit', $project->id) }}" class="btn btn-outline-primary ms-1 me-1"><i class="material-icons">edit</i></a>
+                    @endcan
+                    
+                    @can('delete', $project)
+                        @include('components.modal.delete', [
+                            'route' => 'project.destroy',
+                            'name' => $project->title,
+                            'id' => $project->id
+                        ])
+                    @endcan
+                </div>
 
             </div>
 

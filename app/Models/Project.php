@@ -37,13 +37,11 @@ class Project extends Model
 
     // progresso
 
-    private function tasksAll()
-    {
+    private function tasksAll(){
         return Task::where('project_id', $this->id)->count();
     }
 
-    private function tasksCompleted()
-    {
+    private function tasksCompleted(){
         return Task::where('project_id', $this->id)->where('completed', 1)->count();
     }
 
@@ -67,11 +65,53 @@ class Project extends Model
     // despesas previstas
 
     public function expectedExpenses() {
-        $value_expenses = 0;
-        foreach ($this->expenses as $key => $expense) {
-            $value_expenses += $expense->value;
+        $value_expected_expenses = 0;
+        foreach ($this->tasks as $task) {
+            $value_expected_expenses += $task->value;
         }
 
-        return $value_expenses;
+        return $value_expected_expenses;
     }
+
+    // despesas reais
+
+    public function realExpenses() {
+        $value_real_expenses = 0;
+        foreach ($this->expenses as $expense) {
+            $value_real_expenses += $expense->value;
+        }
+
+        return $value_real_expenses;
+    }
+
+    //receitas previstas
+
+    public function expectedReceipts() {
+        return 0;
+    }
+
+
+    // receitas reais
+
+    public function realReceipts() {
+        $value_real_receipts = 0;
+        foreach ($this->receipts as $receipt) {
+            $value_real_receipts += $receipt->value;
+        }
+
+        return $value_real_receipts;
+    }
+
+    //lucro real
+
+    public function expectedProfit() {
+        return $this->expectedReceipts() - $this->expectedExpenses();
+    }
+
+    //lucro real
+
+    public function realProfit() {
+        return $this->realReceipts() - $this->realExpenses();
+    }
+
 }
