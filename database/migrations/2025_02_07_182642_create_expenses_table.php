@@ -31,6 +31,7 @@ return new class extends Migration
             $table->text("description")->nullable();
             $table->double("value");
             $table->date("payment_date")->nullable();
+            $table->date("end_date");
             $table->integer("quantity")->nullable();
             $table->integer("hours")->nullable();
             

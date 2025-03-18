@@ -40,11 +40,13 @@
             <div class="d-flex justify-content-between align-items-center">
 
                 <div class="row">
-                    <p>despesa prevista: R${{ number_format($project->expectedExpenses(), 2, ',', '.') }}</p>
+                    <p>Despesa Prevista: R$ {{ number_format($project->expectedExpense(), 2, ',', '.') }}</p>
+                    <p>Receita Prevista: R$ {{ number_format($project->expectedReceipt(), 2, ',', '.') }}</p>
+                    <p>Lucro Prevista: R$ {{ number_format($project->expectedProfit(), 2, ',', '.') }}</p>
                 
-                    <p>despesa real: R${{ number_format($project->realExpenses(), 2, ',', '.') }}</p>
-
-                    <p>receita real: R${{ number_format($project->realReceipts(), 2, ',', '.') }}</p>
+                    <p>Despesa: R$ {{ number_format($project->realExpense(), 2, ',', '.') }}</p>
+                    <p>Receita: R$ {{ number_format($project->realReceipt(), 2, ',', '.') }}</p>
+                    <p>Lucro: R$ {{ number_format($project->realProfit(), 2, ',', '.') }}</p>
                 
                     <p>andamento: {{ number_format($project->progress(), 2, ',', '.') }}%</p>
                 </div>

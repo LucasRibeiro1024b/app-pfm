@@ -64,54 +64,46 @@ class Project extends Model
 
     // despesas previstas
 
-    public function expectedExpenses() {
-        $value_expected_expenses = 0;
-        foreach ($this->tasks as $task) {
-            $value_expected_expenses += $task->value;
-        }
-
-        return $value_expected_expenses;
+    public function expectedExpense() {
+        return $this->expenses
+        ->whereNull('payment_date')
+        ->sum('value');
     }
 
     // despesas reais
 
-    public function realExpenses() {
-        $value_real_expenses = 0;
-        foreach ($this->expenses as $expense) {
-            $value_real_expenses += $expense->value;
-        }
-
-        return $value_real_expenses;
+    public function realExpense() {
+        return $this->expenses
+        ->whereNotNull('payment_date')
+        ->sum('value');
     }
 
     //receitas previstas
 
-    public function expectedReceipts() {
-        return 0;
+    public function expectedReceipt() {
+        return $this->tasks
+        ->sum('value');
     }
 
 
     // receitas reais
 
-    public function realReceipts() {
-        $value_real_receipts = 0;
-        foreach ($this->receipts as $receipt) {
-            $value_real_receipts += $receipt->value;
-        }
-
-        return $value_real_receipts;
+    public function realReceipt() {
+        return $this->receipts
+        ->whereNotNull('payment_date')
+        ->sum('value');
     }
 
     //lucro real
 
     public function expectedProfit() {
-        return $this->expectedReceipts() - $this->expectedExpenses();
+        return $this->expectedReceipt() - $this->expectedExpense();
     }
 
     //lucro real
 
     public function realProfit() {
-        return $this->realReceipts() - $this->realExpenses();
+        return $this->realReceipt() - $this->realExpense();
     }
 
 }
