@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Receipt;
+use App\Models\Task;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,12 @@ class ReceiptsSeeder extends Seeder
      */
     public function run(): void
     {
-        Receipt::factory(10)->create();
+        $tasks = Task::all();
+
+        foreach ($tasks as $task) {
+            Receipt::factory(1)->create([
+                'value' => $task->value
+            ]);
+        }
     }
 }
