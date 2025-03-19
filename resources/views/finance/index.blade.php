@@ -47,23 +47,25 @@
             
             @can('action', 'App\Models\Expense')
                 <td>
-                    @if ( $finance->type == 'Receita' )
-                        <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
-                        
-                        @include('components.modal.delete', [
-                            'route' => 'receipt.destroy',
-                            'name' => $finance->title,
-                            'id' => $finance->id
-                        ])
-                    @else
-                        <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                    <div class="d-flex justify-content-center align-items-center">
+                        @if ( $finance->type == 'Receita' )
+                            <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
                             
-                        @include('components.modal.delete', [
-                            'route' => 'expense.destroy',
-                            'name' => $finance->title,
-                            'id' => $finance->id
-                        ])
-                    @endif
+                            @include('components.modal.delete', [
+                                'route' => 'receipt.destroy',
+                                'name' => $finance->title,
+                                'id' => $finance->id
+                            ])
+                        @else
+                            <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                                
+                            @include('components.modal.delete', [
+                                'route' => 'expense.destroy',
+                                'name' => $finance->title,
+                                'id' => $finance->id
+                            ])
+                        @endif
+                    </div>
                 </td>
             @endcan
         </tr>
