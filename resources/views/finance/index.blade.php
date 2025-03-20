@@ -41,7 +41,7 @@
             @if ($finance->type == 'Despesa')
                 <td><a href=" {{route('expense.show', $finance->id)}} ">{{ $finance->title }}</a></td>
             @else
-
+                {{-- <td><a href=" {{route('receipt.show', $finance->id)}} ">{{ $finance->title }}</a></td> --}}
             @endif
 
             <td>{{ $finance->value }}</td>
