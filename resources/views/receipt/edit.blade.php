@@ -71,3 +71,7 @@
 </div>
 
 @endsection
+
+@push('style')
+    <link rel="stylesheet" href="/css/client/create.css">
+@endpush
