@@ -185,6 +185,9 @@ Route::prefix('receipt')->group(function()
 
 Route::prefix('expense')->group(function()
 {
+    Route::get('/show/{id}', [ExpenseController::class, 'show'])->name('expense.show')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    //sócio e financeiro
+
     Route::get('/create', [ExpenseController::class, 'create'])->name('expense.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 

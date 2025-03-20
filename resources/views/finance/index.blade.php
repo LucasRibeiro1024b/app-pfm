@@ -37,7 +37,13 @@
         @foreach ($finances as $finance)
         <tr>
             <td>{{ $finance->type }}</td>
-            <td>{{ $finance->title }}</td>
+            
+            @if ($finance->type == 'Despesa')
+                <td><a href=" {{route('expense.show', $finance->id)}} ">{{ $finance->title }}</a></td>
+            @else
+
+            @endif
+
             <td>{{ $finance->value }}</td>
             <td>{{ $finance->project->title }}</td>
             <td>{{ $finance->payment_date ? $finance->payment_date : 'Aguardando Pagamento' }}</td>

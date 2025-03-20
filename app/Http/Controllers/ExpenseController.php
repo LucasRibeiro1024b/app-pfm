@@ -47,9 +47,11 @@ class ExpenseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+
+        return view('expense.show', compact('expense'));
     }
 
     /**
