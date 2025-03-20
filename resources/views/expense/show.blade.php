@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Receita')
+@section('title', 'Despesa')
 
 @section('content')
 
@@ -31,6 +31,11 @@
         </div>
 
         <div class="input-group mb-4">
+            <span class="input-group-text"><i class="material-icons"></i>Projeto:</span>
+            <input class="form-control" value="{{$expense->project->title}}" disabled>
+        </div>
+
+        <div class="input-group mb-4">
             <span class="input-group-text"><i class="material-icons"></i>Fornecedor:</span>
             <input class="form-control" value="{{$expense->supplier->name}}" disabled>
         </div>
@@ -42,7 +47,7 @@
         
         <div class="input-group mb-4">
             <span class="input-group-text"><i class="material-icons"></i>Data de pagamento:</span>
-            <input class="form-control" value="{{$expense->payment_date}}" disabled>
+            <input class="form-control" value="{{$expense->payment_date ? $expense->payment_date : 'Aguardando Pagamento'}}" disabled>
         </div>
         
         <div class="input-group mb-4">

@@ -165,6 +165,9 @@ Route::get("/finances", [FinanceController::class, 'index'])->name('finance.inde
 
 Route::prefix('receipt')->group(function()
 {
+    Route::get('/show/{id}', [ReceiptController::class, 'show'])->name('receipt.show')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    //sócio e financeiro
+
     Route::get('/create', [ReceiptController::class, 'create'])->name('receipt.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
 
