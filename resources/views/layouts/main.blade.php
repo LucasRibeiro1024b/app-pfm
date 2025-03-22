@@ -127,7 +127,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 
                     @switch($user->type)
-                        @case('partner')
+                        @case(Auth()->user()->isPartner())
                             <li><a class="dropdown-item" href="{{ route('project.create') }}">Novo projeto</a></li>
                             <li><a class="dropdown-item" href="{{ route('user.create') }}">Novo usuário</a></li>
                             <li><a class="dropdown-item" href="{{ route('expense.create') }}">Nova despesa</a></li>
