@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users = User::paginate(5);
 
-        return view('user.index', ['users' => $users, 'roles' => UserRoles::class]);
+        return view('user.index', ['users' => $users]);
     }
 
     public function create()
@@ -37,7 +37,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('user.edit', ['user' => $user, 'roles' => UserRoles::class]);
+        return view('user.edit', ['user' => $user]);
     }
 
     public function update(UserRequest $request) 
@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('user.show', ['user' => $user, 'roles' => UserRoles::class]);
+        return view('user.show', ['user' => $user]);
     }
 
     public function destroy($id) {

@@ -126,11 +126,23 @@
 
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 
-                    <li><a class="dropdown-item" href="#">Novo projeto</a></li>
-                    
-                    <li><a class="dropdown-item" href="#">Novo cliente</a></li>
-
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    @switch($user->type)
+                        @case(auth()->user()->isPartner())
+                            <li><a class="dropdown-item" href="{{ route('project.create') }}">Novo projeto</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.create') }}">Novo usuário</a></li>
+                            <li><a class="dropdown-item" href="{{ route('expense.create') }}">Nova despesa</a></li>
+                            <li><a class="dropdown-item" href="{{ route('receipt.create') }}">Nova receita</a></li>
+                            @break
+                        @case(auth()->user()->isConsultant())
+                            <li><a class="dropdown-item" href="{{ route('project.create') }}">Novo projeto</a></li>
+                            @break
+                        @case(auth()->user()->isFinancier())
+                            <li><a class="dropdown-item" href="{{ route('expense.create') }}">Nova despesa</a></li>
+                            <li><a class="dropdown-item" href="{{ route('receipt.create') }}">Nova receita</a></li>
+                            @break
+                        @default
+                            
+                    @endswitch
 
                     <li><hr class="dropdown-divider"></li>
 
