@@ -77,21 +77,26 @@ class User extends Authenticatable
     
     public function isPartner()
     {
-        return $this->type === UserRoles::PARTNER;
+        return $this->type == UserRoles::PARTNER;
     }
 
     public function isConsultant()
     {
-        return $this->type === UserRoles::CONSULTANT;
+        return $this->type == UserRoles::CONSULTANT;
     }
 
     public function isFinancier()
     {
-        return $this->type === UserRoles::FINANCIER;
+        return $this->type == UserRoles::FINANCIER;
     }
 
     public function isIntern()
     {
-        return $this->type === UserRoles::INTERN;
+        return $this->type == UserRoles::INTERN;
+    }
+
+    public function roles()
+    {
+        return [UserRoles::PARTNER, UserRoles::CONSULTANT, UserRoles::FINANCIER, UserRoles::INTERN];
     }
 }
