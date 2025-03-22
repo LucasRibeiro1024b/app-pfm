@@ -42,9 +42,11 @@ class ReceiptController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $receipt = Receipt::findOrFail($id);
+
+        return view('receipt.show', compact('receipt'));
     }
 
     /**
