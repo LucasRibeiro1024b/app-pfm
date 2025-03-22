@@ -15,3 +15,12 @@
     </div>
     
 @endsection
+
+@push('style')
+    @filamentStyles
+    @vite(['resources/css/app.css'])
+@endpush
+@push('script')
+    @filamentScripts
+    @vite('resources/js/app.js')
+@endpush
