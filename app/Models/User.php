@@ -73,9 +73,25 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Task', 'user_id'); 
     }
-
+    
+    
     public function isPartner()
     {
         return $this->type === UserRoles::PARTNER;
+    }
+
+    public function isConsultant()
+    {
+        return $this->type === UserRoles::CONSULTANT;
+    }
+
+    public function isFinancier()
+    {
+        return $this->type === UserRoles::FINANCIER;
+    }
+
+    public function isIntern()
+    {
+        return $this->type === UserRoles::INTERN;
     }
 }
