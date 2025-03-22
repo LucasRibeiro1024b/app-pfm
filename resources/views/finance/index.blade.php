@@ -30,7 +30,9 @@
             <th scope="col">PROJETO</th>
             <th scope="col">DATA PAGAMENTO</th>
             <th scope="col">DATA VENCIMENTO</th>
-            <th scope="col">AÇÕES</th>
+            @can('action', 'App\Models\Expense')
+                <th scope="col">AÇÕES</th>
+            @endcan
         </tr>
     </thead>
     <tbody class="text-center">
@@ -42,25 +44,30 @@
             <td>{{ $finance->project->title }}</td>
             <td>{{ $finance->payment_date ? $finance->payment_date : 'Aguardando Pagamento' }}</td>
             <td>{{ $finance->end_date }}</td>
-            <td>
-                @if ( $finance->type == 'Receita' )
-                    <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
-                    
-                    @include('components.modal.delete', [
-                        'route' => 'receipt.destroy',
-                        'name' => $finance->title,
-                        'id' => $finance->id
-                    ])
-                @else
-                    <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
-                        
-                    @include('components.modal.delete', [
-                        'route' => 'expense.destroy',
-                        'name' => $finance->title,
-                        'id' => $finance->id
-                    ])
-                @endif
-            </td>
+            
+            @can('action', 'App\Models\Expense')
+                <td>
+                    <div class="d-flex justify-content-center align-items-center">
+                        @if ( $finance->type == 'Receita' )
+                            <a href="{{ route('receipt.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                            
+                            @include('components.modal.delete', [
+                                'route' => 'receipt.destroy',
+                                'name' => $finance->title,
+                                'id' => $finance->id
+                            ])
+                        @else
+                            <a href="{{ route('expense.edit', $finance->id) }}" class="btn btn-outline-primary me-1"><i class="material-icons">edit</i></a>
+                                
+                            @include('components.modal.delete', [
+                                'route' => 'expense.destroy',
+                                'name' => $finance->title,
+                                'id' => $finance->id
+                            ])
+                        @endif
+                    </div>
+                </td>
+            @endcan
         </tr>
     @endforeach
     </tbody>
