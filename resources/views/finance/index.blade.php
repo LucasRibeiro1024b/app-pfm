@@ -72,6 +72,11 @@
     @endforeach
     </tbody>
 </table>
+
+<!-- Paginação -->
+<div class="d-flex justify-content-center pb-3 mt-auto">
+    {{ $finances->links('pagination::pagination') }}
+</div>
 @endsection
 
 
