@@ -19,6 +19,7 @@
 @push('style')
     @filamentStyles
     @vite(['resources/css/app.css'])
+    <link rel="stylesheet" href="/css/main/dashboard.css">
 @endpush
 @push('script')
     @filamentScripts
