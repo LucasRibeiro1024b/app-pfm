@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class SupplierFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->sentence(1),
+            'name' => fake()->company,
+            'email' => fake()->unique()->safeEmail,
+            'personType' => true,
+            'personTypeCode' => fake()->numerify('##############'),
+            'address' => fake()->address,
+            'telephone' => fake()->phoneNumber,
+            'user_id' => null,
         ];
     }
 }
