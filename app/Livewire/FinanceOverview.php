@@ -30,8 +30,8 @@ class FinanceOverview extends BaseWidget
         return [
             // Receita
             Stat::make('Receita', 'R$ ' . number_format($totalReceipt, 2, ',', '.'))
-                ->description('Receita real de todos os projetos')
-                ->descriptionIcon($totalReceipt >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
+                ->description('Receita total dos projetos')
+                ->descriptionIcon('heroicon-m-currency-dollar')
                 ->chart($chartReceipt) 
                 ->color($totalReceipt >= 0 ? 'success' : 'danger'),
 
@@ -44,7 +44,7 @@ class FinanceOverview extends BaseWidget
 
             // Lucro
             Stat::make('Lucro', 'R$ ' . number_format($totalProfit, 2, ',', '.'))
-                ->description('Lucro real de todos os projetos')
+                ->description('Lucro total dos projetos')
                 ->descriptionIcon($totalProfit >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->chart($chartProfit)
                 ->color($totalProfit >= 0 ? 'success' : 'danger'),
