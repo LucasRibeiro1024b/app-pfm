@@ -37,7 +37,7 @@
           'opsz' 24
         }
     </style>
-    
+ 
     @stack('style')
     @stack('script')
     {{-- importa apenas os links do css e js indicados no 'content' pela diretiva 'push' --}}

@@ -25,7 +25,7 @@ class ExpensesSeeder extends Seeder
         
         // Loop through each project and create expenses
         $projects->each(function ($project) {
-            Expense::factory(1)->create(['project_id' => $project->id]);
+            Expense::factory(10)->create(['project_id' => $project->id]);
         });
     }
 }
