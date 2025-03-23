@@ -28,6 +28,11 @@
                 @livewire(App\Livewire\ProfitComparisonChart::class)
             </div>
         </div>
+        
+        <div class="mt-5">
+            <h3 class="my-2">Despesas dos últimos 12 meses</h3>
+            @livewire(App\Livewire\ExpensesLast12MonthsChart::class)
+        </div>
     </div>
     
 @endsection

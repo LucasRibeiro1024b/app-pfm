@@ -23,7 +23,7 @@ class ExpenseFactory extends Factory
             "title" => fake()->sentence(2),
             "description" => fake()->sentence(10),
             "value" => fake()->randomNumber(4),
-            "payment_date" => fake()->boolean ? fake()->date() : null,
+            "payment_date" => fake()->boolean ? fake()->dateTimeBetween('-1 year', 'now') : null,
             "end_date" => fake()->dateTimeBetween('-1 year', 'now'),
             "quantity" => random_int(10, 100),
             "hours" => random_int(1, 50),            
