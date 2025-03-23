@@ -8,8 +8,9 @@
         @livewire(App\Livewire\FinanceOverview::class)
     </div>
 
-    <div>
-        @livewire(App\Livewire\BlogPostsChart::class)
+    <div class="mt-5 col-10 offset-1">
+        <h3>Top 4 projetos mais lucrativos</h3>
+        @livewire(App\Livewire\TopProfitableProjectsChart::class)
     </div>
     
 @endsection
