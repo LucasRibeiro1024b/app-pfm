@@ -33,10 +33,10 @@
             <div class="form-group">
                 <label for="type">Cargo</label>
                 <select id="type" name="type" class="form-select" required>
-                    <option value="0">Sócio</option>
-                    <option value="1">Consultor</option>
-                    <option value="2">Financeiro</option>
-                    <option value="3">Estagiário</option>
+                    <option value="{{auth()->user()->roles()[0]}}">Sócio</option>
+                    <option value="{{auth()->user()->roles()[1]}}">Consultor</option>
+                    <option value="{{auth()->user()->roles()[2]}}">Financeiro</option>
+                    <option value="{{auth()->user()->roles()[3]}}">Estagiário</option>
                 </select>
             </div>
 
