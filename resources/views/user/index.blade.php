@@ -7,6 +7,8 @@
 <div class="d-flex justify-content-between">
     <h2>Lista de usuários</h2>
 
+    <input class="form-control" type="text" placeholder="pesquisar" style="width: 300px">
+
     @can('create', 'App\Models\User')
         <a href="{{ route('user.create') }}" class="btn btn-success">novo usuário</a>
     @endcan
@@ -19,7 +21,6 @@
             <th scope="col">NOME</th>
             <th scope="col">TIPO</th>
             <th scope="col" class="d-none d-md-table-cell">EMAIL</th>
-            <th scope="col" class="d-none d-md-table-cell">PROJETOS</th>
             @can('action', 'App\Models\User')
                 <th scope="col">AÇÕES</th>
             @endcan
@@ -56,14 +57,6 @@
                 </td>
 
                 <td class="td-gray d-none d-md-table-cell">{{ $user->email }}</td>
-                <td class="td-gray d-none d-md-table-cell">
-                    @foreach ($user->tasks->pluck('project')->unique('id') as $index => $project)
-                        <span>{{$project->title}}</span>
-                        @if (count($user->tasks->pluck('project')->unique('id')) > ($index+1))
-                            ; 
-                        @endif
-                    @endforeach
-                </td>
                 @can('action', $user)
                     <td class="td-gray align-middle">
                         <div class="d-flex justify-content-center align-items-center">

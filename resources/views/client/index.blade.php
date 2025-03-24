@@ -6,6 +6,9 @@
 
 <div class="d-flex justify-content-between">
     <h2>Lista de clientes</h2>
+
+    <input class="form-control" type="text" placeholder="pesquisar" style="width: 300px">
+
     @can('create', 'App\Models\Client')
         <a href="{{ route('client.create') }}" class="btn btn-success">adicionar novo cliente</a>
     @endcan

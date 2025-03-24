@@ -29,7 +29,6 @@
             <th scope="col">#</th>
             <th scope="col">TÍTULO</th>
             <th scope="col">VALOR</th>
-            <th scope="col">PROJETO</th>
             <th scope="col">DATA PAGAMENTO</th>
             <th scope="col">DATA VENCIMENTO</th>
             @can('action', 'App\Models\Expense')
@@ -49,7 +48,6 @@
             @endif
 
             <td>R${{ number_format($finance->value, 2, ',', '.') }}</td>
-            <td>{{ $finance->project->title }}</td>
             <td>{{ $finance->payment_date ? date('d/m/Y', strtotime($finance->payment_date)) : 'Aguardando Pagamento' }}</td>
             <td>{{ date('d/m/Y', strtotime($finance->end_date)) }}</td>
             
