@@ -37,12 +37,12 @@
                 @endswitch
             </p>
 
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center row">
 
                 <div class="row">
                     <p>Despesa Prevista: R$ {{ number_format($project->expectedExpense(), 2, ',', '.') }}</p>
                     <p>Receita Prevista: R$ {{ number_format($project->expectedReceipt(), 2, ',', '.') }}</p>
-                    <p>Lucro Prevista: R$ {{ number_format($project->expectedProfit(), 2, ',', '.') }}</p>
+                    <p>Lucro Previsto: R$ {{ number_format($project->expectedProfit(), 2, ',', '.') }}</p>
                 
                     <p>Despesa: R$ {{ number_format($project->realExpense(), 2, ',', '.') }}</p>
                     <p>Receita: R$ {{ number_format($project->realReceipt(), 2, ',', '.') }}</p>

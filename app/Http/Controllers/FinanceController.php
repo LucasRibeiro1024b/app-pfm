@@ -38,7 +38,7 @@ public function index()
 
     // Paginate the results manually
     $currentPage = request()->input('page', 1);
-    $perPage = 8;
+    $perPage = 6;
     $currentItems = $finances->slice(($currentPage - 1) * $perPage, $perPage)->values();
     $finances = new LengthAwarePaginator($currentItems, $finances->count(), $perPage, $currentPage, [
         'path' => request()->url(),
