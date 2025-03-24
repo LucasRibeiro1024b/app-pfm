@@ -8,6 +8,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Contracts\Session\Session;
@@ -229,4 +230,19 @@ Route::prefix('category')->group(function()
     
     Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
     //sócio e financeiro
+});
+
+
+
+////////////////////**** módulo Supplier (Fornecedor) *****///////////////////////////////////////
+Route::get("/suppliers", [SupplierController::class, 'index'])->name('supplier.index')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+
+Route::prefix('supplier')->group(function()
+{
+    Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    Route::put('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+    Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy')->middleware('auth', 'accept:'.UserRoles::PARTNER.','.UserRoles::FINANCIER);
+
 });

@@ -22,6 +22,9 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    const PARTNER = 'partner';
+    const CONSULTANT = 'consultant';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -74,6 +77,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Task', 'user_id'); 
     }
     
+    public function supplier()
+    {
+        return $this->hasOne(Supplier::class);
+    }
     
     public function isPartner()
     {
@@ -98,5 +105,21 @@ class User extends Authenticatable
     public function roles()
     {
         return [UserRoles::PARTNER, UserRoles::CONSULTANT, UserRoles::FINANCIER, UserRoles::INTERN];
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        // Automatically assign a supplier when a consultant user is created
+        static::created(function ($user) {
+            if ($user->isConsultant()) {
+                Supplier::create([
+                    'user_id' => $user->id,
+                    'name' => $user->name,
+                    'personType' => 0,
+                ]);
+            }
+        });
     }
 }

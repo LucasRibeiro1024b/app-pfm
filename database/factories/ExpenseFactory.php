@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -28,7 +29,7 @@ class ExpenseFactory extends Factory
             "quantity" => random_int(10, 100),
             "hours" => random_int(1, 50),            
             'project_id' => Project::pluck('id')->random(),
-            'supplier_id' => 1,
+            'supplier_id' => Supplier::pluck('id')->random(),
             'category_id' => Category::pluck('id')->random(),
         ];
     }

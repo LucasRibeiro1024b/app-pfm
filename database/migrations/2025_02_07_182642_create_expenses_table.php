@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->nullable()->unique();
+            $table->boolean('personType');
+            $table->string('address')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('personTypeCode')->nullable()->unique();
+
+            $table->foreignId('user_id')->unique()->nullable()->constrained()->onDelete('cascade'); // Nullable, for consultants
             $table->timestamps();
         });
 
