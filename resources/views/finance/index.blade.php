@@ -5,7 +5,10 @@
 @section('content')
 
 <div class="d-flex justify-content-between">
-    <h2>Lista de Receitas e Despesas</h2>
+    <div class="mb-3">
+        <button id="showTable1" class="btn btn-outline-danger active">Despesas</button>
+        <button id="showTable2" class="btn btn-outline-success">Receitas</button>
+    </div>
 
     <div class="dropdown">
         <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,16 +24,13 @@
 
 </div>
 
-<div class="mb-3">
-    <button id="showTable1" class="btn btn-outline-danger active">Despesas</button>
-    <button id="showTable2" class="btn btn-outline-success">Receitas</button>
-</div>
 
-<div id="expense-table" class="mt-5">
+
+<div id="expense-table" class="">
     @livewire(App\Livewire\ExpensesTable::class)
 </div>
 
-<div id="receipt-table" class="mt-5">
+<div id="receipt-table" class="d-none">
     @livewire(App\Livewire\ReceiptsTable::class)
 </div>
 
