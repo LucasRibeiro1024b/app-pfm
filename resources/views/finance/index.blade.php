@@ -4,8 +4,10 @@
     
 @section('content')
 
-<div class="d-flex justify-content-between">
+<div class="mb-4 d-flex justify-content-between">
     <h2>Lista de Receitas e Despesas</h2>
+
+    <input class="form-control" type="text" placeholder="pesquisar" style="width: 200px">
 
     <div class="dropdown">
         <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,7 +37,7 @@
             @endcan
         </tr>
     </thead>
-    <tbody class="text-center">
+    <tbody class="text-center align-middle">
         @foreach ($finances as $finance)
         <tr>
             <td>{{ $finance->type }}</td>
@@ -46,10 +48,10 @@
                 <td><a href=" {{route('receipt.show', $finance->id)}}" class="text-info-emphasis">{{ $finance->title }}</a></td>
             @endif
 
-            <td>{{ $finance->value }}</td>
+            <td>R${{ number_format($finance->value, 2, ',', '.') }}</td>
             <td>{{ $finance->project->title }}</td>
-            <td>{{ $finance->payment_date ? $finance->payment_date : 'Aguardando Pagamento' }}</td>
-            <td>{{ $finance->end_date }}</td>
+            <td>{{ $finance->payment_date ? date('d/m/Y', strtotime($finance->payment_date)) : 'Aguardando Pagamento' }}</td>
+            <td>{{ date('d/m/Y', strtotime($finance->end_date)) }}</td>
             
             @can('action', 'App\Models\Expense')
                 <td>
