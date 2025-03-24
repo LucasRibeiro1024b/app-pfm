@@ -21,9 +21,36 @@
 
 </div>
 
-<div class="mt-5">
-    @livewire(App\Livewire\FinancesTable::class)
+<div class="mb-3">
+    <button id="showTable1" class="btn btn-outline-danger active">Despesas</button>
+    <button id="showTable2" class="btn btn-outline-success">Receitas</button>
 </div>
+
+<div id="expense-table" class="mt-5">
+    @livewire(App\Livewire\ExpensesTable::class)
+</div>
+
+<div id="receipt-table" class="mt-5">
+    @livewire(App\Livewire\ReceiptsTable::class)
+</div>
+
+<script>
+    document.getElementById('showTable1').addEventListener('click', function() {
+        document.getElementById('expense-table').classList.remove('d-none');
+        document.getElementById('receipt-table').classList.add('d-none');
+
+        this.classList.add('active');
+        document.getElementById('showTable2').classList.remove('active');
+    });
+
+    document.getElementById('showTable2').addEventListener('click', function() {
+        document.getElementById('expense-table').classList.add('d-none');
+        document.getElementById('receipt-table').classList.remove('d-none');
+
+        this.classList.add('active');
+        document.getElementById('showTable1').classList.remove('active');
+    });
+</script>
 
 @endsection
 
