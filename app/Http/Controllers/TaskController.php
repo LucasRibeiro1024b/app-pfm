@@ -14,8 +14,9 @@ class TaskController extends Controller
     public function create($id) 
     {
         $project = Project::findOrFail($id);
-        $consultants = User::where("type", 1)->get();
-        return view('task.create', compact('project'), compact('consultants'));
+        $consultants = User::where("type", UserRoles::CONSULTANT)->get();
+
+        return view('task.create', compact('project'), ['consultants' => $consultants]);
     }
 
     public function store(TaskRequest $request)
