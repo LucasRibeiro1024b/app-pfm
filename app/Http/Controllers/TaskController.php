@@ -51,7 +51,7 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
 
-        $consultants = User::where("type", 1)->get();
+        $consultants = User::where("type", UserRoles::CONSULTANT)->get();
 
         return view('task.edit', compact('task'), compact('consultants'));
     }
