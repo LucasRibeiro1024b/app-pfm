@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div class="col-md-6 offset-md-3">
+<div id="layout-form-container" class="col-md-6 offset-md-3">
 
     @include('components.alert.error')
 
@@ -60,6 +60,9 @@
 
 @endsection
 
+@push('style')
+    <link rel="stylesheet" href="/css/client/create.css">
+@endpush
 @push('script')
     <script src="/js/formatacao/value.js"></script>
 @endpush
