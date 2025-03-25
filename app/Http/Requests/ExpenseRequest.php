@@ -26,6 +26,7 @@ class ExpenseRequest extends FormRequest
             'description' => 'nullable|string',
             'value' => 'required|numeric',
             'payment_date' => 'nullable|date',
+            'end_date' => 'required|date',
             'quantity' => 'nullable|integer',
             'hours' => 'nullable|integer',
             'project_id' => 'required|exists:projects,id',

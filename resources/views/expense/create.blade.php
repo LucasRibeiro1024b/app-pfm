@@ -41,6 +41,11 @@
     </div>
 
     <div class="form-group">
+        <label for="end_date">Data de Vencimento:</label>
+        <input class="form-control" type="date" id="end_date" name="end_date" placeholder="" value="{{ old('end_date', $expense->end_date ?? '') }}">
+    </div>
+
+    <div class="form-group">
         <label for="quantity">Quantidade:</label>
         <input class="form-control" type="number" id="quantity" name="quantity" placeholder="" value="{{ old('quantity', $expense->quantity ?? '') }}">
     </div>

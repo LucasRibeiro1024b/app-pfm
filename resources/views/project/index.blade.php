@@ -16,7 +16,7 @@
             <div class="card " style="height: 300px">
                 <div class="card-body d-flex row align-items-between">
                     <h5 class="card-title">{{ $project->title }}</h5>
-                    <p class="card-text">{{ $project->description }}</p>
+                    <p class="card-text text-truncate-5">{{ $project->description }}</p>
                     <p class="card-text"><small class="text-body-secondary">{{ date('d/m/Y', strtotime($project->created_at)) }}</small></p>
                     <div>
                         <a href="{{ route('project.show', ['id' => $project->id]) }}" class="btn btn-primary">Visualizar</a>
@@ -35,3 +35,6 @@
 @endsection
 
 
+@push('style')
+    <link rel="stylesheet" href="/css/project/index.css">
+@endpush

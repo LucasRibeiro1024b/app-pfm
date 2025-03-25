@@ -39,16 +39,16 @@
                 
                 <td class="td-gray">
                 @switch($user->type)
-                    @case(auth()->user()->isPartner())
+                    @case(auth()->user()->roles()[0])
                         Sócio
                         @break
-                    @case(auth()->user()->isConsultant())
+                    @case(auth()->user()->roles()[1])
                         Consultor
                         @break
-                    @case(auth()->user()->isFinancier())
+                    @case(auth()->user()->roles()[2])
                         Financeiro
-                        @breakf
-                    @case(auth()->user()->isIntern())
+                        @break
+                    @case(auth()->user()->roles()[3])
                         Estagiário
                         @break
                     @default

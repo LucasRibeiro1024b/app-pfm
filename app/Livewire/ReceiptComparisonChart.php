@@ -7,7 +7,7 @@ use Filament\Widgets\ChartWidget;
 
 class ReceiptComparisonChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    // protected static ?string $heading = 'Chart';
 
     protected function getData(): array
     {

@@ -16,6 +16,9 @@ class TopProfitableProjectsChart extends ChartWidget
             ->sortByDesc(fn($project) => $project->realProfit()) 
             ->take(4);
 
+        $labels = [];
+        $data = [];
+
         foreach($topProjects as $project) {
             $labels[] = $project->title;
             $data[] = $project->realProfit();

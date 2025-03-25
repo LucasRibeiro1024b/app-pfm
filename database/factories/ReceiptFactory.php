@@ -20,8 +20,8 @@ class ReceiptFactory extends Factory
     {
         return [
             "title" => fake()->sentence(2),
-            "description" => fake()->sentence(10),
-            "value" => fake()->randomFloat(2, 10, 1000),
+            "description" => fake()->sentence(5),
+            "value" => fake()->randomFloat(2, 100, 9999),
             "payment_date" => fake()->optional(0.5, null)->dateTimeBetween('-1 year', 'now'),
             "end_date" => fake()->dateTimeBetween('-1 year', 'now'),
             'client_id' => Client::pluck('id')->random(),

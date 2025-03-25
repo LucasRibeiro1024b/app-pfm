@@ -81,13 +81,12 @@ class Project extends Model
     //receitas previstas
 
     public function expectedReceipt() {
-        return $this->tasks
+        return $this->receipts
+        ->whereNull('payment_date')
         ->sum('value');
     }
 
-
     // receitas reais
-
     public function realReceipt() {
         return $this->receipts
         ->whereNotNull('payment_date')

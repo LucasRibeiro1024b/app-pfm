@@ -16,7 +16,7 @@
                     <th scope="col" class="col-1">data pagamento</th>
                     <th scope="col" class="col-2">data vencimento</th>
                     {{-- IMPORTANTE: mudar category para finance quando tiver suas policies --}}
-                    @can('action', 'App\Models\Category')
+                    @can('action', 'App\Models\Expense')
                         <th scope="col">ações</th>
                     @endcan
                 </tr>
@@ -32,7 +32,7 @@
                         <td>{{ $receipt->payment_date ? $receipt->payment_date : 'Aguardando Pagamento' }}</td>
                         <td>{{ $receipt->end_date }}</td>
 
-                        @can('action', 'App/Models/Task')
+                        @can('action', 'App/Models/Expense')
                             <td>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <a href="{{ route('receipt.edit', $receipt->id) }}"
@@ -58,7 +58,7 @@
                         <td>{{ $expense->payment_date ? $expense->payment_date : 'Aguardando Pagamento' }}</td>
                         <td>{{ $expense->end_date }}</td>
 
-                        @can('action', 'App/Models/Task')
+                        @can('action', 'App/Models/Expense')
                             <td>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <a href="{{ route('expense.edit', $expense->id) }}"

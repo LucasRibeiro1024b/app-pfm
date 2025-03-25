@@ -17,8 +17,13 @@ class ReceiptsSeeder extends Seeder
         $tasks = Task::all();
 
         foreach ($tasks as $task) {
-            Receipt::factory(15)->create([
-                'value' => $task->value
+            Receipt::factory(1)->create([
+                'title' => $task->title,
+                'description' => $task->title,
+                'value' => $task->value,
+                'end_date' => $task->project->end_date,
+                'project_id' => $task->project->id,
+                'client_id' => $task->project->client_id
             ]);
         }
     }

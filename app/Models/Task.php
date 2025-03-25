@@ -41,4 +41,25 @@ class Task extends Model
         $formattedHour = sprintf('%02d:%02d', $this->hours($time), $this->minutes($time));
         return $formattedHour;
     }
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::created(function ($task) {
+    //         Receipt::create([
+    //             'title' => $task->title,
+    //             'description' => $task->title,
+    //             'value' => $task->value,
+    //             'end_date' => $task->project->end_date,
+    //             'project_id' => $task->project->id,
+    //             'client_id' => $task->project->client_id
+    //         ]);
+    //     });
+
+
+    //     // static::deleted();
+
+    //     // static::updated();
+    // }
 }
