@@ -24,17 +24,17 @@
             <input class="form-control" type="email" id="email" name="email" placeholder="Email do fornecedor" value="{{ old('email', $supplier->email) }}">
         </div>
         
+
         <div class="form-group">
-            <label for="personType">Tipo de Pessoa:</label>
-            <select class="form-control" id="personType" name="personType" required>
-                <option value="0" {{ old('personType', $supplier->personType) == 0 ? 'selected' : '' }}>Física</option>
-                <option value="1" {{ old('personType', $supplier->personType) == 1 ? 'selected' : '' }}>Jurídica</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="personTypeCode">CPF/CNPJ:</label>
-            <input class="form-control" type="text" id="personTypeCode" name="personTypeCode" placeholder="CPF ou CNPJ" value="{{ old('personTypeCode', $supplier->personTypeCode) }}" required>
+            <label for="personType">Tipo:</label>
+            <div class="input-group">
+              <select name="personType" id="type" class="form-select" onchange="atualizarMascara()">
+                <option value="0" {{old('personType', $supplier->personType) ? '' : 'selected'}}>Pessoa Física (CPF)</option>
+                <option value="1" {{old('personType', $supplier->personType) ? 'selected' : ''}}>Pessoa Jurídica (CNPJ)</option>
+              </select>
+              
+              <input class="form-control" type="text" id="cpfCnpj" name="personTypeCode" placeholder="Digite o CPF" oninput="aplicarMascara()" value="{{ $supplier->personTypeCode }}" required>
+            </div>
         </div>
         
         <div class="form-group">
@@ -68,4 +68,9 @@
 
 @push('style')
     <link rel="stylesheet" href="/css/client/create.css">
+@endpush
+
+@push('script')
+    <script src="/js/formatacao/cpfCnpj.js"></script>
+    <script src="/js/formatacao/phone.js"></script>
 @endpush

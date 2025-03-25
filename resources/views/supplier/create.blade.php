@@ -22,18 +22,17 @@
             <label for="email">Email:</label>
             <input class="form-control" type="email" id="email" name="email" placeholder="Email do fornecedor" value="{{ old('email') }}">
         </div>
-        
+
         <div class="form-group">
-            <label for="personType">Tipo de Pessoa:</label>
-            <select class="form-control" id="personType" name="personType" required>
-                <option value="0" {{ old('personType') == 'fisica' ? 'selected' : '' }}>Física</option>
-                <option value="1" {{ old('personType') == 'juridica' ? 'selected' : '' }}>Jurídica</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="personTypeCode">CPF/CNPJ:</label>
-            <input class="form-control" type="text" id="personTypeCode" name="personTypeCode" placeholder="CPF ou CNPJ" value="{{ old('personTypeCode') }}" required>
+            <label for="personType">Tipo:</label>
+            <div class="input-group">
+              <select name="personType" id="type" class="form-select" onchange="atualizarMascara()">
+                <option value="0" {{old('personType') ? '' : 'selected'}}>Pessoa Física (CPF)</option>
+                <option value="1" {{old('personType') ? 'selected' : ''}}>Pessoa Jurídica (CNPJ)</option>
+              </select>
+              
+              <input class="form-control" type="text" id="cpfCnpj" name="personTypeCode" placeholder="Digite o CPF" oninput="aplicarMascara()" value="{{ old('personTypeCode') }}" required>
+            </div>
         </div>
         
         <div class="form-group">
@@ -43,7 +42,7 @@
         
         <div class="form-group">
             <label for="telephone">Telefone:</label>
-            <input class="form-control" type="text" id="telephone" name="telephone" placeholder="Telefone do fornecedor" value="{{ old('telephone') }}">
+            <input class="form-control" type="text" id="phone" name="telephone" placeholder="Telefone do fornecedor" value="{{ old('telephone') }}">
         </div>
         
         <div class="form-group">
@@ -67,4 +66,9 @@
 
 @push('style')
     <link rel="stylesheet" href="/css/client/create.css">
+@endpush
+
+@push('script')
+    <script src="/js/formatacao/cpfCnpj.js"></script>
+    <script src="/js/formatacao/phone.js"></script>
 @endpush

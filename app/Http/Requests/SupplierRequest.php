@@ -42,7 +42,7 @@ class SupplierRequest extends FormRequest
             ],
             'address' => 'nullable|string|max:255',
             'telephone' => 'nullable|string|max:20',
-            'user_id' => 'nullable|exists:users,id|unique',
+            'user_id' => 'nullable|exists:users,id',
         ];
     }
 
