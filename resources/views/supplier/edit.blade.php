@@ -33,7 +33,7 @@
                 <option value="1" {{old('personType', $supplier->personType) ? 'selected' : ''}}>Pessoa Jurídica (CNPJ)</option>
               </select>
               
-              <input class="form-control" type="text" id="cpfCnpj" name="personTypeCode" placeholder="Digite o CPF" oninput="aplicarMascara()" value="{{ $supplier->personTypeCode }}" required>
+              <input class="form-control" type="text" id="cpfCnpj" name="personTypeCode" placeholder="Digite o CPF" oninput="aplicarMascara()" value="{{ old('personTypeCode', $supplier->personTypeCode) }}" required>
             </div>
         </div>
         
@@ -44,7 +44,7 @@
         
         <div class="form-group">
             <label for="telephone">Telefone:</label>
-            <input class="form-control" type="text" id="telephone" name="telephone" placeholder="Telefone do fornecedor" value="{{ old('telephone', $supplier->telephone) }}">
+            <input class="form-control" type="text" id="phone" name="telephone" placeholder="Telefone do fornecedor" value="{{ old('telephone', $supplier->telephone) }}">
         </div>
         
         <div class="form-group">

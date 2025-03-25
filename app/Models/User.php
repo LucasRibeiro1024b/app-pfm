@@ -117,6 +117,7 @@ class User extends Authenticatable
                 Supplier::create([
                     'user_id' => $user->id,
                     'name' => $user->name,
+                    'email' => $user->email,
                     'personType' => 0,
                 ]);
             }
