@@ -65,7 +65,7 @@ php artisan migrate
 npm install && npm run build
 ```
 
-9. Se desejar iniciar a aplicação sem dados, rode o comando 9.1 <br>
+9. Se desejar iniciar a aplicação sem dados, rode o comando 9.1 para criar apenas o user admin<br>
    Se desejar popular com vários dados para melhor visualização, rode o comando 9.2
 
     9.1
