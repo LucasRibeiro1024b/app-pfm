@@ -77,12 +77,12 @@ npm install && npm run build
    php artisan migrate --seed
    ```
 
-9. Inicie o servidor
+10. Inicie o servidor
 ```
 php artisan serve
 ```
 
-10. Use os dados abaixo para fazer login <br>
+11. Use os dados abaixo para fazer login <br>
 email:```admin@mail.com``` <br>
 senha:```12345678```
 
